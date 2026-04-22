@@ -1,62 +1,56 @@
 ---
 title: "NodePad Enterprise: self-hosted for regulated teams"
-description: "NodePad Enterprise gives security-conscious and regulated organizations full control over their data, identity, and infrastructure — with no compromises."
+description: "NodePad Enterprise is a self-hosted deployment for organizations that need to run NodePad inside their own infrastructure and keep conversation data on their network."
 ---
 
-NodePad Enterprise is designed for organizations that cannot send data to third-party infrastructure, operate in regulated industries, or have compliance requirements that a standard SaaS product cannot meet. It includes everything in the public beta, plus the controls you need to run NodePad entirely on your own terms — in your VPC, behind your firewall, with your identity provider and your model endpoints.
+NodePad Enterprise is a self-hosted deployment of NodePad for organizations that cannot run their AI workspace on a shared SaaS. You install NodePad in your own environment — Kubernetes or a single VM — and connect it to your own database, object store, and provider accounts. Conversation data never touches NodePad-managed infrastructure.
 
 <Note>
   NodePad Enterprise is separate from the public beta. The beta runs on NodePad-managed cloud infrastructure. Enterprise deployments run on **your** infrastructure, under **your** control.
 </Note>
 
-## What's included
-
-Every Enterprise deployment includes the full set of security, identity, and compliance features listed below. There are no tiers within Enterprise — when you deploy NodePad in your environment, you get everything.
+## What you get
 
 <CardGroup cols={2}>
   <Card title="Self-hosting" icon="server" href="/enterprise/self-hosting">
-    Deploy NodePad inside your own VPC. Bring your own cloud infrastructure, keys, and model endpoints.
+    Deploy NodePad on Kubernetes (Helm chart) or a single VM (docker compose). Bring your own Postgres, Redis, and S3-compatible object storage.
   </Card>
-  <Card title="SSO + SCIM" icon="id-card" href="/enterprise/sso-scim">
-    Enforce single sign-on via SAML 2.0 or OIDC, and automate user provisioning with SCIM directory sync.
+  <Card title="Offline / air-gapped install" icon="shield-halved" href="/enterprise/operations/air-gapped">
+    A single zip bundle containing everything needed to install without internet access — images, Helm chart, compose file, and install guide.
   </Card>
-  <Card title="Air-gapped deployment" icon="shield-halved" href="/enterprise/air-gapped">
-    Run NodePad with zero egress. Models execute entirely inside your network perimeter.
+  <Card title="Immutable release tags" icon="box" href="/enterprise/operations/install">
+    Every release ships as an immutable `X.Y.Z` container tag and a versioned Helm chart. You pin the version you run; upgrades are explicit.
   </Card>
-  <Card title="Audit logs + RBAC" icon="clipboard-list" href="/enterprise/audit-rbac">
-    Full activity logging with exportable audit trails, and granular role-based access control.
+  <Card title="Bring your own provider keys" icon="key" href="/models/bring-your-own-keys">
+    The installation operator supplies Anthropic and OpenAI API keys at the system level. Provider requests bill to your account and route from your network.
   </Card>
 </CardGroup>
 
-## Who Enterprise is for
+## What Enterprise does NOT include yet
 
-NodePad Enterprise is built for teams where data sovereignty is non-negotiable:
+NodePad is in early beta. Several features you might expect on an enterprise tier are **not** shipped in v0.1:
 
-- **Regulated industries** — healthcare, finance, legal, and government organizations subject to HIPAA, SOC 2, FedRAMP, or similar frameworks
-- **Defense and intelligence** — teams operating in classified or air-gapped environments
-- **Enterprises with existing identity infrastructure** — organizations that require SSO and automated user lifecycle management
-- **Teams with custom model requirements** — organizations running their own inference endpoints via Ollama, vLLM, Amazon Bedrock, or Google Vertex AI
+- **SSO / SCIM / directory sync.** Authentication is email + password via Django's session-based auth. SSO (SAML 2.0 / OIDC) and SCIM provisioning are on the roadmap but not available today.
+- **Role-based access control.** Workspaces are single-owner. There are no multi-user roles, permissions, or sharing primitives in the current release.
+- **Audit logs.** Standard application logs exist; a dedicated audit trail of user actions is roadmap.
+- **Local / self-hosted model inference.** NodePad today calls Anthropic or OpenAI directly. Routing through self-hosted Ollama, vLLM, Bedrock, or Vertex endpoints is roadmap.
 
-## Your data stays yours
+We document what ships, not what's planned. If one of the above is a blocker for your deployment, tell us during the Enterprise conversation — timelines depend on pilot demand.
 
-NodePad never trains on your conversations. On the Enterprise plan, your data never leaves your infrastructure at all — it stays inside the environment you control, subject to the policies you set.
+## Who Enterprise is for today
 
-<AccordionGroup>
-  <Accordion title="What about the beta — is my data safe there?">
-    Yes. Even on the public beta, NodePad does not train models on your conversations. The beta runs on NodePad-managed cloud infrastructure, so data is processed on NodePad's servers. Enterprise deployments eliminate this entirely — your data never leaves your network.
-  </Accordion>
-  <Accordion title="Can I bring my own model API keys?">
-    Yes. Enterprise lets you connect your own keys for external model providers, or point NodePad at your own inference endpoints running Ollama, vLLM, Amazon Bedrock, or Google Vertex AI.
-  </Accordion>
-  <Accordion title="Is air-gapped deployment really supported?">
-    Yes. NodePad is designed from the ground up to support fully air-gapped deployments. No outbound calls are required once the software is installed in your environment.
-  </Accordion>
-</AccordionGroup>
+NodePad Enterprise v0.1 is the right fit for:
+
+- Small and mid-sized teams who want AI on a canvas inside their own VPC or on-prem environment
+- Organizations whose compliance posture requires that conversation data stays on their own infrastructure
+- Teams planning a controlled rollout of canvas-based AI workflows before broader enterprise-identity integration arrives
+
+It is **not** the right fit today for organizations that require SSO-only authentication, multi-user RBAC at the workspace level, or fully air-gapped model inference. Those are on the roadmap — reach out if you want to be part of shaping them.
 
 ## Get started
 
-NodePad Enterprise is available by contacting the team directly. There's no self-serve sign-up — the team works with you to understand your infrastructure, compliance requirements, and deployment model before you go live.
+Enterprise deployments are handled by direct conversation, not self-serve. The team will scope your environment, walk through the install checklist, and help you pilot on your own infrastructure.
 
 <Card title="Contact the Enterprise team" icon="envelope" href="https://node-pad.com/enterprise">
-  Tell us about your environment and requirements. The team will walk you through deployment options and next steps.
+  Tell us about your infrastructure and requirements. The team will walk you through deployment options and next steps.
 </Card>

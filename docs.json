@@ -3,10 +3,14 @@
   "name": "NodePad",
   "theme": "willow",
   "colors": {
-    "primary": "#040404",
+    "primary": "#2563eb",
     "light": "#ffffff"
   },
-  "favicon": "https://media.brand.dev/1360dff2-09d8-47f4-b68b-035d25cb0765.svg",
+  "favicon": "/logo.svg",
+  "logo": {
+    "light": "/logo.svg",
+    "dark": "/logo.svg"
+  },
   "font": {
     "headings": {
       "family": "Outfit"
@@ -66,9 +70,15 @@
             "pages": [
               "enterprise/overview",
               "enterprise/self-hosting",
-              "enterprise/sso-scim",
-              "enterprise/air-gapped",
-              "enterprise/audit-rbac"
+              "enterprise/operations/install",
+              "enterprise/operations/upgrade",
+              "enterprise/operations/air-gapped"
+            ]
+          },
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog"
             ]
           }
         ]
