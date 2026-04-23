@@ -1,76 +1,61 @@
 ---
-title: "Connect your own API keys or self-hosted model endpoint"
-description: "Enterprise plans let you supply your own model provider API keys or connect Ollama, vLLM, Amazon Bedrock, or Google Vertex AI as your inference backend."
+title: "Bring your own Anthropic and OpenAI API keys"
+description: "Connect your own Anthropic or OpenAI API key so NodePad routes model requests through your account, with your pricing and your rate limits."
 ---
 
-Enterprise NodePad plans let you connect your own model provider credentials instead of relying on NodePad's shared infrastructure. You can supply API keys for providers like Anthropic, OpenAI, or Google, or point NodePad directly at your own inference endpoint. Either way, your data flows through your own accounts and infrastructure — not through NodePad's.
-
-<Warning>
-  Bring-your-own-keys and custom inference endpoints are enterprise-only features. They are not available on the cloud beta tier. [Contact sales](https://node-pad.com/enterprise) to discuss an enterprise plan.
-</Warning>
+NodePad supports bringing your own API keys for Anthropic and OpenAI. When you connect a provider key in settings, NodePad routes that provider's requests through your account — so usage bills against your contract with the provider, not NodePad's retail rates, and prompts/completions flow through infrastructure you already trust.
 
 ## Why bring your own keys
 
 <CardGroup cols={2}>
-  <Card title="Keep data in your infrastructure" icon="shield">
-    Requests route through your own API accounts. NodePad never stores prompts or responses on its servers when you use your own keys.
-  </Card>
   <Card title="Use your negotiated pricing" icon="tag">
-    If your organization has volume pricing with Anthropic, OpenAI, or Google, your NodePad usage bills against those rates — not NodePad's retail margins.
+    If your organization has volume pricing with Anthropic or OpenAI, your NodePad usage bills against those rates.
   </Card>
-  <Card title="Air-gapped environments" icon="lock">
-    Connect a local Ollama instance or an internal vLLM deployment. NodePad can operate without any outbound internet traffic to third-party model providers.
+  <Card title="Your rate limits, not ours" icon="gauge">
+    Heavy canvas sessions don't share a pool with other NodePad users. You inherit whatever rate limits your provider account has.
   </Card>
-  <Card title="Vendor flexibility" icon="arrows-left-right">
-    Switch providers or endpoints without changing how you use NodePad. Your canvas, threads, and workflows stay intact.
+  <Card title="Audit trail in one place" icon="clipboard-list">
+    Provider-side usage dashboards show exactly what NodePad used on your behalf.
+  </Card>
+  <Card title="Per-user or shared keys" icon="users">
+    Use your personal provider keys, or configure a workspace-level key that everyone in your account inherits.
   </Card>
 </CardGroup>
 
-## Supported inference endpoints
+## How it works
 
-In addition to standard provider API keys, NodePad supports the following self-hosted and cloud inference backends:
-
-<Tabs>
-  <Tab title="Ollama">
-    Ollama lets you run open-weight models locally on your own machine or internal server. Point NodePad at your Ollama instance's address and it appears as a selectable model provider across your canvas. Suitable for fully air-gapped or on-premises deployments.
-  </Tab>
-  <Tab title="vLLM">
-    vLLM is a high-throughput inference server for open-weight models. Connect NodePad to a vLLM endpoint running inside your cloud environment or data center. Useful when you need speed and scale with open-source models.
-  </Tab>
-  <Tab title="Amazon Bedrock">
-    If your organization uses AWS, you can route NodePad's model requests through Amazon Bedrock. This keeps traffic within your AWS VPC and lets you use IAM-controlled model access alongside your existing AWS billing and compliance controls.
-  </Tab>
-  <Tab title="Google Vertex AI">
-    Connect NodePad to Google Vertex AI to access Gemini and other Vertex-hosted models through your own GCP project. Useful for organizations already standardized on Google Cloud for data residency or compliance reasons.
-  </Tab>
-</Tabs>
-
-## How to configure your keys or endpoint
+Keys are stored encrypted at rest and only decrypted in memory when NodePad dispatches a model request. They're never displayed back to you after you save them, and admins can see which providers are connected without seeing the key values themselves.
 
 <Steps>
-  <Step title="Open workspace settings">
-    From any canvas, open the workspace settings panel using the menu in the top-right corner of the NodePad interface.
+  <Step title="Open Settings">
+    From any canvas, open the Settings panel using the menu in the top-right corner of the NodePad interface.
   </Step>
-  <Step title="Go to the Models tab">
-    Select the **Models** tab in the settings panel. You'll see the current model configuration for your workspace.
+  <Step title="Go to Providers">
+    Select the **Providers** tab. You'll see the providers NodePad supports and any keys currently connected.
   </Step>
-  <Step title="Add your credentials">
-    Enter your API key for the provider you want to connect, or supply the base URL and any required authentication details for your self-hosted endpoint.
+  <Step title="Add your key">
+    Paste your Anthropic or OpenAI API key. Save.
   </Step>
-  <Step title="Test the connection">
-    Use the **Test connection** button to confirm NodePad can reach your endpoint and authenticate successfully before saving.
-  </Step>
-  <Step title="Set as default (optional)">
-    Once connected, you can set your custom endpoint as the workspace default. All new threads will use it unless overridden at the message level.
+  <Step title="Select the new models">
+    Go back to your canvas. Models that are only reachable with your key will appear alongside NodePad's shared-tier models in the model picker.
   </Step>
 </Steps>
 
 <Info>
-  Your API keys are encrypted at rest and never exposed to other workspace members. Workspace admins can see which providers are connected but cannot view the key values themselves.
+  You can remove a key at any time from the Providers tab. After removal, NodePad falls back to the shared-tier models for that provider (or to no models from that provider, on Enterprise installs that don't ship shared keys).
 </Info>
 
-## Air-gapped deployment
+## What you don't need keys for
 
-If your security requirements prevent NodePad from reaching the internet entirely, combine bring-your-own-keys with NodePad's self-hosted deployment option. You run NodePad inside your own infrastructure and point it at a local Ollama or vLLM instance — no external network calls at any layer.
+You don't have to bring your own keys to use NodePad on the beta — the shared-tier models work out of the box. BYOK is for teams that want to tie spend and traffic to their own provider accounts. On self-hosted Enterprise installs, the deployment operator typically configures provider keys at the system level so every user can chat without each one pasting a key in settings.
 
-For more on self-hosting NodePad, see the [self-hosting guide](/enterprise/self-hosting).
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Models supported by NodePad" icon="microchip" href="/models/overview">
+    See the full list of Anthropic and OpenAI models you can switch between.
+  </Card>
+  <Card title="Per-message model selection" icon="sliders" href="/models/per-message-selection">
+    Learn how to pick a different model for each message in a thread.
+  </Card>
+</CardGroup>

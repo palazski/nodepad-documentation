@@ -1,43 +1,35 @@
 ---
-title: "AI models supported by NodePad: Claude, GPT, Gemini"
-description: "NodePad supports Claude, GPT-5, Gemini, and open-source models. Choose any model per message and run multiple models in parallel across your canvas."
+title: "AI models supported by NodePad: Claude and GPT"
+description: "NodePad supports Anthropic's Claude family and OpenAI's GPT family. Choose any model per message and run multiple models in parallel across your canvas."
 ---
 
-NodePad gives you access to a wide range of AI models and lets you switch between them at any point in a conversation — not just at the start of a thread. You can also run different models simultaneously across your canvas, making it easy to compare outputs, gather second opinions, or delegate different tasks to the model best suited for each one.
+NodePad works with the two model families most teams already standardize on: Anthropic's Claude and OpenAI's GPT. You can switch between them at any point in a conversation — not just at the start of a thread — and run different models simultaneously across your canvas to compare outputs or delegate different tasks to the model best suited for each one.
 
 ## Supported models
 
-NodePad includes built-in support for the following models out of the box:
-
 <CardGroup cols={2}>
-  <Card title="Claude" icon="brain">
-    Anthropic's Claude family, including Claude Opus for complex reasoning tasks and lighter variants for faster responses.
+  <Card title="Claude (Anthropic)" icon="brain">
+    The Claude 4 family, including Claude Opus 4 for complex reasoning and Claude Sonnet 4 for balanced speed and quality, plus Claude Haiku 3.5 for fast responses.
   </Card>
-  <Card title="GPT-5" icon="sparkles">
-    OpenAI's latest model, suited for a broad range of writing, analysis, and coding tasks.
-  </Card>
-  <Card title="Gemini" icon="stars">
-    Google's Gemini family, including Gemini 2.5 Pro for long-context and multimodal work.
-  </Card>
-  <Card title="Open-source models" icon="code">
-    A curated set of open-weight models. Enterprise users can also connect their own inference endpoints.
+  <Card title="GPT (OpenAI)" icon="sparkles">
+    GPT-5 nano for general writing and analysis, plus GPT-4o and GPT-4o mini for broader tasks.
   </Card>
 </CardGroup>
 
 <Note>
-  The model list grows as new versions are released. Enterprise customers can also connect custom inference endpoints including Ollama, vLLM, Amazon Bedrock, and Google Vertex AI.
+  NodePad adds new models as providers release them. The list of models you can select from updates automatically for all users.
 </Note>
 
 ## What makes NodePad different
 
 Most AI tools lock you into a single model for an entire conversation. NodePad removes that constraint in two ways.
 
-**Per-message model selection** — You can change the model on any individual message, mid-thread. If a question calls for deeper reasoning, switch to Claude Opus for that message and switch back afterward. The rest of the thread is unaffected.
+**Per-message model selection.** You can change the model on any individual message, mid-thread. If a question calls for deeper reasoning, switch to Claude Opus for that message and switch back afterward. The rest of the thread is unaffected.
 
-**Parallel model execution on the canvas** — Each thread on your canvas is independent. You can open one thread with Claude and another with GPT-5, ask them the same question, and read the answers side by side. No copy-pasting, no tab-switching.
+**Parallel model execution on the canvas.** Each thread on your canvas is independent. You can open one thread with Claude and another with GPT, ask them the same question, and read the answers side by side. No copy-pasting, no tab-switching.
 
 <Tip>
-  Running the same prompt across two or three models at once is one of the fastest ways to pressure-test an answer or spot where models disagree.
+  Running the same prompt across two models at once is one of the fastest ways to pressure-test an answer or spot where models disagree.
 </Tip>
 
 ## Next steps
@@ -47,6 +39,6 @@ Most AI tools lock you into a single model for an entire conversation. NodePad r
     Learn how to choose a different model for any individual message in a thread.
   </Card>
   <Card title="Bring your own keys" icon="key" href="/models/bring-your-own-keys">
-    Connect your own API keys or point NodePad at your own inference endpoint.
+    Connect your own Anthropic or OpenAI API keys and have NodePad route requests through your account.
   </Card>
 </CardGroup>

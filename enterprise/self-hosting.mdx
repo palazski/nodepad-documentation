@@ -1,83 +1,67 @@
 ---
 title: "Self-hosting NodePad in your own VPC or on-premises"
-description: "Deploy NodePad on your own cloud infrastructure with your own keys, model endpoints, and network controls — no data sent to NodePad-managed servers."
+description: "Deploy NodePad on your own Kubernetes cluster or a single VM. Bring your own Postgres, Redis, S3-compatible storage, and provider API keys."
 ---
 
-NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad into your own cloud environment — your VPC, your servers, your network. NodePad's application layer runs entirely inside your perimeter, and none of your conversation data touches NodePad's infrastructure.
+NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad into your own infrastructure — Kubernetes via Helm, or a single VM via docker compose — and connect it to your own database, cache, and object storage. NodePad's application layer runs entirely inside your perimeter.
 
-This is the right deployment model for organizations that need data sovereignty, want to connect custom model infrastructure, or are subject to compliance requirements that preclude third-party data processing.
-
-## Why self-host
-
-<CardGroup cols={2}>
-  <Card title="Data sovereignty" icon="database">
-    Conversation data, user activity, and audit logs remain inside your own environment. You control where data is stored and who can access it.
-  </Card>
-  <Card title="Custom model endpoints" icon="microchip">
-    Connect NodePad to your own inference infrastructure — Ollama, vLLM, Amazon Bedrock, Google Vertex AI, or any compatible endpoint.
-  </Card>
-  <Card title="Your own keys" icon="key">
-    Bring your own API keys for external model providers. NodePad never handles or stores your keys on its servers.
-  </Card>
-  <Card title="Compliance readiness" icon="shield-check">
-    Keep all data flows inside your environment. Compliance reviews cover your infrastructure, not a shared SaaS platform.
-  </Card>
-</CardGroup>
-
-## Deployment options
+## Two install paths
 
 <Tabs>
-  <Tab title="VPC / On-premises">
-    The standard Enterprise deployment runs NodePad inside your VPC on your own cloud provider (AWS, Azure, GCP, or on-premises hardware). You provision the infrastructure; NodePad provides the application.
+  <Tab title="Kubernetes (Helm)">
+    For teams running workloads on Kubernetes. Install via the versioned Helm chart published to GitHub Container Registry:
 
-    This deployment connects to external model providers using your own API keys, so model inference calls go from your network directly to the provider — not through NodePad's servers.
+    - Single `image.registry` / `image.repository` value retargets every component to your internal mirror (Nexus, Harbor, Artifactory) without chart edits.
+    - Pre-install / pre-upgrade hook Job runs database migrations before any api pods roll. Failures abort the upgrade; existing pods keep serving.
+    - Optional Bitnami Postgres / Redis / MinIO sub-charts for self-contained POC installs; production deployments should BYO managed services.
 
-    <Note>
-      If your team also needs to connect local or self-hosted models, you can run Ollama or vLLM inside your VPC alongside NodePad and point NodePad's model configuration at those endpoints.
-    </Note>
+    See the [install guide](/enterprise/operations/install) for the full walkthrough.
   </Tab>
-  <Tab title="Air-gapped">
-    For environments with strict egress requirements — no outbound internet access — NodePad supports fully air-gapped deployments where all model inference happens inside your network.
+  <Tab title="Single VM (docker compose)">
+    For smaller deployments or pilots. An image-only docker compose file ships in the release bundle and pulls pinned immutable tags:
 
-    See the [air-gapped deployment guide](/enterprise/air-gapped) for details on this option.
+    - One `.env` file captures secrets and configuration.
+    - Version pin via a single `VERSION=X.Y.Z` line; `docker compose pull && up -d` to upgrade.
+    - Bundled Postgres, Redis, and MinIO for the quick-start path; swap any to a managed service by removing the service and pointing env vars externally.
   </Tab>
 </Tabs>
 
-## Bring your own model endpoints
+## What you bring
 
-Self-hosted NodePad supports connecting to the following inference backends:
+In both postures, you are responsible for:
 
-- **Ollama** — run open-source models locally or on private GPU infrastructure
-- **vLLM** — high-throughput inference server for self-hosted models
-- **Amazon Bedrock** — AWS-managed model inference, accessed using your own AWS credentials
-- **Google Vertex AI** — Google Cloud model inference, accessed using your own GCP credentials
+<CardGroup cols={2}>
+  <Card title="Database" icon="database">
+    PostgreSQL 15+. NodePad's Django migrations manage the schema.
+  </Card>
+  <Card title="Cache + queue" icon="bolt">
+    Redis 6+. Used for Django Channels (WebSocket LLM streaming) and Celery (async tasks).
+  </Card>
+  <Card title="Object storage" icon="box">
+    Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.
+  </Card>
+  <Card title="Provider API keys" icon="key">
+    Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.
+  </Card>
+</CardGroup>
 
-You can also use external model providers (OpenAI, Anthropic, etc.) with your own API keys, as long as your network allows egress to those endpoints.
+## What NodePad does not do
 
-<Tip>
-  If your compliance requirements prohibit any egress to external model providers, choose the air-gapped deployment option and run inference entirely inside your network.
-</Tip>
+- **No phone-home.** Once deployed, NodePad makes no outbound calls to NodePad-managed infrastructure. No update checks, no license phone-home, no usage pings.
+- **No outbound telemetry by default.** PostHog product analytics is off unless you explicitly set a `NODEPAD_POSTHOG_KEY` pointing at an instance you control.
+- **No data training.** NodePad does not train models on your conversations, regardless of deployment posture.
 
-## What you control
+## Release cadence and upgrade model
 
-In a self-hosted deployment, you own and operate:
+- NodePad Enterprise ships semver-tagged container images and Helm charts. Tags `X.Y.Z` and `<git-sha>` are immutable; pin to them in production.
+- Every release is smoke-tested on a fresh Kubernetes cluster in CI before the bundle is published.
+- Upgrade is `helm upgrade` (K8s) or `docker compose pull && up -d` (VM). Migrations run automatically.
+- Release notes live at `docs.node-pad.com/changelog`. Each release also has a [GitHub Release page](https://github.com/palazski/nodepad-api/releases) with the offline bundle attached.
 
-- The compute infrastructure NodePad runs on
-- All storage where conversation data and audit logs are written
-- Network routing and egress rules
-- Identity provider integration (SSO via SAML or OIDC)
-- Model endpoint configuration and API key management
-
-NodePad does not phone home, send telemetry, or require an ongoing connection to NodePad-managed infrastructure once deployed.
-
-<Warning>
-  Self-hosted deployments require your team to manage infrastructure provisioning, updates, and availability. The Enterprise team will guide you through the initial setup and provide documentation for ongoing operations.
-</Warning>
+See [Upgrade & rollback](/enterprise/operations/upgrade) for the full playbook.
 
 ## Get started
 
-Self-hosting is available to Enterprise customers. Contact the team to discuss your infrastructure environment, compliance requirements, and deployment timeline.
-
 <Card title="Contact the Enterprise team" icon="envelope" href="https://node-pad.com/enterprise">
-  The team will walk you through infrastructure requirements and the deployment process.
+  We'll scope your environment and walk you through the install checklist before you go live.
 </Card>
