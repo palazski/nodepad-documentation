@@ -1,55 +1,62 @@
 ---
-title: "What is NodePad? Your canvas workspace for AI chat"
-description: "NodePad replaces the linear AI chat thread with a spatial canvas where you run multiple conversations, fork branches, and merge results side by side."
+title: "What NodePad is"
+description: "NodePad is a canvas-based AI workspace for branching conversations, references, merge flows, and model comparison."
 ---
 
-NodePad is a canvas workspace for AI chat, made by The Palaz Company. Instead of one scrolling thread, you work on an open canvas where you can run multiple AI conversations side by side, branch any message into its own thread, and merge results back together — all without losing track of where an idea came from.
+NodePad is an AI workspace built around a canvas instead of a single transcript. You still send prompts and get replies, but you can also branch from any message, keep separate lines of thought visible at once, and carry context across the canvas when you need it.
 
-## The problem with linear chat
+## The core idea
 
-Every major AI assistant gives you the same interface: one message, one reply, repeat. That works for simple questions, but it breaks down when you want to explore more than one direction at once, compare answers from different models, or keep a complex project organized across dozens of exchanges. You end up with a wall of text that's hard to navigate and impossible to restructure.
+Linear chat is fine until the work stops being linear. Research splits into sub-questions. Debugging needs a second opinion. Writing needs a fact-check side path that should not leak back into the draft. In a normal chat app, all of that gets tangled together.
 
-NodePad replaces the scroll with a canvas. Your conversations become objects you can move, connect, and manipulate — more like a thinking tool than a chatbox.
-
-## Three core moves
-
-NodePad is built around three actions that you'll come back to constantly.
-
-<Steps>
-  <Step title="Chat">
-    Open the canvas and start typing. Your first node works exactly like any AI chat — no new concepts required. Pick any supported model (Claude or GPT) and send your first message.
-  </Step>
-  <Step title="Extend to multiple chats">
-    When a thread sparks a new question or you want to explore a different angle, spawn a second chat right on the canvas. Both conversations stay visible and spatially related, so context doesn't get lost between browser tabs.
-  </Step>
-  <Step title="Manipulate context">
-    Fork any message to branch the conversation from that exact point, add sticky notes to nodes to pin constraints the model should always respect, and merge threads together once you've reached a conclusion worth keeping.
-  </Step>
-</Steps>
-
-## What you can do in NodePad
+NodePad gives that work a shape:
 
 <CardGroup cols={2}>
-  <Card title="Quick start" icon="rocket" href="/quickstart">
-    Send your first message and spawn your first second thread in under five minutes.
+  <Card title="Workspaces" icon="layout-dashboard">
+    Each workspace is a canvas with its own title, default model, instructions, layout, and set of conversations.
   </Card>
-  <Card title="Canvas and nodes" icon="layout-dashboard" href="/concepts/canvas">
-    Understand how the canvas is organized and how nodes relate to each other.
+  <Card title="Branches" icon="git-fork">
+    Any message can become the starting point for a new branch, so you can explore a second path without losing the first one.
   </Card>
-  <Card title="Forking and merging" icon="git-fork" href="/concepts/forking">
-    Branch conversations at any message and combine threads when you're ready.
+  <Card title="References" icon="at-sign">
+    Type `@` to reference another branch or specific message when the next prompt needs context from elsewhere on the canvas.
   </Card>
-  <Card title="Supported models" icon="microchip" href="/models/overview">
-    Compare Claude and GPT side by side — switchable per message.
-  </Card>
-  <Card title="Sticky notes" icon="sticky-note" href="/concepts/sticky-notes">
-    Pin context constraints to any node so the model never forgets your rules.
-  </Card>
-  <Card title="Enterprise" icon="building" href="/enterprise/overview">
-    Self-host NodePad inside your own infrastructure.
+  <Card title="Merge flows" icon="git-merge">
+    Combine source messages from different branches into a new draft when you want the next turn to synthesize multiple threads.
   </Card>
 </CardGroup>
 
+## How people actually use it
+
+<AccordionGroup>
+  <Accordion title="Research">
+    Keep separate threads for separate questions. Compare findings side by side. Pull only the messages you want into the next synthesis turn.
+  </Accordion>
+  <Accordion title="Engineering">
+    Branch from a diagnosis message, ask another model for a second read, and merge the useful pieces before you change code or infrastructure.
+  </Accordion>
+  <Accordion title="Writing">
+    Draft in one branch, fact-check in another, then reference or merge the result back into the main draft without dragging the whole research thread with it.
+  </Accordion>
+</AccordionGroup>
+
+## What lives on the canvas
+
+<Steps>
+  <Step title="Conversation nodes">
+    Messages and replies are stored as nodes in a branch. They are the main units of AI interaction.
+  </Step>
+  <Step title="Text notes">
+    Text notes are freeform annotations on the canvas. They are for you, not for the model.
+  </Step>
+  <Step title="Edges">
+    Edges show continuation, branching, merge relationships, and cross-branch references.
+  </Step>
+  <Step title="Attachments">
+    You can attach supported files and images to prompts. When you branch or merge, those attachments can travel with the message context too.
+  </Step>
+</Steps>
+
 <Note>
-  NodePad is currently in beta. [Request access](https://node-pad.com/beta) to try it free — see [Beta access](/beta-access) for details on how onboarding works.
+  NodePad is currently in beta. The fastest way to see the product flow is the [quickstart](/quickstart), then the concept pages for [forking](/concepts/forking), [references](/concepts/references), and [merging](/concepts/merging).
 </Note>

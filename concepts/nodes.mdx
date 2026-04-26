@@ -1,57 +1,69 @@
 ---
-title: "Nodes: the building blocks of every NodePad thread"
-description: "A node is a single message or reply on the canvas. Every action in NodePad — forking, merging, sticky notes — begins by pointing at a specific node."
+title: "Nodes"
+description: "Nodes are the individual messages and replies that make up a branch in NodePad."
 ---
 
-A node is the smallest piece of content on the canvas: one message you send, or one reply the model generates. Nodes link together into threads, threads live on the canvas, and every action that gives NodePad its power — forking a branch, attaching a sticky note, merging results — begins by pointing at a specific node.
+A node is one message on the canvas. User messages, assistant replies, and in-progress drafts all behave like nodes in the graph. Most NodePad actions start by selecting a node or branching from one.
 
-## Anatomy of a node
-
-Every node on the canvas has the same basic structure regardless of which model produced it or where it sits in a thread.
+## What a node can contain
 
 <AccordionGroup>
-  <Accordion title="The message content">
-    The text of the message or reply, rendered with full Markdown support. Long replies collapse to a preview with an option to expand, so the canvas doesn't become unwieldy.
+  <Accordion title="Message content">
+    NodePad renders message text with Markdown, so lists, code blocks, and links stay readable inside the graph.
   </Accordion>
-  <Accordion title="The model indicator">
-    A label showing which model generated the reply — Claude, GPT-5, Gemini, or an open-source model. You can change the model for the next reply at any time.
+  <Accordion title="Attachments">
+    A node can carry uploaded files, images, and tool-call artifacts. Those attachments stay part of the node's context footprint.
   </Accordion>
-  <Accordion title="The action menu">
-    Hover a node to reveal its action menu: fork, attach a sticky note, copy, or start a merge from this point. Everything you can do with a node is one click away.
+  <Accordion title="Model metadata">
+    Assistant nodes show which model produced the reply. Workspace defaults control the starting point, but individual sends can override them.
   </Accordion>
-  <Accordion title="Sticky notes">
-    Any sticky notes attached to a node are displayed inline below the node content. They persist visually so you always know what constraints are active.
+  <Accordion title="References">
+    A node can reference other messages with `@` mentions. The visible token is only the UI layer; NodePad stores the actual cross-message links separately.
   </Accordion>
 </AccordionGroup>
 
-## How nodes form threads
+## How nodes become branches
 
-Nodes connect sequentially: your message, then the model's reply, then your next message, and so on. That chain of connected nodes is a thread. Threads appear as vertical columns on the canvas, and you can have as many threads as your work demands.
+Nodes connect in sequence inside a branch. A simple branch looks like:
 
-When you fork a node, a new thread branches off from that point. The forked thread inherits all the context from every node above the fork — it just grows in a new direction from there.
+1. your message
+2. the assistant reply
+3. your next message
+4. the next reply
 
-<Info>
-  The node you fork from stays part of the original thread. Forking never removes or alters existing nodes — it only creates new ones.
-</Info>
+When you branch from a node, NodePad creates a new path from that point without changing the original branch.
 
-## What you can do from any node
+## Actions you can take from a node
 
 <CardGroup cols={3}>
-  <Card title="Fork" icon="code-branch" href="/concepts/forking">
-    Create a new branch that starts with the same context as the current thread up to this point.
+  <Card title="Branch from here" icon="git-fork" href="/concepts/forking">
+    Start a new branch from the exact context at that point.
   </Card>
-  <Card title="Attach a sticky note" icon="note-sticky" href="/concepts/sticky-notes">
-    Pin a constraint — tone, format, scope — that persists for all subsequent messages in this thread.
+  <Card title="Edit or re-run" icon="pencil">
+    Depending on the node type and position, you can edit, re-send, or re-run from that point.
   </Card>
-  <Card title="Merge" icon="merge" href="/concepts/merging">
-    Begin a merge from this node, bringing a result from another thread into a new synthesis node.
+  <Card title="Reference or merge" icon="at-sign" href="/concepts/references">
+    Pull this node into another message through an `@` reference or a merge flow.
   </Card>
 </CardGroup>
 
-## Nodes are non-destructive
+## Important behaviors to know
 
-No action you take on a node — forking, merging, attaching a sticky note — modifies the node itself. Your conversation history is always intact. You can revisit any node in any thread at any time and continue from that point.
+<AccordionGroup>
+  <Accordion title="Branches preserve history">
+    Branching does not rewrite the original path. It creates a new one.
+  </Accordion>
+  <Accordion title="References are explicit">
+    Mentioning `@B1-2` in text is not enough on its own. The reference picker records the actual linked node so NodePad knows what to include.
+  </Accordion>
+  <Accordion title="Node IDs are useful">
+    You can copy a node ID from the context menu. That is handy when you want to reference a specific message cleanly.
+  </Accordion>
+  <Accordion title="Text notes are different">
+    Text notes are not conversation nodes. They are standalone annotations on the canvas.
+  </Accordion>
+</AccordionGroup>
 
 <Tip>
-  If you want to try a completely different approach to a question without losing your current progress, fork from the node immediately before your last prompt. The fork starts fresh from that context without touching the original thread.
+  If you are unsure whether a follow-up belongs in the current branch, branch first. It is cheaper to keep two clean paths than to untangle one noisy one later.
 </Tip>

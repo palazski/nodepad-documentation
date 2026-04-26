@@ -1,81 +1,44 @@
 ---
-title: "Diagnose bugs and get a second opinion before shipping"
-description: "Fork any diagnosis thread to run a parallel review with a different model, then merge both findings into a single decision before you touch production."
+title: "Engineering"
+description: "Use branches for alternate diagnoses, second opinions, and merge drafts before you ship a fix."
 ---
 
-When something breaks in production, the pressure to ship a fix fast is real — but so is the cost of shipping the wrong one. NodePad lets you run your diagnosis in one thread, fork it to get a second opinion from a different model, and merge both perspectives into a single, grounded decision without losing any of the reasoning that led you there.
+Engineering work benefits from clean alternate paths. One branch can hold the main diagnosis. Another can challenge it. A third can turn the decision into a rollout plan.
 
-## Why forking helps with technical troubleshooting
-
-A second opinion matters most when the stakes are high. On a single AI thread, you're trusting one model's read of the situation. On NodePad's canvas, you can fork any message and send a parallel thread to a different model with the same context. If both models agree, your confidence goes up. If they diverge, you learn something important before you touch production.
-
-<CardGroup cols={3}>
-  <Card title="Diagnose in main thread" icon="stethoscope">
-    Work through the problem with one model. Get a clear hypothesis before you commit to any fix.
-  </Card>
-  <Card title="Fork for second opinion" icon="code-fork">
-    Branch from the diagnosis message. Send the same context to a second model and ask whether it agrees — or what it sees differently.
-  </Card>
-  <Card title="Merge into a decision" icon="code-merge">
-    Pull both findings together into a single node you write. Ship with confidence knowing two independent models reviewed the same problem.
-  </Card>
-</CardGroup>
-
-## Walkthrough: connection pool exhaustion
-
-Here is how a production incident investigation plays out across a forked canvas.
+## A practical incident pattern
 
 <Steps>
-  <Step title="Open a canvas and start your diagnosis thread">
-    Create a canvas for the incident. In the first node, paste your error output and stack trace and ask for a diagnosis. In this example, your API is throwing 500s with the message `pq: sorry, too many clients already`.
-
-    Using **Claude Opus** as your main thread model, ask: "What does this error mean and what's the most likely cause?" Claude identifies connection pool exhaustion — the API is opening database connections faster than it's closing them. It recommends pgbouncer as a connection pooler and suggests reviewing pool sizing configuration.
-
-    <Tip>
-      Attach a sticky note to this node scoped to the affected layer: "focus only on the database and connection management layer — do not suggest application-level rewrites." This keeps the diagnosis from sprawling into unrelated recommendations.
-    </Tip>
+  <Step title="Start one branch with the raw problem">
+    Put the logs, stack trace, or failing behavior into the first branch and ask for a diagnosis.
   </Step>
-  <Step title="Fork from the diagnosis message before touching production">
-    Before you act on Claude's recommendation, fork from the diagnosis message. This creates a new thread that inherits full context — the error, the stack trace, and Claude's initial finding — but runs independently.
-
-    Switch to **GPT-5** on the forked thread and ask: "Do you agree with this diagnosis? What else do you see?" GPT-5 confirms the connection pool exhaustion reading and the pgbouncer recommendation. It also flags a separate issue: missing `defer conn.Close()` calls in the middleware, which is causing a slow connection leak that would persist even after you add pooling.
-
-    <Note>
-      The fork gives you a genuinely independent read. GPT-5 is not seeing Claude's answer — it's working from the same raw problem context and arriving at its own conclusions.
-    </Note>
+  <Step title="Branch before you act">
+    Fork from the diagnosis point and ask another model or another prompt framing to challenge the first answer.
   </Step>
-  <Step title="Review both threads side by side">
-    Arrange the two thread nodes as neighbors on the canvas. Compare what each model found:
-
-    - **Claude Opus**: pool exhaustion → pgbouncer + pool sizing
-    - **GPT-5**: agrees on pooling, additionally flags missing `defer conn.Close()` → connection leak in middleware
-
-    The overlap gives you confidence in the pooling fix. The divergence — GPT-5's extra finding — gives you something Claude missed. Both are now on your canvas, visible together, before you've changed a single line of code.
+  <Step title="Use references for exact evidence">
+    If one branch finds the crucial clue, reference that exact message in the branch where you are forming the plan.
   </Step>
-  <Step title="Merge your findings into a shipping decision">
-    Create a merge node and write your decision in plain language, drawing from both threads: "Rolling both changes: pgbouncer for connection pooling with revised pool sizing, plus fixing the leaky middleware by adding the missing `defer conn.Close()` calls. Shipping to staging first."
-
-    This merge node becomes your record of what you decided and why. Follow-up questions — from you or a teammate — can continue from this node with full context.
-
-    <Warning>
-      Merging in NodePad means you author the synthesis. The models don't automatically reconcile their outputs. Read both threads yourself and write the decision — that's where you catch contradictions before they reach production.
-    </Warning>
+  <Step title="Merge sources into the rollout draft">
+    Merge the branches that matter into one new message and ask for the remediation plan, rollback plan, or test checklist.
   </Step>
 </Steps>
 
-## Tips for engineering canvases
+## Where NodePad helps most
 
-<AccordionGroup>
-  <Accordion title="Scope threads with sticky notes to avoid scope creep">
-    On a complex system, AI models will often offer advice beyond what you asked for. Sticky notes let you pin a constraint — "stay within the auth middleware, do not suggest schema changes" — so each thread stays focused on the layer you're actually debugging.
-  </Accordion>
-  <Accordion title="Fork before any irreversible action">
-    The highest-value moment to fork is when you're about to do something you can't undo: deploy to production, run a migration, or open a firewall rule. A five-minute fork for a second opinion is almost always worth it.
-  </Accordion>
-  <Accordion title="Use the merge node as your incident record">
-    A merge node written in your own words — "here's what we found, here's what we're doing" — becomes a lightweight post-mortem. Because it lives on the canvas alongside the source threads, anyone reading it can trace the reasoning by expanding the parent nodes.
-  </Accordion>
-  <Accordion title="Different models have different blind spots">
-    No model catches everything. Running two models in parallel threads on the same problem is a practical way to reduce the chance that a second issue hides behind the first. This is especially useful for security-sensitive changes.
-  </Accordion>
-</AccordionGroup>
+<CardGroup cols={2}>
+  <Card title="Second opinions without context loss" icon="git-fork">
+    The alternate diagnosis starts from the same evidence, not from a retyped summary.
+  </Card>
+  <Card title="Cleaner change decisions" icon="git-merge">
+    A merged draft can ask for a test plan or rollout sequence using the best findings from several branches.
+  </Card>
+  <Card title="Visible reasoning trail" icon="waypoints">
+    Teammates can see which branch produced which recommendation.
+  </Card>
+  <Card title="Safer prompting" icon="shield-check">
+    You can isolate risky exploratory questions from the branch you plan to act on.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Keep a text note on the canvas with the production constraints that matter: blast radius, rollback requirement, deadline, and systems you do not want the model to invent changes for.
+</Tip>

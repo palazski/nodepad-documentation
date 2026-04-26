@@ -1,81 +1,41 @@
 ---
-title: "Draft, fact-check, and edit without losing your voice"
-description: "Fork a side-quest thread for fact-checking so research never pollutes your draft's context, then merge only the stats that belong — voice stays intact."
+title: "Writing"
+description: "Keep drafting, fact-checking, and editing in separate branches so the voice of the piece stays intact."
 ---
 
-The hardest part of writing with AI is staying in control of your voice. The moment you paste a fact-finding request into your draft thread, the model's answer bleeds into the conversation context and starts pulling your prose in directions you didn't choose. NodePad solves this by letting you branch off for research without ever touching the main draft thread.
+Writing often breaks when drafting and research happen in the same thread. NodePad gives those jobs separate branches so the voice of the piece does not get washed out by fact-finding, outlining, or critique.
 
-## Why forking protects your draft
-
-When you need a statistic, a quote, or a definition, you want the answer — not a detour that shifts the model's context toward something clinical or expository. On NodePad's canvas, you fork from any point in your draft thread, do your research in that branch, then bring back only the specific line you want. The main thread's context stays clean, and the model you're drafting with never has to process the research conversation.
-
-<CardGroup cols={3}>
-  <Card title="Draft on the main thread" icon="pencil">
-    Keep your writing voice intact by restricting the main thread to drafting and editing. Never mix research into this context.
-  </Card>
-  <Card title="Fork for fact-finding" icon="magnifying-glass">
-    Branch off any time you need a stat, citation, or definition. Research stays isolated in its own thread.
-  </Card>
-  <Card title="Merge only what belongs" icon="code-merge">
-    Pull the specific finding back into your draft on your own terms — one sentence, exactly placed, with your phrasing.
-  </Card>
-</CardGroup>
-
-## Walkthrough: async-first communication blog post
-
-Here is how a single blog post draft unfolds across a forked canvas.
+## A strong writing workflow
 
 <Steps>
-  <Step title="Open a canvas and start your draft thread">
-    Create a canvas for your piece. Open a thread with **Claude Opus** and set the context: you're writing a blog post about async-first communication for distributed teams. Ask for an opening section that sets the scene — the specific moment a reader recognizes themselves in the problem.
-
-    Claude opens with a scene-setting paragraph: a developer in one timezone joins a meeting that's happening while half the team is asleep, just to stay in the loop. The voice is direct, slightly wry, grounded in a real situation.
-
-    <Tip>
-      Attach a sticky note to this thread now, before you go any further: "Maintain a direct, first-person-plural voice. No bullet-point listicles. No corporate jargon." This note stays with the thread. Every follow-up turn in this thread inherits it.
-    </Tip>
+  <Step title="Keep one branch for the draft">
+    Use a main branch for the actual prose so the branch history stays about tone, structure, and revisions.
   </Step>
-  <Step title="Fork for a fact-check side quest">
-    Your draft calls for a statistic about how much time knowledge workers spend in unproductive meetings. Rather than asking Claude in the main thread — which would pull the conversation toward data-retrieval mode — fork from the last message in the draft.
-
-    Switch to **Gemini 2.5 Pro** on the forked thread and ask: "What are well-cited statistics on the cost of unproductive meetings for knowledge workers?" Gemini returns two findings:
-
-    - Atlassian research: knowledge workers spend 31 hours per month in unproductive meetings
-    - Harvard Business Review: 71% of managers rate meetings as unproductive and inefficient
-
-    The fork thread did its job. The main draft thread is untouched.
-
-    <Note>
-      You can run this fork while Claude is still drafting the next paragraph on the main thread. The canvas holds both activities in parallel.
-    </Note>
+  <Step title="Branch for research">
+    When you need facts, examples, or citations, branch from the draft instead of asking inside it.
   </Step>
-  <Step title="Review the research thread, then return to your draft">
-    Read the Gemini thread on its own. Decide which finding fits your argument: the Atlassian number (31 hours per month) is concrete and quantifiable in a way that lands in prose. The HBR figure (71% of managers) gives a sentiment angle. Pick one or both, note the phrasing you want, and close the fork thread.
+  <Step title="Reference one exact finding or merge several">
+    Use an `@` reference when one fact should come back into the draft. Use merge sources when the next turn needs several research findings or alternate versions at once.
   </Step>
-  <Step title="Merge the stat into your draft on your own terms">
-    Return to the main draft thread. In your next message to Claude Opus, provide the statistic yourself and ask it to weave it into the existing prose: "Work this in without breaking the voice: knowledge workers lose 31 hours a month to unproductive meetings, per Atlassian research."
-
-    Claude integrates the stat into the scene-setting paragraph without shifting register. The voice stays consistent because the main thread never had to process the research conversation — the stat arrives as a clean input, not as the tail end of a data-retrieval session.
-
-    <Tip>
-      If Claude's integration doesn't quite land, ask it to try again with a tighter word count or a different sentence position. Because the research lives in a separate thread, you can iterate on the integration without reopening the fact-finding context.
-    </Tip>
+  <Step title="Keep critique separate too">
+    If you want structural criticism or an alternate tone pass, make that a separate branch instead of muddying the main draft history.
   </Step>
 </Steps>
 
-## Tips for writing canvases
+## Why this works
 
-<AccordionGroup>
-  <Accordion title="Pin tone constraints with sticky notes before you start">
-    The earlier you attach a sticky note with voice constraints, the more consistent the output. Write the note before your first turn in the thread: tone, register, what to avoid, any stylistic rules specific to the publication. The model will apply these constraints across every turn in that thread.
-  </Accordion>
-  <Accordion title="Keep one thread per section for long pieces">
-    For long-form work — essays, reports, documentation — give each major section its own thread. This prevents early sections from dominating the context as the draft grows. You can see all sections as neighbors on the canvas and track which ones still need work.
-  </Accordion>
-  <Accordion title="Fork for any task that isn't drafting or editing">
-    Research, translation, headline generation, SEO keyword checks — any task that isn't directly advancing the draft should live in a fork. Treat the main thread as the finished-prose thread and keep everything else separate.
-  </Accordion>
-  <Accordion title="Use different models for drafting versus editing">
-    Some writers prefer a model that's more generative for first drafts and a more critical model for editing passes. Switch models per message on the same thread, or fork a copy of the draft into a separate thread using a different model to get a structural critique without touching the original.
-  </Accordion>
-</AccordionGroup>
+<CardGroup cols={3}>
+  <Card title="Cleaner draft context" icon="pen-tool">
+    The draft branch stays about the piece itself, not about every research side trip.
+  </Card>
+  <Card title="Better fact reuse" icon="at-sign">
+    You can reference the exact message that found the fact instead of paraphrasing it from memory.
+  </Card>
+  <Card title="Easier revision branches" icon="git-fork">
+    Alternate openings, structural edits, and critique passes can each get their own branch.
+  </Card>
+</CardGroup>
+
+<Tip>
+  For long pieces, use one branch per section and one text note that records the target audience, publication, and tone constraints.
+</Tip>

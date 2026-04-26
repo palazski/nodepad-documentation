@@ -1,55 +1,66 @@
 ---
-title: "The NodePad canvas: your 2D workspace for AI threads"
-description: "NodePad's canvas holds multiple AI chat threads side by side so you can see the shape of your thinking at a glance, not just the most recent reply."
+title: "The canvas"
+description: "The NodePad canvas is the workspace where branches, references, notes, attachments, and merges stay visible together."
 ---
 
-The canvas is the top-level workspace in NodePad. Every chat thread you start, every branch you fork, and every synthesis you merge lands here — arranged in two dimensions so you can see the shape of your thinking at a glance, not just the most recent reply.
+The canvas is the main surface inside a NodePad workspace. It holds your conversation branches, text notes, and cross-branch connections in one view so you can see the structure of the work, not only the latest reply.
 
-## Why a canvas instead of a chat window
+## Why it matters
 
-Most AI apps give you one thread: a vertical scroll of messages from top to bottom. That works fine for a single question, but it breaks down when your work spreads across multiple topics, approaches, or models. You end up juggling browser tabs, losing context between sessions, or — worse — letting a promising tangent die because there was no clean place to put it.
+Most AI interfaces flatten everything into one timeline. That becomes hard to manage when:
 
-The canvas solves this by adding a second dimension. Instead of a single line of messages, you get a surface where threads can be neighbors. A research session might have three threads running in parallel. An engineering decision might have a main thread with two forks for second opinions. You see all of it at once, spatially arranged the way the problem actually fits in your head.
+- one question splits into several sub-questions
+- you want a second opinion from another model
+- a fact-check should stay separate from the main draft
+- you need one reply to draw from messages that happened elsewhere
 
-<Tip>
-  Think of the canvas the way you'd think of a physical whiteboard: individual threads are like clusters of sticky notes, and you can step back to see how everything relates before zooming in to work on a specific corner.
-</Tip>
+The canvas fixes that by making space a first-class part of the workflow.
 
-## What lives on the canvas
+## What you can place on it
 
 <CardGroup cols={2}>
-  <Card title="Chat threads" icon="messages">
-    Each thread is a sequence of nodes — messages and replies — organized vertically. Threads are the primary unit of work on the canvas.
+  <Card title="Conversation branches" icon="messages-square">
+    Each branch is a sequence of user and assistant messages. Branches can continue, split, and reconnect through merge flows.
   </Card>
-  <Card title="Forked branches" icon="code-branch">
-    When you fork a node, a new thread grows from that point. The branch appears on the canvas beside its parent, sharing the same context up to the fork.
+  <Card title="Text notes" icon="sticky-note">
+    Text notes are canvas annotations for you and your team. They are not model instructions.
   </Card>
-  <Card title="Synthesis nodes" icon="merge">
-    When you merge two threads, a synthesis node captures the reconciled result. It lives on the canvas alongside the threads that produced it.
+  <Card title="Reference and merge edges" icon="git-merge">
+    Edges show how messages relate across branches. They make provenance visible instead of hiding it in prompt text.
   </Card>
-  <Card title="Sticky notes" icon="note-sticky">
-    Sticky notes attach directly to nodes. They're visible on the canvas as a persistent reminder of the constraints in effect for that thread.
+  <Card title="Attachments" icon="paperclip">
+    Image and file attachments stay attached to the messages that used them and can carry forward into branches and merged drafts.
   </Card>
 </CardGroup>
 
-## Navigating the canvas
+## Common canvas actions
 
 <Steps>
-  <Step title="Pan to explore">
-    Click and drag any empty area of the canvas to move around. Threads don't snap to a grid — place them wherever the layout makes sense to you.
+  <Step title="Pan and zoom">
+    Move around the canvas to inspect one branch closely or zoom out to understand the whole workspace.
   </Step>
-  <Step title="Zoom to focus">
-    Scroll or pinch to zoom in on a specific thread or zoom out to see your full workspace at once.
+  <Step title="Search messages">
+    Use workspace search to jump between matching messages without losing your spatial layout.
   </Step>
-  <Step title="Open any thread">
-    Click a node in any thread to bring it into focus and continue the conversation from that point.
+  <Step title="Use the command palette">
+    Open the palette to jump to actions such as merge composition or the reference picker.
+  </Step>
+  <Step title="Organize the sidebar">
+    Favorite workspaces, add tags, duplicate a workspace, or export it when you want a checkpoint.
   </Step>
 </Steps>
 
-## Canvases and sessions
+## Think in workspaces, not chats
 
-Each canvas represents a working session or project. You can create multiple canvases — one per project, client, or research question — and switch between them without losing the spatial layout you've built up.
+Each canvas belongs to a workspace. A workspace keeps its own:
+
+- title
+- default model
+- reasoning preference
+- workspace instructions
+- branch layout
+- tags and favorite state
 
 <Note>
-  NodePad is currently in beta. [Join the waitlist](https://node-pad.com/beta) to get access.
+  A good mental model is "one workspace per problem space." Keep one for a feature investigation, another for a long research project, and another for a piece of writing.
 </Note>

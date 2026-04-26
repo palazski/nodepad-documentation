@@ -1,68 +1,52 @@
 ---
-title: "Merging: bring two NodePad threads into one result"
-description: "Merge two threads into a synthesis node you author yourself. You decide what the parallel runs mean — NodePad gives you the structure to capture that decision."
+title: "Merging"
+description: "Combine messages from different branches into one new draft so the next step can synthesize multiple sources."
 ---
 
-Merging brings the result of two separate threads together into a single synthesis node. You've run parallel explorations — two models on the same problem, a fact-check branch alongside the main draft, two competing approaches — and now you're ready to decide. The synthesis node is where that decision lives.
+Merging in NodePad is about source selection. You choose messages from different branches, open a new draft with those sources attached, and ask for the next step with that combined context.
 
-## What merging is — and isn't
+## What merging is not
 
-NodePad does not automatically combine your threads. There's no algorithm that reads two conversations and produces a summary. You are the one who reconciles them: you read both threads, draw your own conclusion, and write the synthesis. NodePad gives you the structure — the synthesis node, connected to both source threads — to capture and anchor that conclusion on the canvas.
+NodePad does not silently auto-summarize branches into one canonical answer. You still decide what the merged draft should ask for and what counts as the useful result.
 
-This is intentional. Automatic reconciliation sounds convenient, but it hides the reasoning. When you author the synthesis yourself, you know exactly what was decided and why. That synthesis becomes a reliable node you can fork from or cite in future threads.
-
-<Info>
-  The synthesis node is a regular node. You can fork from it, attach sticky notes to it, or use it as the starting point for further merges.
-</Info>
-
-## Common reasons to merge
-
-<AccordionGroup>
-  <Accordion title="Reconcile two model opinions">
-    You forked to get a second opinion from a different model before making a high-stakes decision. Both models have replied. Read both, weigh them, and write the synthesis: what you're going to do and why.
-
-    **Example:** Claude recommended one database schema; GPT-5 recommended another. You merge, write out which approach you're taking and what tradeoffs you're accepting, and continue the project from that node.
-  </Accordion>
-  <Accordion title="Pull a fact-check result into your main draft">
-    You forked to chase a specific statistic or claim. The branch has the verified result. Merge it back into the main draft thread and write the synthesis — the exact phrasing that incorporates the verified stat.
-
-    **Example:** Your writing thread paused at "studies show X%." The fact-check branch found the real figure. You merge, write the corrected sentence, and continue the draft.
-  </Accordion>
-  <Accordion title="Combine parallel research threads">
-    You've been running multiple independent research threads on the same canvas. You're ready to bring their findings together into a single view before you start writing conclusions.
-
-    **Example:** Three threads covering labor markets, healthcare outcomes, and education spillovers. Merge them into a synthesis that names the common thread across all three findings.
-  </Accordion>
-</AccordionGroup>
-
-## How to merge two threads
+## Ways to start a merge
 
 <Steps>
-  <Step title="Identify the two threads to merge">
-    You need a source thread (the one with the result you want to bring in) and a destination thread (the one you're merging into). Both must be on the same canvas.
+  <Step title="Select messages from different branches">
+    Multi-select messages that should feed the next draft, then choose **Merge into new message**.
   </Step>
-  <Step title="Open the action menu on the destination node">
-    Hover the node in the destination thread where you want the synthesis to appear. Click **Merge** in the action menu.
+  <Step title="Or drag a merge connection">
+    If you prefer a visual flow, create merge connections across branches and then continue from a draft that has those sources attached.
   </Step>
-  <Step title="Select the source thread">
-    NodePad prompts you to select the source thread you want to merge from. Click it on the canvas to confirm the connection.
+  <Step title="Review the source chips">
+    The new draft shows the source messages it will pull from. Remove any that do not belong before you send.
   </Step>
-  <Step title="Write the synthesis">
-    A new synthesis node appears, connected to both threads. Write your reconciled conclusion directly in that node — what you decided, what you're keeping, what you're setting aside.
-  </Step>
-  <Step title="Continue from the synthesis node">
-    The synthesis node is the new starting point. Your next message in either thread can now reference or build on it.
+  <Step title="Ask for synthesis, comparison, or decision support">
+    Send the merged draft with a prompt such as "compare these approaches," "write a recommendation," or "turn these findings into one concise brief."
   </Step>
 </Steps>
 
-## The synthesis node on the canvas
+## Good merge prompts
 
-The synthesis node appears on the canvas as a distinct node type, visually connected to both threads it reconciles. This makes the provenance clear: anyone looking at the canvas can trace which threads contributed to the conclusion and read both before trusting the synthesis.
+<CardGroup cols={2}>
+  <Card title="Compare" icon="columns-2">
+    "Compare these approaches and call out the tradeoffs."
+  </Card>
+  <Card title="Decide" icon="scale">
+    "Given these two branches, recommend the next action and explain why."
+  </Card>
+  <Card title="Synthesize" icon="sparkles">
+    "Turn these findings into one short summary for a product manager."
+  </Card>
+  <Card title="Rewrite" icon="pen-tool">
+    "Use the evidence from these branches to rewrite the draft introduction."
+  </Card>
+</CardGroup>
 
-<Tip>
-  If you're working with a team, write your synthesis notes with enough context that a collaborator can understand the decision without reading every message in both threads. The synthesis node is often the first thing a reviewer will look at.
-</Tip>
+## What happens to the source branches
+
+Nothing is lost. The source branches stay on the canvas, and the merged draft becomes one more node that can itself be branched from, referenced, or merged again later.
 
 <Warning>
-  A merge does not close or archive the source thread. Both original threads remain fully intact on the canvas after the merge. You can continue either thread independently if new information surfaces later.
+  Merge more than one branch, not more than one idea at a time. If the source set is too broad, the next prompt becomes muddy fast.
 </Warning>
