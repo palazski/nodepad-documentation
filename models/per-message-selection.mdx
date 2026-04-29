@@ -3,21 +3,20 @@ title: "Per-message model selection"
 description: "Use a workspace default when it helps, then override the model for any specific send."
 ---
 
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
 NodePad does not lock a branch to one model forever. You can keep a sensible default for the workspace and still override the model for a specific send whenever the branch needs something different.
 
 ## The basic pattern
 
-<Steps>
-  <Step title="Set a workspace default">
-    Choose the model you want most new work in this workspace to use.
-  </Step>
-  <Step title="Override when a branch needs it">
-    Before sending a message, pick another model for just that send if the branch now needs a different style of output or reasoning depth.
-  </Step>
-  <Step title="Keep the branch structure stable">
-    If you want a real comparison, branch first and then use a different model in the new branch.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    { title: 'Set a workspace default', body: 'Choose the model you want most new work in this workspace to use.' },
+    { title: 'Override when a branch needs it', body: 'Before sending a message, pick another model for just that send if the branch now needs a different style of output or reasoning depth.' },
+    { title: 'Keep the branch structure stable', body: 'If you want a real comparison, branch first and then use a different model in the new branch.' },
+  ]}
+/>
 
 ## Good reasons to override the model
 
@@ -36,6 +35,6 @@ NodePad does not lock a branch to one model forever. You can keep a sensible def
   </Accordion>
 </AccordionGroup>
 
-<Note>
+<Callout tone="note">
   Model overrides are most useful when you change one thing at a time. If the prompt and the branch history change too, you lose the clean comparison.
-</Note>
+</Callout>

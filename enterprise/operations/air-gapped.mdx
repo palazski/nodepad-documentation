@@ -9,6 +9,16 @@ For environments with no internet access. Everything needed to install, upgrade,
   NodePad's air-gap story is a **packaging guarantee**, not a network-policy one. The install requires no internet access. In operation, outbound calls are made only to the LLM providers you explicitly configure (Anthropic, OpenAI) using keys you supply. If your environment has no egress to those providers either, follow your internal mirror / proxy policy for those endpoints.
 </Info>
 
+```mermaid
+flowchart LR
+    A[Connected machine: download release zip] --> B[Verify sha256 against release notes]
+    B --> C[Approved transfer path: USB / scanned upload]
+    C --> D[Air-gapped host: unzip bundle]
+    D --> E{Path}
+    E -- Kubernetes --> F[load-images.sh into private registry · helm install ./chart.tgz]
+    E -- Single-VM --> G[docker load · docker compose up]
+```
+
 ## The bundle
 
 Each release ships `nodepad-X.Y.Z.zip` containing:

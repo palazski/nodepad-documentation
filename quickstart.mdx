@@ -3,67 +3,65 @@ title: "Quickstart"
 description: "Open your first NodePad workspace, send messages, branch a thread, add a text note, and try references and merge flows."
 ---
 
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+
 This walkthrough gives you a real first session in NodePad. By the end, you will have a workspace with multiple branches, a text note, a cross-branch reference, and a merged follow-up message.
 
-<Info>
+<Callout tone="info">
   You need beta access before you can sign in to the hosted product. If you do not have an account yet, start with [Beta access](/beta-access).
-</Info>
+</Callout>
 
-<Steps>
-  <Step title="Open a workspace">
-    After you sign in, open a workspace from the sidebar or create a new one. A fresh workspace starts as an empty canvas with a draft message node ready to use.
-  </Step>
-
-  <Step title="Send your first message">
-    Type a prompt into the draft composer and send it. Pick a model from the header if you want something other than the current workspace default.
-
-    Once the assistant replies, you have your first branch.
-  </Step>
-
-  <Step title="Branch from a message">
-    Right-click the message you want to branch from and choose **Branch from here**. NodePad creates a new draft connected to that point in the conversation.
-
-    Send a different follow-up in the new branch so you can compare the outcomes side by side.
-  </Step>
-
-  <Step title="Add a text note to the canvas">
-    Right-click empty canvas space and choose **New text note here**. Use the note for your own annotations, to-do items, or reminders about what you want to test next.
-
-    <Tip>
-      Text notes are for you. They do not get injected into model context.
-    </Tip>
-  </Step>
-
-  <Step title="Reference another branch with @">
-    In a new draft, type `@` and select a branch or message from the picker. NodePad inserts a reference token and stores the actual message link behind it.
-
-    Send a prompt such as: "Use the idea in `@B1-2`, but rewrite it for a non-technical audience."
-  </Step>
-
-  <Step title="Merge multiple sources into one next step">
-    Select messages from at least two different branches and use **Merge into new message**. NodePad opens a new draft with those sources attached.
-
-    Now ask for a synthesis, comparison, or decision. This is the fastest way to combine parallel work without copy-pasting.
-  </Step>
-
-  <Step title="Export or duplicate the workspace">
-    Use the export menu in the workspace header when you want a portable `.nodepad` file or an image of the canvas. You can also duplicate a workspace from the sidebar when you want to preserve one version before changing direction.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    {
+      title: 'Open a workspace',
+      body: 'After you sign in, open a workspace from the sidebar or create a new one. A fresh workspace starts as an empty canvas with a draft message node ready to use.',
+      visual: <ProductScreenshot light="/images/quickstart/01-workspace-light.png" dark="/images/quickstart/01-workspace-dark.png" alt="Empty NodePad workspace with a draft node ready to receive a prompt." />,
+    },
+    {
+      title: 'Send your first message',
+      body: <>Type a prompt into the draft composer and send it. Pick a model from the header if you want something other than the current workspace default.<br/><br/>Once the assistant replies, you have your first branch.</>,
+      visual: <ProductScreenshot light="/images/quickstart/02-compose-light.png" dark="/images/quickstart/02-compose-dark.png" alt="Composer with a prompt typed in and the model picker visible." />,
+    },
+    {
+      title: 'Branch from a message',
+      body: <>Right-click the message you want to branch from and choose <strong>Branch from here</strong>. NodePad creates a new draft connected to that point in the conversation.<br/><br/>Send a different follow-up in the new branch so you can compare the outcomes side by side.</>,
+      visual: <ProductScreenshot light="/images/quickstart/03-branch-light.png" dark="/images/quickstart/03-branch-dark.png" alt="Right-click context menu on a message with Branch from here highlighted." />,
+    },
+    {
+      title: 'Add a text note to the canvas',
+      body: <>Right-click empty canvas space and choose <strong>New text note here</strong>. Use the note for your own annotations, to-do items, or reminders about what you want to test next.<br/><br/><em>Text notes are for you. They do not get injected into model context.</em></>,
+      visual: <ProductScreenshot light="/images/quickstart/04-text-note-light.png" dark="/images/quickstart/04-text-note-dark.png" alt="Text note placed beside two branches." />,
+    },
+    {
+      title: 'Reference another branch with @',
+      body: <>In a new draft, type <code>@</code> and select a branch or message from the picker. NodePad inserts a reference token and stores the actual message link behind it.<br/><br/>Send a prompt such as: "Use the idea in <code>@B1-2</code>, but rewrite it for a non-technical audience."</>,
+      visual: <ProductScreenshot light="/images/quickstart/05-reference-light.png" dark="/images/quickstart/05-reference-dark.png" alt="Reference picker open with a target branch selected." />,
+    },
+    {
+      title: 'Merge multiple sources into one next step',
+      body: <>Select messages from at least two different branches and use <strong>Merge into new message</strong>. NodePad opens a new draft with those sources attached.<br/><br/>Now ask for a synthesis, comparison, or decision. This is the fastest way to combine parallel work without copy-pasting.</>,
+      visual: <ProductScreenshot light="/images/quickstart/06-merge-light.png" dark="/images/quickstart/06-merge-dark.png" alt="Merge composer with two source chips visible above the prompt." />,
+    },
+    {
+      title: 'Export or duplicate the workspace',
+      body: 'Use the export menu in the workspace header when you want a portable `.nodepad` file or an image of the canvas. You can also duplicate a workspace from the sidebar when you want to preserve one version before changing direction.',
+      visual: <ProductScreenshot light="/images/quickstart/07-export-light.png" dark="/images/quickstart/07-export-dark.png" alt="Export menu open in the workspace header." />,
+    },
+  ]}
+/>
 
 ## What to try next
 
-<CardGroup cols={2}>
-  <Card title="Forking" icon="git-fork" href="/concepts/forking">
-    Learn when to branch, when to re-send, and how to compare alternate directions cleanly.
-  </Card>
-  <Card title="References and merge sources" icon="at-sign" href="/concepts/references">
-    Understand the difference between `@` references, merge edges, and merged drafts.
-  </Card>
-  <Card title="Text notes" icon="sticky-note" href="/concepts/sticky-notes">
-    Use canvas notes for your own annotations, checklists, and wayfinding.
-  </Card>
-  <Card title="Per-message model selection" icon="microchip" href="/models/per-message-selection">
-    Switch models message by message instead of locking a whole workspace to one model.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Forking', body: 'When to branch, when to re-send, and how to compare alternate directions cleanly.', href: '/concepts/forking' },
+    { title: 'References and merge sources', body: 'The difference between `@` references, merge edges, and merged drafts.', href: '/concepts/references' },
+    { title: 'Text notes', body: 'Use canvas notes for your own annotations, checklists, and wayfinding.', href: '/concepts/sticky-notes' },
+    { title: 'Per-message model selection', body: 'Switch models message by message instead of locking a whole workspace to one model.', href: '/models/per-message-selection' },
+  ]}
+/>

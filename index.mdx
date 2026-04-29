@@ -1,57 +1,75 @@
 ---
 title: "NodePad documentation"
 description: "Learn how NodePad works: canvases, branches, references, merges, models, and self-hosted deployment."
+mode: "custom"
 ---
 
-NodePad is a spatial workspace for AI conversations. Instead of trapping everything in one scroll, it lets you spread work across a canvas, branch from any point, compare models side by side, and pull useful context back into the next message on purpose.
+import { HeroBlock } from '/snippets/HeroBlock.jsx';
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+import { SectionHeading } from '/snippets/SectionHeading.jsx';
 
-![NodePad canvas overview](/images/nodepad-canvas.png)
+<div style={{ maxWidth: '64rem', margin: '0 auto', padding: '0 clamp(16px, 3vw, 32px)' }}>
 
-<CardGroup cols={2}>
-  <Card title="Start with the quickstart" icon="rocket" href="/quickstart">
-    Open your first workspace, send a message, branch a thread, and try references and merge flows.
-  </Card>
-  <Card title="Understand the core workflow" icon="layout-dashboard" href="/concepts/canvas">
-    Learn how the canvas, nodes, branches, text notes, and references fit together.
-  </Card>
-  <Card title="Work with models intentionally" icon="microchip" href="/models/overview">
-    Set workspace defaults, switch models per message, and optionally use your own provider keys.
-  </Card>
-  <Card title="Plan a self-hosted deployment" icon="building" href="/enterprise/overview">
-    See what NodePad Enterprise includes today and how the install paths work.
-  </Card>
-</CardGroup>
+<HeroBlock
+  eyebrow="Documentation"
+  title="A canvas for AI conversations."
+  subtitle="NodePad is a spatial workspace for AI work. Spread conversations across a canvas, branch from any point, compare models side by side, and pull useful context back into the next message on purpose."
+  primaryCta={{ label: 'Open the quickstart', href: '/quickstart' }}
+  secondaryCta={{ label: 'See the core workflow', href: '/concepts/canvas' }}
+>
+  <ProductScreenshot
+    light="/images/nodepad-canvas.png"
+    dark="/images/nodepad-canvas.png"
+    alt="NodePad canvas overview"
+  />
+</HeroBlock>
 
-## What makes NodePad different
+<SectionHeading eyebrow="Get oriented" title="Where to start" />
 
-Most AI tools force every idea through one thread. NodePad gives you structure instead:
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Quickstart', body: 'Open your first workspace, send a message, branch a thread, and try references and merge flows.', href: '/quickstart' },
+    { title: 'Core workflow', body: 'How the canvas, nodes, branches, text notes, and references fit together.', href: '/concepts/canvas' },
+    { title: 'Models in NodePad', body: 'Workspace defaults, per-message overrides, and bringing your own provider keys.', href: '/models/overview' },
+    { title: 'Self-hosting', body: 'What ships in NodePad Enterprise and how the install paths work.', href: '/enterprise/overview' },
+  ]}
+/>
 
-<Steps>
-  <Step title="Start on a canvas">
-    A workspace opens as a blank surface. You can place conversations, notes, and branches where they make sense instead of stacking everything into one timeline.
-  </Step>
-  <Step title="Branch when a thread splits">
-    Use **Branch from here** to test a new direction without overwriting the original line of thinking.
-  </Step>
-  <Step title="Pull context together deliberately">
-    Use `@` references, merge sources, and attachments when you want one message to draw from work that happened elsewhere on the canvas.
-  </Step>
-</Steps>
+<SectionHeading eyebrow="The shape of the work" title="What makes NodePad different" />
 
-## Read by job to be done
+<NumberedSteps
+  items={[
+    {
+      title: 'Start on a canvas',
+      body: 'A workspace opens as a blank surface. Place conversations, notes, and branches where they make sense — not stacked into one timeline.',
+    },
+    {
+      title: 'Branch when a thread splits',
+      body: 'Use **Branch from here** to test a new direction without overwriting the original line of thinking.',
+    },
+    {
+      title: 'Pull context together deliberately',
+      body: 'Use `@` references, merge sources, and attachments when you want one message to draw from work that happened elsewhere on the canvas.',
+    },
+  ]}
+/>
 
-<CardGroup cols={3}>
-  <Card title="Research" icon="search" href="/use-cases/research">
-    Keep parallel investigations visible instead of burying them in one chat.
-  </Card>
-  <Card title="Engineering" icon="wrench" href="/use-cases/engineering">
-    Branch for a second opinion before you change production.
-  </Card>
-  <Card title="Writing" icon="pen-tool" href="/use-cases/writing">
-    Separate drafting from fact-finding so the voice of the piece stays clean.
-  </Card>
-</CardGroup>
+<SectionHeading eyebrow="Read by job to be done" title="What people use NodePad for" />
 
-<Note>
-  NodePad is currently in beta. [Join beta](https://node-pad.com/beta) if you want early access to the hosted product.
-</Note>
+<FeatureGrid
+  cols={3}
+  items={[
+    { title: 'Research', body: 'Keep parallel investigations visible instead of burying them in one chat.', href: '/use-cases/research' },
+    { title: 'Engineering', body: 'Branch for a second opinion before you change production.', href: '/use-cases/engineering' },
+    { title: 'Writing', body: 'Separate drafting from fact-finding so the voice of the piece stays clean.', href: '/use-cases/writing' },
+  ]}
+/>
+
+<div style={{ marginTop: '2rem', padding: '1rem 1.25rem', borderRadius: 'var(--radius-lg)', background: 'var(--card)', border: '1px solid var(--border)', borderLeft: '3px solid var(--ring)' }}>
+  NodePad is currently in beta. <a href="https://node-pad.com/beta">Join beta</a> for early access to the hosted product.
+</div>
+
+</div>

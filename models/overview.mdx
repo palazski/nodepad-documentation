@@ -3,21 +3,21 @@ title: "Models in NodePad"
 description: "Choose workspace defaults, switch models per message, and compare outputs across branches."
 ---
 
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
 NodePad treats models as part of the workflow, not a one-time setup choice. A workspace can have a default model, but any send can use a different one if that move makes more sense for the task.
 
 ## The three model decisions you make
 
-<CardGroup cols={3}>
-  <Card title="Workspace default" icon="layout-dashboard">
-    Pick the model you want new work in this workspace to start from.
-  </Card>
-  <Card title="Per-message override" icon="mouse-pointer-click">
-    Change the model for a single send when a branch needs a different strength.
-  </Card>
-  <Card title="Cross-branch comparison" icon="columns-2">
-    Run parallel branches with different models when you want to compare answers side by side.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={3}
+  items={[
+    { title: 'Workspace default', body: 'Pick the model you want new work in this workspace to start from.' },
+    { title: 'Per-message override', body: 'Change the model for a single send when a branch needs a different strength.', href: '/models/per-message-selection' },
+    { title: 'Cross-branch comparison', body: 'Run parallel branches with different models when you want to compare answers side by side.', href: '/concepts/forking' },
+  ]}
+/>
 
 ## Why this matters
 
@@ -30,14 +30,14 @@ You can:
 - preserve a workspace default while still making local overrides
 - bring your own keys when you want the provider relationship to stay with your account
 
-<Tip>
+<Callout tone="tip">
   A clean branching strategy is what makes model comparison useful. If both branches start from the same point, you can compare the answers instead of comparing two unrelated prompt histories.
-</Tip>
+</Callout>
 
 ## What the picker shows
 
 The exact model list depends on how your NodePad environment is configured. Hosted beta, enterprise deployments, and bring-your-own-key setups can expose different providers and model options.
 
-<Info>
+<Callout tone="info">
   If you are self-hosting, the available models depend on the providers and keys your deployment exposes. If you are using the hosted product, the picker shows the models available in that environment.
-</Info>
+</Callout>

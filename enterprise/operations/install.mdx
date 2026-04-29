@@ -3,7 +3,20 @@ title: "Installing NodePad"
 description: "Install NodePad via Helm, docker compose, or the offline bundle. Covers connected, proxied-mirror, fully air-gapped, and single-VM trial postures."
 ---
 
-NodePad ships as a set of container images and a Helm chart. The same artifacts serve every supported install posture.
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
+NodePad ships as a set of container images and a Helm chart. The same artifacts serve every supported install posture. Choose the row that matches your environment, then follow that section below.
+
+```mermaid
+flowchart TD
+    A[Start: where will NodePad run?] --> B{Internet from cluster?}
+    B -- Yes, direct --> P_A[Posture A · Connected]
+    B -- Yes, via mirror --> P_B[Posture B · Proxied mirror]
+    B -- No --> P_C[Posture C · Fully air-gapped]
+    A --> D{Single-machine pilot?}
+    D -- Yes --> P_D[Posture D · Single-VM trial]
+```
 
 | Posture | Network | Consumes | Install path |
 |---|---|---|---|
@@ -182,11 +195,10 @@ open https://api.nodepad.yourcompany.com/admin/
 
 ## Next steps
 
-<CardGroup cols={2}>
-  <Card title="Upgrade & rollback playbook" icon="arrow-up" href="/enterprise/operations/upgrade">
-    How to upgrade safely, roll back, and handle migration-incompatible rollbacks.
-  </Card>
-  <Card title="Air-gapped install details" icon="shield-halved" href="/enterprise/operations/air-gapped">
-    Bundle contents, offline upgrade flow, and the zero-outbound-telemetry guarantee.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Upgrade & rollback playbook', body: 'How to upgrade safely, roll back, and handle migration-incompatible rollbacks.', href: '/enterprise/operations/upgrade' },
+    { title: 'Air-gapped install details', body: 'Bundle contents, offline upgrade flow, and the zero-outbound-telemetry guarantee.', href: '/enterprise/operations/air-gapped' },
+  ]}
+/>

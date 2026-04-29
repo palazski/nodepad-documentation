@@ -3,6 +3,9 @@ title: "Self-hosting NodePad in your own VPC or on-premises"
 description: "Deploy NodePad on your own Kubernetes cluster or a single VM. Bring your own Postgres, Redis, S3-compatible storage, and provider API keys."
 ---
 
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
 NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad into your own infrastructure — Kubernetes via Helm, or a single VM via docker compose — and connect it to your own database, cache, and object storage. NodePad's application layer runs entirely inside your perimeter.
 
 ## Two install paths
@@ -30,20 +33,15 @@ NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad i
 
 In both postures, you are responsible for:
 
-<CardGroup cols={2}>
-  <Card title="Database" icon="database">
-    PostgreSQL 15+. NodePad's Django migrations manage the schema.
-  </Card>
-  <Card title="Cache + queue" icon="bolt">
-    Redis 6+. Used for Django Channels (WebSocket LLM streaming) and Celery (async tasks).
-  </Card>
-  <Card title="Object storage" icon="box">
-    Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.
-  </Card>
-  <Card title="Provider API keys" icon="key">
-    Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Database', body: "PostgreSQL 15+. NodePad's Django migrations manage the schema." },
+    { title: 'Cache + queue', body: 'Redis 6+. Used for Django Channels (WebSocket LLM streaming) and Celery (async tasks).' },
+    { title: 'Object storage', body: 'Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.' },
+    { title: 'Provider API keys', body: 'Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.' },
+  ]}
+/>
 
 ## What NodePad does not do
 
@@ -62,6 +60,6 @@ See [Upgrade & rollback](/enterprise/operations/upgrade) for the full playbook.
 
 ## Get started
 
-<Card title="Contact the Enterprise team" icon="envelope" href="https://node-pad.com/enterprise">
-  We'll scope your environment and walk you through the install checklist before you go live.
-</Card>
+<Callout tone="tip" title="Contact the Enterprise team">
+  We'll scope your environment and walk you through the install checklist before you go live. <a href="https://node-pad.com/enterprise">Reach out →</a>
+</Callout>

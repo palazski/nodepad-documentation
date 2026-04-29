@@ -3,27 +3,26 @@ title: "Beta access"
 description: "NodePad beta is invite-based. Learn how to join, what access looks like, and what to expect from the current product stage."
 ---
 
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
 NodePad is currently in beta. Access is free, but it is still managed in waves so the team can onboard new users deliberately and keep the product stable while features are still moving quickly.
 
 ## How to join
 
 Visit [node-pad.com/beta](https://node-pad.com/beta) and submit your email address.
 
-<Steps>
-  <Step title="Join the list">
-    Enter your email at [node-pad.com/beta](https://node-pad.com/beta).
-  </Step>
-  <Step title="Wait for an invite wave">
-    Invites go out in batches. When your wave opens, you will get an email with the sign-up link.
-  </Step>
-  <Step title="Create your account">
-    Follow the email link, set a password, and open your first workspace.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    { title: 'Join the list', body: <>Enter your email at <a href="https://node-pad.com/beta">node-pad.com/beta</a>.</> },
+    { title: 'Wait for an invite wave', body: 'Invites go out in batches. When your wave opens, you will get an email with the sign-up link.' },
+    { title: 'Create your account', body: 'Follow the email link, set a password, and open your first workspace.' },
+  ]}
+/>
 
-<Note>
+<Callout tone="note">
   During beta, the hosted product includes the full canvas workflow: workspaces, branches, references, merge flows, text notes, and model selection.
-</Note>
+</Callout>
 
 ## Frequently asked questions
 
