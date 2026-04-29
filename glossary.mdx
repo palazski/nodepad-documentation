@@ -11,6 +11,10 @@ A short reference for the words this documentation uses. Canvas-related terms in
 
 A saved NodePad canvas. A workspace holds branches, text notes, references, merge sources, and a default model. Each workspace has its own URL.
 
+## Canvas
+
+The 2D surface that holds a workspace's branches, text notes, attachments, and edges. You pan and zoom across the canvas instead of scrolling a single transcript.
+
 ## Branch
 
 A conversation path through the canvas. A branch is a chain of nodes connected by <EdgeChip type="continuation">continuation</EdgeChip> edges. Most workspaces have several branches that diverge at chosen messages.
@@ -31,6 +35,14 @@ A targeted cross-link from one node to another, created with `@`. References tra
 
 A set of nodes selected as source context for a new draft. Merging combines messages from different branches into one new message. Visually a <EdgeChip type="merge">merge edge</EdgeChip> on the canvas.
 
+## Edge
+
+The visible line between two nodes on the canvas. Edges carry meaning: a <EdgeChip type="continuation">continuation</EdgeChip> moves the conversation forward, a <EdgeChip type="fork">fork</EdgeChip> branches off a new path, a <EdgeChip type="merge">merge</EdgeChip> pulls several sources into one draft, and a <EdgeChip type="reference">reference</EdgeChip> cross-links one message into another.
+
+## Attachment
+
+A file or image attached to a message. Attachments stay with the node that used them and travel into branches and merged drafts so the receiving model has the same context.
+
 ## Workspace instructions
 
 Workspace-level prompting and guidance. Applies to every send in the workspace unless overridden.
@@ -38,6 +50,10 @@ Workspace-level prompting and guidance. Applies to every send in the workspace u
 ## Default model
 
 The model NodePad picks when you start a new branch in this workspace. You can override it for any individual send.
+
+## Bring your own keys (BYOK)
+
+Connecting your own provider API keys so NodePad routes model requests through your account. Useful when usage, rate limits, or billing should stay on your provider relationship.
 
 ## Posture (enterprise)
 

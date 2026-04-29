@@ -71,8 +71,7 @@
               "quickstart",
               "beta-access",
               "support",
-              "glossary",
-              "whats-new"
+              "glossary"
             ]
           },
           {
@@ -83,7 +82,7 @@
               "concepts/forking",
               "concepts/merging",
               "concepts/references",
-              "concepts/sticky-notes"
+              "concepts/text-notes"
             ]
           },
           {

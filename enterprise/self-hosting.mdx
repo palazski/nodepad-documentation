@@ -32,8 +32,8 @@ NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad i
 
 In both postures, you are responsible for:
 
-- **Database.** PostgreSQL 15+. NodePad's Django migrations manage the schema.
-- **Cache and queue.** Redis 6+. Used for Django Channels (WebSocket LLM streaming) and Celery (async tasks).
+- **Database.** PostgreSQL 15+. Schema migrations run automatically during install and upgrade.
+- **Cache and queue.** Redis 6+. Used for WebSocket streaming and background async tasks.
 - **Object storage.** Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.
 - **Provider API keys.** Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.
 
@@ -45,7 +45,7 @@ In both postures, you are responsible for:
 
 ## Release cadence and upgrade model
 
-NodePad Enterprise ships semver-tagged container images and Helm charts. Tags `X.Y.Z` and `<git-sha>` are immutable; pin to them in production. Every release is smoke-tested on a fresh Kubernetes cluster in CI before the bundle is published. Upgrade is `helm upgrade` (K8s) or `docker compose pull && up -d` (VM); migrations run automatically. Release notes live at `docs.node-pad.com/changelog`. Each release also has a [GitHub Release page](https://github.com/palazski/nodepad-api/releases) with the offline bundle attached.
+NodePad Enterprise ships semver-tagged container images and Helm charts. Tags `X.Y.Z` and `<git-sha>` are immutable; pin to them in production. Upgrade is `helm upgrade` (K8s) or `docker compose pull && up -d` (VM); migrations run automatically. Release notes live at `docs.node-pad.com/changelog`. Each release also has a [GitHub Release page](https://github.com/palazski/nodepad-api/releases) with the offline bundle attached.
 
 See [Upgrade & rollback](/enterprise/operations/upgrade) for the full playbook.
 
