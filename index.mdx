@@ -1,41 +1,57 @@
 ---
-title: "NodePad: a canvas workspace for multi-model AI chat"
-description: "NodePad replaces the linear AI chat window with a spatial canvas. Fork threads, run multiple models in parallel, and merge results — all in one place."
+title: "NodePad documentation"
+description: "Learn how NodePad works: canvases, branches, references, merges, models, and self-hosted deployment."
 ---
 
-NodePad gives your AI conversations a second dimension. Instead of one long scrolling thread, you work on a spatial canvas where you can spawn new chats, branch off to explore tangents, and merge results back into your main line of thinking — all without losing context.
+NodePad is a spatial workspace for AI conversations. Instead of trapping everything in one scroll, it lets you spread work across a canvas, branch from any point, compare models side by side, and pull useful context back into the next message on purpose.
+
+![NodePad canvas overview](/images/nodepad-canvas.png)
 
 <CardGroup cols={2}>
-  <Card title="Quick Start" icon="rocket" href="/quickstart">
-    Get into your first NodePad canvas in minutes.
+  <Card title="Start with the quickstart" icon="rocket" href="/quickstart">
+    Open your first workspace, send a message, branch a thread, and try references and merge flows.
   </Card>
-  <Card title="Core Concepts" icon="lightbulb" href="/concepts/canvas">
-    Learn how the canvas, nodes, forking, and merging work together.
+  <Card title="Understand the core workflow" icon="layout-dashboard" href="/concepts/canvas">
+    Learn how the canvas, nodes, branches, text notes, and references fit together.
   </Card>
-  <Card title="Working with Models" icon="microchip" href="/models/overview">
-    Use Claude and GPT — switchable per message.
+  <Card title="Work with models intentionally" icon="microchip" href="/models/overview">
+    Set workspace defaults, switch models per message, and optionally use your own provider keys.
   </Card>
-  <Card title="Enterprise" icon="building" href="/enterprise/overview">
-    Self-host NodePad inside your own infrastructure.
+  <Card title="Plan a self-hosted deployment" icon="building" href="/enterprise/overview">
+    See what NodePad Enterprise includes today and how the install paths work.
   </Card>
 </CardGroup>
 
-## How NodePad works
+## What makes NodePad different
 
-NodePad is built around three simple moves:
+Most AI tools force every idea through one thread. NodePad gives you structure instead:
 
 <Steps>
-  <Step title="Chat as usual">
-    Start with a single message and a single reply — just like any AI app. No new concepts required to get going.
+  <Step title="Start on a canvas">
+    A workspace opens as a blank surface. You can place conversations, notes, and branches where they make sense instead of stacking everything into one timeline.
   </Step>
-  <Step title="Extend to multiple chats">
-    When a question deserves its own thread, spawn a new chat right on the canvas. Related threads stay neighbors, not lost browser tabs.
+  <Step title="Branch when a thread splits">
+    Use **Branch from here** to test a new direction without overwriting the original line of thinking.
   </Step>
-  <Step title="Control the context">
-    Fork any message to branch the conversation, drop sticky notes to lock in constraints, and merge threads once you've reached a conclusion.
+  <Step title="Pull context together deliberately">
+    Use `@` references, merge sources, and attachments when you want one message to draw from work that happened elsewhere on the canvas.
   </Step>
 </Steps>
 
+## Read by job to be done
+
+<CardGroup cols={3}>
+  <Card title="Research" icon="search" href="/use-cases/research">
+    Keep parallel investigations visible instead of burying them in one chat.
+  </Card>
+  <Card title="Engineering" icon="wrench" href="/use-cases/engineering">
+    Branch for a second opinion before you change production.
+  </Card>
+  <Card title="Writing" icon="pen-tool" href="/use-cases/writing">
+    Separate drafting from fact-finding so the voice of the piece stays clean.
+  </Card>
+</CardGroup>
+
 <Note>
-  NodePad is currently in beta. [Join the waitlist](https://node-pad.com/beta) to get early access — free to try, no spam.
+  NodePad is currently in beta. [Join beta](https://node-pad.com/beta) if you want early access to the hosted product.
 </Note>

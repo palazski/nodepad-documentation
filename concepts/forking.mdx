@@ -1,65 +1,61 @@
 ---
-title: "Forking: how to branch a NodePad thread from any node"
-description: "Fork any node to start a parallel thread with the same conversation history up to that point — your original thread stays untouched and nothing is lost."
+title: "Forking"
+description: "Branch from any message so you can explore a new path without overwriting the current one."
 ---
 
-Forking lets you branch off from any node in any thread. The new thread starts with the full conversation history up to the point you forked, then grows independently from there. Your original thread is untouched. Nothing is lost. You just gained a new line of exploration running alongside the first.
+Forking is how NodePad turns one conversation into two. Instead of asking every follow-up in the same branch, you can split at a specific message and test another direction beside it.
 
-## Why fork instead of just asking in the same thread
+## When to fork
 
-Every message you add to a thread becomes part of the context the model carries forward. That's useful when ideas build on each other — but it's a liability when you want to try something genuinely different. A tangent, a second opinion, an alternative framing: any of these can quietly contaminate the main thread if you explore them in place.
+<CardGroup cols={2}>
+  <Card title="Get a second opinion" icon="messages-square">
+    Ask another model the same question before you commit to a decision.
+  </Card>
+  <Card title="Chase a tangent" icon="route">
+    Explore a side question without polluting the branch you still care about.
+  </Card>
+  <Card title="Compare prompts" icon="split">
+    Send two different follow-ups from the same point and see which framing works better.
+  </Card>
+  <Card title="Preserve a checkpoint" icon="shield">
+    Split before a risky change so the original path stays intact.
+  </Card>
+</CardGroup>
 
-Forking solves this cleanly. The branch gets the context it needs — everything that happened before the fork — and the main thread is never polluted with your exploration.
-
-## Common reasons to fork
-
-<Tabs>
-  <Tab title="Explore a tangent">
-    You're mid-conversation and a related question emerges that deserves a real answer but doesn't belong in the main thread. Fork from the current node, chase the tangent in the branch, and return to the main thread when you're done — both intact.
-
-    **Example:** You're drafting a policy document and realize you need a fact-checked stat. Fork, run the fact-check in the branch, then merge the result back into the main draft.
-  </Tab>
-  <Tab title="Get a second opinion">
-    You've reached a conclusion in one thread and want to pressure-test it with a different model before acting on it. Fork from the final node of the main thread and switch to a different model in the branch.
-
-    **Example:** You're working through an engineering decision with Claude. Before touching production, fork and re-run the same question with GPT-5. Compare both recommendations before you decide.
-  </Tab>
-  <Tab title="Try an alternative approach">
-    You want to explore a genuinely different framing or strategy without committing to it. Fork early in the thread — before you introduced the approach you want to vary — and try the alternative in the branch.
-
-    **Example:** You've been developing an argument in one direction. Fork from an earlier node and build the counter-argument in the branch. See which one holds up.
-  </Tab>
-</Tabs>
-
-## How to fork a node
+## How branching works
 
 <Steps>
-  <Step title="Hover the node you want to fork from">
-    Move your cursor over any node in any thread. The action menu appears.
+  <Step title="Pick the message to branch from">
+    Right-click the node that represents the context you want to preserve.
   </Step>
-  <Step title="Select Fork">
-    Click the fork action. NodePad creates a new thread on the canvas, connected to the node you selected.
+  <Step title="Choose Branch from here">
+    NodePad creates a new draft connected to that source node.
   </Step>
-  <Step title="Choose a model (optional)">
-    By default the branch uses the same model as the current thread. Change it before you send your first message if you want a different model's perspective.
+  <Step title="Send a new follow-up">
+    The new draft starts from the same history up to that point, then diverges based on what you send next.
   </Step>
-  <Step title="Send your first message in the branch">
-    The branch carries all the context from the original thread up to the fork point. Send your message and the model replies with that full history in scope.
+  <Step title="Compare both branches on the canvas">
+    Because both branches stay visible, you can compare results without switching tabs or losing provenance.
   </Step>
 </Steps>
 
-## What the branch inherits
+## Branching patterns that work well
 
-The forked thread starts with a copy of the conversation context — every message and reply from the start of the original thread up to and including the node you forked from. That context is baked in at fork time: changes you make to the original thread after forking do not propagate to the branch.
+<AccordionGroup>
+  <Accordion title="Same question, different model">
+    Branch from a user message, keep the wording the same, and route the branch to another model. This is useful when you want a true second read on the same prompt.
+  </Accordion>
+  <Accordion title="Same branch, tighter scope">
+    Branch from a broad response and ask one narrower question in the new branch. The main branch stays high level while the new one goes deep.
+  </Accordion>
+  <Accordion title="Re-send versus branch">
+    Re-send is useful when you want to try the same message again. Branching is better when you want an alternate path you plan to keep around.
+  </Accordion>
+  <Accordion title="Branch before merge work">
+    If you know a branch is going to become source material for another message later, branching early keeps those sources cleaner and easier to reference.
+  </Accordion>
+</AccordionGroup>
 
 <Info>
-  The fork point is a snapshot, not a live link. The branch and the original thread evolve independently from the moment the fork is created.
+  Branches are explicit graph structure. They are not just copied text in a new chat window.
 </Info>
-
-## After you fork
-
-You now have two threads on the canvas: the original and the branch. Both are fully editable. You can continue either one, fork again from either one, or — when the branch has produced something worth keeping — [merge it back](/concepts/merging) into the original.
-
-<Warning>
-  Forking a node does not delete or alter that node or any other node in the original thread. If you're not seeing both threads on the canvas, pan or zoom out to find the branch — it may have been placed outside your current viewport.
-</Warning>

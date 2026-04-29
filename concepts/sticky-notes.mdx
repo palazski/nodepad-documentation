@@ -1,72 +1,65 @@
 ---
-title: "Sticky notes: keep context constraints on any node"
-description: "Attach a sticky note to any node to inject a persistent instruction — tone, format, scope — into the thread's context without repeating yourself each message."
+title: "Text notes"
+description: "Use text notes for annotations, reminders, and visual wayfinding on the NodePad canvas."
 ---
 
-Sticky notes attach to any node on the canvas and inject a persistent constraint into the conversation context for every message that follows in that thread. Instead of re-stating "keep this blameless" or "respond in bullet points" with every prompt, you pin it once and it stays in scope.
+Text notes are freeform notes that live on the canvas beside your conversation branches. They help you annotate the workspace, keep track of decisions, and leave yourself or teammates breadcrumbs about what to do next.
 
-## What a sticky note does
-
-When you attach a sticky note to a node, NodePad includes its content as a standing instruction in the context for all subsequent messages in that thread. The model reads the sticky note alongside your messages — you don't have to repeat the constraint yourself. The sticky note is visible on the canvas below the node it's attached to, so you always know what's in effect.
-
-<Info>
-  A sticky note affects messages that come **after** the node it's attached to. It does not alter any existing replies that were generated before the note was added.
-</Info>
-
-## What to put in a sticky note
-
-Sticky notes work best for constraints that are stable across many turns of a conversation. One clear constraint per note keeps things legible.
+## What text notes are for
 
 <CardGroup cols={2}>
-  <Card title="Tone constraints" icon="comment">
-    Keep responses non-judgmental and blameless. Use neutral language throughout. Avoid hedging phrases like "it depends."
+  <Card title="Session notes" icon="notebook-pen">
+    Capture what the workspace is for, what you are testing, or what still needs review.
   </Card>
-  <Card title="Format requirements" icon="list">
-    Respond in bullet points only. Keep each response under 150 words. Always include a summary line at the top.
+  <Card title="Checklists" icon="list-todo">
+    Keep a short list of open questions, next actions, or review criteria.
   </Card>
-  <Card title="Scope limits" icon="border-all">
-    Only consider open-source solutions. Do not suggest changes to the database schema. Limit recommendations to the current sprint.
+  <Card title="Wayfinding" icon="map">
+    Label clusters of branches so a large workspace stays readable when you zoom out.
   </Card>
-  <Card title="Role or persona" icon="user">
-    You are reviewing this as a skeptical senior engineer. Respond as a non-technical stakeholder would expect to receive this.
+  <Card title="Human context" icon="users">
+    Leave notes for collaborators that should stay visible on the canvas but out of model prompts.
   </Card>
 </CardGroup>
 
-## How to attach a sticky note
+## How to create one
 
 <Steps>
-  <Step title="Hover the node you want to attach to">
-    Move your cursor over the target node. The action menu appears at the edge of the node.
+  <Step title="Right-click empty canvas space">
+    Open the canvas context menu where you want the note to appear.
   </Step>
-  <Step title="Select Sticky note">
-    Click the sticky note action. An input field opens directly below the node on the canvas.
+  <Step title="Choose New text note here">
+    NodePad drops a new note at that position.
   </Step>
-  <Step title="Write your constraint">
-    Type the instruction you want to persist. Keep it direct — write it the way you'd write a system prompt, not a conversational message.
-  </Step>
-  <Step title="Confirm">
-    Save the note. It appears pinned to the node, and its constraint is now active for all subsequent messages in the thread.
+  <Step title="Edit the note">
+    Type whatever annotation or checklist you need and place it near the relevant branches.
   </Step>
 </Steps>
 
-## Editing and removing sticky notes
+## What text notes do not do
 
-You can edit a sticky note at any time by clicking it on the canvas. Changes take effect for messages generated after the edit — replies already in the thread are not affected.
+Text notes are not model instructions. They are not automatically injected into the prompt context for nearby branches.
 
-To remove a sticky note, click it and select **Remove**. The constraint is lifted immediately; subsequent messages will no longer include it in context.
+If you want instructions to affect the model, put them in:
 
-<Tip>
-  If you want to apply different constraints to two variations of the same conversation, fork the thread first, then attach separate sticky notes to each branch. This keeps your experiments clean and comparable.
-</Tip>
+- your message
+- workspace instructions
+- a branching strategy that keeps different prompt intents separate
 
-## Sticky notes vs. putting instructions in your message
+## Good note patterns
 
-You can always type constraints directly into a message prompt — that's the simplest approach for a one-time instruction. Sticky notes are worth using when:
+<AccordionGroup>
+  <Accordion title="Workspace header note">
+    Put one note near the top-left of a workspace that says what the entire canvas is trying to solve.
+  </Accordion>
+  <Accordion title="Decision log">
+    Keep a note beside a cluster of branches that records the choice you made after comparing them.
+  </Accordion>
+  <Accordion title="Review checklist">
+    Add a note with the standards you want to check before exporting, sharing, or shipping the result.
+  </Accordion>
+</AccordionGroup>
 
-- The constraint needs to hold for more than one or two replies
-- You're sharing the canvas with a collaborator and want the constraint to be visible and explicit
-- You're forking the thread and want the constraint to be clearly scoped to one branch
-
-<Warning>
-  Sticky notes do not carry over when you fork. If you fork a thread from a node that has a sticky note attached, the branch starts without that constraint. Attach a new sticky note to the fork's first node if you want the same constraint in the branch.
-</Warning>
+<Note>
+  Earlier drafts of these docs described text notes as prompt constraints. In the current product, they are canvas annotations for humans.
+</Note>

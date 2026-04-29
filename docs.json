@@ -4,12 +4,16 @@
   "theme": "willow",
   "colors": {
     "primary": "#2563eb",
-    "light": "#ffffff"
+    "light": "#f8fafc",
+    "dark": "#0f172a"
   },
-  "favicon": "/logo.svg",
   "logo": {
-    "light": "/logo.svg",
-    "dark": "/logo.svg"
+    "light": "/logo-wordmark-light.svg",
+    "dark": "/logo-wordmark-dark.svg"
+  },
+  "favicon": {
+    "light": "/logo-icon-light.svg",
+    "dark": "/logo-icon-dark.svg"
   },
   "font": {
     "headings": {
@@ -19,68 +23,75 @@
       "family": "Outfit"
     }
   },
+  "background": {
+    "decoration": "grid",
+    "color": {
+      "light": "#f8fafc",
+      "dark": "#0f172a"
+    }
+  },
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Join the Beta",
+      "label": "Join beta",
       "href": "https://node-pad.com/beta"
     }
   },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": "dark"
+  },
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Documentation",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "beta-access"
-            ]
-          },
-          {
-            "group": "Core Concepts",
-            "pages": [
-              "concepts/canvas",
-              "concepts/nodes",
-              "concepts/forking",
-              "concepts/merging",
-              "concepts/sticky-notes"
-            ]
-          },
-          {
-            "group": "Working with Models",
-            "pages": [
-              "models/overview",
-              "models/per-message-selection",
-              "models/bring-your-own-keys"
-            ]
-          },
-          {
-            "group": "Use Cases",
-            "pages": [
-              "use-cases/research",
-              "use-cases/engineering",
-              "use-cases/writing"
-            ]
-          },
-          {
-            "group": "Enterprise",
-            "pages": [
-              "enterprise/overview",
-              "enterprise/self-hosting",
-              "enterprise/operations/install",
-              "enterprise/operations/upgrade",
-              "enterprise/operations/air-gapped"
-            ]
-          },
-          {
-            "group": "Changelog",
-            "pages": [
-              "changelog"
-            ]
-          }
+        "group": "Start here",
+        "pages": [
+          "introduction",
+          "quickstart",
+          "beta-access"
+        ]
+      },
+      {
+        "group": "Core workflow",
+        "pages": [
+          "concepts/canvas",
+          "concepts/nodes",
+          "concepts/forking",
+          "concepts/merging",
+          "concepts/references",
+          "concepts/sticky-notes"
+        ]
+      },
+      {
+        "group": "Models and settings",
+        "pages": [
+          "models/overview",
+          "models/per-message-selection",
+          "models/bring-your-own-keys"
+        ]
+      },
+      {
+        "group": "Use cases",
+        "pages": [
+          "use-cases/research",
+          "use-cases/engineering",
+          "use-cases/writing"
+        ]
+      },
+      {
+        "group": "Enterprise",
+        "pages": [
+          "enterprise/overview",
+          "enterprise/self-hosting",
+          "enterprise/operations/install",
+          "enterprise/operations/upgrade",
+          "enterprise/operations/air-gapped"
+        ]
+      },
+      {
+        "group": "Changelog",
+        "pages": [
+          "changelog"
         ]
       }
     ]

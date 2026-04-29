@@ -1,0 +1,70 @@
+---
+title: "References and cross-branch context"
+description: "Use @ references and merge sources to pull context across branches without flattening the whole workspace into one prompt."
+---
+
+NodePad gives you two main ways to reuse work from elsewhere on the canvas:
+
+- `@` references for targeted cross-links
+- merge sources for broader synthesis drafts
+
+Both help you move context across branches without copy-pasting conversation text by hand.
+
+## Use `@` when you want one precise source
+
+Type `@` in a draft to open the reference picker. You can choose either:
+
+- a branch
+- a specific message
+
+NodePad inserts the visible token into the draft and stores the actual linked node behind it. That matters because the text token alone is not the source of truth.
+
+<Tip>
+  Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
+</Tip>
+
+## Use merge sources when you want synthesis
+
+Merge flows are better when the next prompt needs several sources at once. Instead of pointing to one message, you are asking the model to reason across a set of messages from different branches.
+
+That is useful for:
+
+- comparing recommendations
+- combining research findings
+- rewriting a draft using evidence gathered elsewhere
+- deciding between alternate approaches
+
+## How to choose between them
+
+<CardGroup cols={2}>
+  <Card title="@ reference" icon="at-sign">
+    Best when one branch or message should inform the next turn in a narrow, explicit way.
+  </Card>
+  <Card title="Merge sources" icon="git-merge">
+    Best when the next turn needs to synthesize, compare, or reconcile several messages.
+  </Card>
+</CardGroup>
+
+## Practical examples
+
+<AccordionGroup>
+  <Accordion title="Writing">
+    Reference a fact-check branch with `@` when you only need one verified stat. Use merge sources when the next prompt needs several research findings or alternate versions at once.
+  </Accordion>
+  <Accordion title="Engineering">
+    Reference a specific diagnosis message when you want to preserve its exact reasoning. Use merge sources when you want a decision draft that weighs two alternate fixes.
+  </Accordion>
+  <Accordion title="Research">
+    Reference one branch when you need a quote or a specific result. Use merge sources when you want a summary that spans several lines of investigation.
+  </Accordion>
+</AccordionGroup>
+
+## Related behaviors
+
+<Info>
+  Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt. Keep an eye on scope.
+</Info>
+
+<Info>
+  Text notes are not referenceable model context by default. They are canvas annotations for humans.
+</Info>

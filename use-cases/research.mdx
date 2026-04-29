@@ -1,76 +1,41 @@
 ---
-title: "Run parallel research investigations on one canvas"
-description: "Keep distinct research threads as neighbors on the canvas so you can compare findings at a glance — no juggling tabs or scrolling one tangled chat."
+title: "Research"
+description: "Keep separate investigations visible on one canvas and synthesize them only when you are ready."
 ---
 
-When you research a complex topic, a single AI thread quickly becomes a wall of text where labor economics, healthcare data, and education outcomes all blur together. NodePad lets you split a question into focused sub-investigations and run them side by side — each thread sharp on its own topic, all of them visible at once.
+Research gets messy when every sub-question lives in the same transcript. NodePad works better when you split the work into clean branches, keep those branches visible, and then pull the useful pieces together deliberately.
 
-## Why the canvas changes how you research
-
-A typical AI chat collapses everything into one chronological scroll. When you ask follow-up questions, the model inherits the whole conversation, including tangents that dilute focus. On NodePad's canvas, each thread is spatially distinct. You see them all at once, compare findings across neighbors, and keep each model anchored to exactly one sub-question.
-
-<CardGroup cols={3}>
-  <Card title="Parallel threads" icon="arrows-split-up-and-left">
-    Run separate investigations simultaneously instead of asking one model to juggle everything in a single chat.
-  </Card>
-  <Card title="Right model per question" icon="microchip">
-    Pick Claude Opus for deep analysis, Gemini 2.5 Pro for data retrieval, GPT-5 for broader synthesis — per thread.
-  </Card>
-  <Card title="Merge when ready" icon="code-merge">
-    Pull findings from multiple threads into one synthesis node you write yourself, preserving full context.
-  </Card>
-</CardGroup>
-
-## Walkthrough: UBI policy research
-
-Here is how a three-thread UBI investigation looks on a single canvas.
+## A good NodePad research pattern
 
 <Steps>
-  <Step title="Open a new canvas and start your main framing thread">
-    Create a canvas for your research project. In the first node, ask your framing question: what are the key dimensions of a universal basic income policy analysis? Use this thread to scope the problem and identify the sub-questions you want to investigate separately.
-
-    <Tip>
-      Attach a sticky note to this node with the overall scope constraint — for example, "focus on peer-reviewed studies and government pilot programs only." This note travels with any thread you fork from this node.
-    </Tip>
+  <Step title="Start with a framing branch">
+    Use one branch to define the scope of the question and name the sub-questions you need to answer.
   </Step>
-  <Step title="Spawn three parallel threads, one per sub-question">
-    From the framing node, fork three times to create three independent threads:
-
-    - **Thread 1 — Labor market effects** (Claude Opus): Ask specifically about employment outcomes from UBI pilots. Claude surfaces the Stockton SEED program (+12 percentage points in full-time employment) and the Finland pilot, which showed no drop in labor participation.
-    - **Thread 2 — Healthcare outcomes** (Gemini 2.5 Pro): Direct Gemini to healthcare data. It returns the Manitoba Mincome study showing an 8.5% drop in hospitalizations and the Eastern Band of Cherokee Nation casino dividend study.
-    - **Thread 3 — Education spillover** (GPT-5): Point GPT-5 at schooling data. It covers the Cherokee study's school completion rates and broader education spillover findings.
-
-    Each thread inherits context from the framing node but stays focused on its own domain.
-
-    <Note>
-      You can run all three threads concurrently. While Thread 1 is processing, start Thread 2 and Thread 3 — the canvas holds them all without waiting.
-    </Note>
+  <Step title="Branch by topic">
+    Create one branch per sub-question so each line of inquiry has its own context and output history.
   </Step>
-  <Step title="Review findings side by side on the canvas">
-    Arrange the three thread nodes as neighbors. You can now read labor, healthcare, and education outcomes at the same time without scrolling back and forth through one chat. Look for intersections — the Cherokee study appears in both Thread 2 and Thread 3, which signals a high-value primary source worth investigating further.
+  <Step title="Reference across branches selectively">
+    When one branch uncovers a source that matters elsewhere, use an `@` reference instead of summarizing it by hand.
   </Step>
-  <Step title="Merge into a synthesis node">
-    Once you have findings you trust, create a merge node. In your own words, pull the key data points from each thread into a unified summary. Because you authored the merge, you control which findings make the cut and how they're framed — the model doesn't blend the threads for you without your input.
-
-    <Tip>
-      Use a sticky note on the merge node to pin your synthesis constraints: "cite specific studies and sample sizes, no editorializing." This keeps any follow-up questions on the merge thread grounded.
-    </Tip>
+  <Step title="Merge into a synthesis draft">
+    Once the branches have enough signal, merge the important messages into a new draft and ask for a comparison or summary.
   </Step>
 </Steps>
 
-## Tips for research canvases
+## Why it works
 
-<AccordionGroup>
-  <Accordion title="Use sticky notes to keep threads focused">
-    Each thread node can carry a sticky note that acts as a standing constraint for that thread. For a labor market thread, pin a note that says "discuss employment rate changes only, not income or health outcomes." The model will stay on task across multiple follow-up turns in that thread.
-  </Accordion>
-  <Accordion title="Match the model to the task">
-    Not every thread needs the same model. Use a reasoning-heavy model like Claude Opus for threads that require nuanced interpretation of complex studies. Use a model with strong data retrieval like Gemini 2.5 Pro for threads where you need specific statistics. Switching is per-message, so you can also escalate within a thread if a question gets harder.
-  </Accordion>
-  <Accordion title="Fork to chase a lead without losing your main thread">
-    When a thread surfaces something unexpected — a study you hadn't heard of, a conflicting data point — fork from that message to investigate it separately. The fork carries full context from the parent thread. Your main thread continues uninterrupted.
-  </Accordion>
-  <Accordion title="Name your nodes">
-    Give each thread node a clear label ("Labor — SEED & Finland", "Healthcare — Mincome"). When you have six or eight nodes on a canvas, names make navigation instant.
-  </Accordion>
-</AccordionGroup>
+<CardGroup cols={3}>
+  <Card title="Less prompt pollution" icon="shield">
+    Each branch stays focused on one topic instead of inheriting every tangent.
+  </Card>
+  <Card title="Visible provenance" icon="waypoints">
+    You can see where a conclusion came from because the source branches stay on the canvas.
+  </Card>
+  <Card title="Better synthesis" icon="sparkles">
+    The final summary can draw from real source branches instead of from your memory of what happened in them.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Add a text note naming the research question and the standard for evidence you want to use. It helps when the workspace grows past a few branches.
+</Tip>
