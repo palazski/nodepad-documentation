@@ -4,9 +4,9 @@ description: "Nodes are the individual messages and replies that make up a branc
 ---
 
 import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
 import { Callout } from '/snippets/Callout.jsx';
+import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
 
 A node is one message on the canvas. User messages, assistant replies, and in-progress drafts all behave like nodes in the graph. Most NodePad actions start by selecting a node or branching from one.
 
@@ -26,13 +26,10 @@ A node is one message on the canvas. User messages, assistant replies, and in-pr
 
 Nodes connect in sequence inside a branch. Each node-to-next-node link is a <EdgeChip type="continuation">continuation edge</EdgeChip>. When you branch from a node, NodePad creates a new path from that point — a <EdgeChip type="fork">fork edge</EdgeChip> — without changing the original branch.
 
-<NumberedSteps
-  items={[
-    { title: 'Your message', body: 'You write a prompt and send it.' },
-    { title: 'The assistant reply', body: 'A continuation edge connects the reply to your message.' },
-    { title: 'Your next message', body: 'You continue, or you branch from anywhere earlier in the chain.' },
-    { title: 'Forks and merges', body: 'A fork starts a new path; a merge brings selected sources into a fresh draft.' },
-  ]}
+<ProductScreenshot
+  light="/images/concepts/four-node-light.svg"
+  dark="/images/concepts/four-node-dark.svg"
+  alt="Four nodes in a chain: you → assistant → you → assistant, with a forked branch starting from the last node."
 />
 
 ## Actions you can take from a node

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="Four nodes connected by continuation edges, ending with a fork">
+  <defs>
+    <filter id="fn-shadow-dark" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.4"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="720" height="200" fill="transparent"/>
+
+  <path d="M 130 100 L 200 100" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 320 100 L 390 100" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 510 100 L 580 100" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 640 130 C 640 160, 600 170, 540 170" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+
+  <g filter="url(#fn-shadow-dark)">
+    <rect x="20" y="70" width="110" height="60" rx="10" fill="#161620" stroke="rgba(255,255,255,0.12)"/>
+    <circle cx="36" cy="86" r="3" fill="#d97757"/>
+    <text x="48" y="89" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9" fill="#9ca3af" letter-spacing="0.04em">YOU</text>
+    <rect x="34" y="100" width="84" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+    <rect x="34" y="110" width="60" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+  </g>
+  <g filter="url(#fn-shadow-dark)">
+    <rect x="200" y="70" width="120" height="60" rx="10" fill="#161620" stroke="rgba(255,255,255,0.12)"/>
+    <circle cx="216" cy="86" r="3" fill="#60a5fa"/>
+    <text x="228" y="89" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9" fill="#9ca3af" letter-spacing="0.04em">ASSISTANT</text>
+    <rect x="214" y="100" width="94" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+    <rect x="214" y="110" width="74" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+  </g>
+  <g filter="url(#fn-shadow-dark)">
+    <rect x="390" y="70" width="120" height="60" rx="10" fill="#161620" stroke="rgba(255,255,255,0.12)"/>
+    <circle cx="406" cy="86" r="3" fill="#d97757"/>
+    <text x="418" y="89" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9" fill="#9ca3af" letter-spacing="0.04em">YOU</text>
+    <rect x="404" y="100" width="94" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+    <rect x="404" y="110" width="68" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+  </g>
+  <g filter="url(#fn-shadow-dark)">
+    <rect x="580" y="70" width="120" height="60" rx="10" fill="#161620" stroke="rgba(255,255,255,0.12)"/>
+    <circle cx="596" cy="86" r="3" fill="#60a5fa"/>
+    <text x="608" y="89" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9" fill="#9ca3af" letter-spacing="0.04em">ASSISTANT</text>
+    <rect x="594" y="100" width="94" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+    <rect x="594" y="110" width="80" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+  </g>
+  <g filter="url(#fn-shadow-dark)" opacity="0.9">
+    <rect x="430" y="155" width="110" height="35" rx="10" fill="#161620" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="442" y="178" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9" fill="#60a5fa" letter-spacing="0.04em">FORK · B2-1</text>
+  </g>
+</svg>
