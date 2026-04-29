@@ -231,7 +231,7 @@ article blockquote a {
   text-decoration: none;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
-  transition: text-decoration-color var(--duration-fast) var(--ease-out-cubic);
+  transition: text-decoration-color var(--duration-fast) ease;
 }
 
 @media (hover: hover) {
@@ -315,15 +315,16 @@ aside[id*="sidebar"] {
 #sidebar a,
 #sidebar [role="link"],
 aside[id*="sidebar"] a {
-  padding-block: 0.3rem !important;
+  padding-block: 0.4rem !important;
   padding-inline: 0.625rem !important;
   font-size: 13.5px !important;
+  font-weight: 500 !important;
   line-height: 1.45 !important;
   min-height: 0 !important;
   border-radius: var(--radius-md) !important;
   color: var(--muted-foreground) !important;
-  transition: background var(--duration-fast) var(--ease-out-cubic),
-              color var(--duration-fast) var(--ease-out-cubic);
+  transition: background var(--duration-fast) ease,
+              color var(--duration-fast) ease;
 }
 
 @media (hover: hover) {
@@ -339,7 +340,6 @@ aside[id*="sidebar"] a {
 aside[id*="sidebar"] [data-active="true"] {
   background: var(--muted) !important;
   color: var(--foreground) !important;
-  font-weight: 500 !important;
   border-radius: var(--radius-md) !important;
 }
 
@@ -402,7 +402,7 @@ nav[aria-label*="On this page" i] a {
   font-size: 12.5px !important;
   text-decoration: none !important;
   border-radius: 0 !important;
-  transition: color var(--duration-fast) var(--ease-out-cubic);
+  transition: color var(--duration-fast) ease;
 }
 
 @media (hover: hover) {
@@ -453,7 +453,7 @@ card {
   border-radius: var(--radius-2xl) !important;
   padding: 1.5rem !important;
   box-shadow: none !important;
-  transition: background var(--duration-fast) var(--ease-out-cubic);
+  transition: background var(--duration-fast) ease;
 }
 @media (hover: hover) {
   card:hover {
@@ -560,6 +560,7 @@ pre {
   font-size: 0.875rem !important;
   line-height: 1.6 !important;
   overflow-x: auto;
+  scrollbar-gutter: stable;
 }
 
 :not(pre) > code {
@@ -586,7 +587,7 @@ thead th {
   font-weight: 600 !important;
   text-align: left;
   padding: 0.625rem 1rem !important;
-  border-bottom: 2px solid var(--foreground) !important;
+  border-bottom: 1px solid var(--foreground) !important;
   background: transparent !important;
 }
 
@@ -657,8 +658,8 @@ hr {
   color: var(--foreground);
   text-decoration: none !important;
   border-radius: var(--radius-md);
-  transition: background var(--duration-fast) var(--ease-out-cubic),
-              color var(--duration-fast) var(--ease-out-cubic);
+  transition: background var(--duration-fast) ease,
+              color var(--duration-fast) ease;
 }
 
 @media (hover: hover) {
@@ -692,7 +693,7 @@ hr {
   line-height: 1;
   font-weight: 400;
   transition: transform var(--duration-fast) var(--ease-out-cubic),
-              color var(--duration-fast) var(--ease-out-cubic);
+              color var(--duration-fast) ease;
   padding-right: 0.5rem;
 }
 
@@ -776,7 +777,7 @@ html, body {
 :focus-visible {
   outline: 2px solid color-mix(in oklch, var(--primary), transparent 50%);
   outline-offset: 2px;
-  border-radius: 6px;
+  border-radius: inherit;
 }
 
 @media (prefers-reduced-motion: reduce) {
