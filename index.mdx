@@ -1,75 +1,33 @@
 ---
 title: "NodePad documentation"
-description: "Learn how NodePad works: canvases, branches, references, merges, models, and self-hosted deployment."
-mode: "custom"
+description: "Learn how NodePad works: the canvas, branching, references, merges, models, and self-hosted deployment."
 ---
 
-import { HeroBlock } from '/snippets/HeroBlock.jsx';
-import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
-import { SectionHeading } from '/snippets/SectionHeading.jsx';
 
-<div style={{ maxWidth: '64rem', margin: '0 auto', padding: '0 clamp(16px, 3vw, 32px)' }}>
+A canvas for AI conversations. Branch from any message, reference across the canvas, and merge sources into the next step.
 
-<HeroBlock
-  eyebrow="Documentation"
-  title="A canvas for AI conversations."
-  subtitle="NodePad is a spatial workspace for AI work. Spread conversations across a canvas, branch from any point, compare models side by side, and pull useful context back into the next message on purpose."
-  primaryCta={{ label: 'Open the quickstart', href: '/quickstart' }}
-  secondaryCta={{ label: 'See the core workflow', href: '/concepts/canvas' }}
->
-  <ProductScreenshot
-    light="/images/hero/canvas-light.svg"
-    dark="/images/hero/canvas-dark.svg"
-    alt="NodePad canvas: branched conversations connected by continuation, fork, merge, and reference edges, with a text note in the corner."
-  />
-</HeroBlock>
-
-<SectionHeading eyebrow="Get oriented" title="Where to start" />
-
-<FeatureGrid
-  cols={2}
-  items={[
-    { title: 'Quickstart', body: 'Open your first workspace, send a message, branch a thread, and try references and merge flows.', href: '/quickstart' },
-    { title: 'Core workflow', body: 'How the canvas, nodes, branches, text notes, and references fit together.', href: '/concepts/canvas' },
-    { title: 'Models in NodePad', body: 'Workspace defaults, per-message overrides, and bringing your own provider keys.', href: '/models/overview' },
-    { title: 'Self-hosting', body: 'What ships in NodePad Enterprise and how the install paths work.', href: '/enterprise/overview' },
-  ]}
+<ProductScreenshot
+  light="/images/hero/canvas-light.svg"
+  dark="/images/hero/canvas-dark.svg"
+  alt="NodePad canvas: branched conversations connected by continuation, fork, merge, and reference edges, with a text note in the corner."
 />
 
-<SectionHeading eyebrow="The shape of the work" title="What makes NodePad different" />
+## Start here
 
-<NumberedSteps
-  items={[
-    {
-      title: 'Start on a canvas',
-      body: 'A workspace opens as a blank surface. Place conversations, notes, and branches where they make sense — not stacked into one timeline.',
-    },
-    {
-      title: 'Branch when a thread splits',
-      body: 'Use **Branch from here** to test a new direction without overwriting the original line of thinking.',
-    },
-    {
-      title: 'Pull context together deliberately',
-      body: 'Use `@` references, merge sources, and attachments when you want one message to draw from work that happened elsewhere on the canvas.',
-    },
-  ]}
-/>
+<NavList items={[
+  { title: 'Quickstart', body: 'A real first session in seven steps — open a workspace, branch, reference, merge.', href: '/quickstart' },
+  { title: 'Core workflow', body: 'How the canvas, nodes, branches, and edges fit together.', href: '/concepts/canvas' },
+  { title: 'Self-hosting', body: 'Deploy NodePad in your own infrastructure.', href: '/enterprise/overview' },
+]} />
 
-<SectionHeading eyebrow="Read by job to be done" title="What people use NodePad for" />
+## By job to be done
 
-<FeatureGrid
-  cols={3}
-  items={[
-    { title: 'Research', body: 'Keep parallel investigations visible instead of burying them in one chat.', href: '/use-cases/research' },
-    { title: 'Engineering', body: 'Branch for a second opinion before you change production.', href: '/use-cases/engineering' },
-    { title: 'Writing', body: 'Separate drafting from fact-finding so the voice of the piece stays clean.', href: '/use-cases/writing' },
-  ]}
-/>
+<NavList items={[
+  { title: 'Research', body: 'Keep parallel investigations visible instead of burying them in one chat.', href: '/use-cases/research' },
+  { title: 'Engineering', body: 'Branch for a second opinion before you change production.', href: '/use-cases/engineering' },
+  { title: 'Writing', body: 'Keep drafting, fact-checking, and editing in separate branches.', href: '/use-cases/writing' },
+]} />
 
-<div style={{ marginTop: '2rem', padding: '1rem 1.25rem', borderRadius: 'var(--radius-lg)', background: 'var(--card)', border: '1px solid var(--border)', borderLeft: '3px solid var(--ring)' }}>
-  NodePad is currently in beta. <a href="https://node-pad.com/beta">Join beta</a> for early access to the hosted product.
-</div>
-
-</div>
+NodePad is currently in beta. [Join the beta →](https://node-pad.com/beta)

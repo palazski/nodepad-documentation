@@ -3,8 +3,7 @@ title: "Self-hosting NodePad in your own VPC or on-premises"
 description: "Deploy NodePad on your own Kubernetes cluster or a single VM. Bring your own Postgres, Redis, S3-compatible storage, and provider API keys."
 ---
 
-import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { Callout } from '/snippets/Callout.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 
 NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad into your own infrastructure — Kubernetes via Helm, or a single VM via docker compose — and connect it to your own database, cache, and object storage. NodePad's application layer runs entirely inside your perimeter.
 
@@ -33,15 +32,10 @@ NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad i
 
 In both postures, you are responsible for:
 
-<FeatureGrid
-  cols={2}
-  items={[
-    { title: 'Database', body: "PostgreSQL 15+. NodePad's Django migrations manage the schema." },
-    { title: 'Cache + queue', body: 'Redis 6+. Used for Django Channels (WebSocket LLM streaming) and Celery (async tasks).' },
-    { title: 'Object storage', body: 'Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.' },
-    { title: 'Provider API keys', body: 'Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.' },
-  ]}
-/>
+- **Database.** PostgreSQL 15+. NodePad's Django migrations manage the schema.
+- **Cache and queue.** Redis 6+. Used for Django Channels (WebSocket LLM streaming) and Celery (async tasks).
+- **Object storage.** Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.
+- **Provider API keys.** Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.
 
 ## What NodePad does not do
 
@@ -51,15 +45,16 @@ In both postures, you are responsible for:
 
 ## Release cadence and upgrade model
 
-- NodePad Enterprise ships semver-tagged container images and Helm charts. Tags `X.Y.Z` and `<git-sha>` are immutable; pin to them in production.
-- Every release is smoke-tested on a fresh Kubernetes cluster in CI before the bundle is published.
-- Upgrade is `helm upgrade` (K8s) or `docker compose pull && up -d` (VM). Migrations run automatically.
-- Release notes live at `docs.node-pad.com/changelog`. Each release also has a [GitHub Release page](https://github.com/palazski/nodepad-api/releases) with the offline bundle attached.
+NodePad Enterprise ships semver-tagged container images and Helm charts. Tags `X.Y.Z` and `<git-sha>` are immutable; pin to them in production. Every release is smoke-tested on a fresh Kubernetes cluster in CI before the bundle is published. Upgrade is `helm upgrade` (K8s) or `docker compose pull && up -d` (VM); migrations run automatically. Release notes live at `docs.node-pad.com/changelog`. Each release also has a [GitHub Release page](https://github.com/palazski/nodepad-api/releases) with the offline bundle attached.
 
 See [Upgrade & rollback](/enterprise/operations/upgrade) for the full playbook.
 
-## Get started
+## Continue
 
-<Callout tone="tip" title="Contact the Enterprise team">
-  We'll scope your environment and walk you through the install checklist before you go live. <a href="https://node-pad.com/enterprise">Reach out →</a>
-</Callout>
+<NavList items={[
+  { title: 'Installing NodePad', body: 'Step through the four install postures.', href: '/enterprise/operations/install' },
+  { title: 'Upgrade & rollback', body: 'Safe upgrade flow and migration-incompatible rollback.', href: '/enterprise/operations/upgrade' },
+  { title: 'Air-gapped install', body: 'Bundle contents and offline upgrade flow.', href: '/enterprise/operations/air-gapped' },
+]} />
+
+To scope an environment with the Enterprise team before going live, [reach out →](https://node-pad.com/enterprise).

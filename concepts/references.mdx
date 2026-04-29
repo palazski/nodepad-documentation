@@ -1,74 +1,28 @@
 ---
 title: "References and cross-branch context"
-description: "Use @ references and merge sources to pull context across branches without flattening the whole workspace into one prompt."
+description: "Use @ references and merge sources to pull context across branches without flattening the workspace into one prompt."
 ---
 
-import { CompareTable } from '/snippets/CompareTable.jsx';
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
-import { Callout } from '/snippets/Callout.jsx';
-import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 
-NodePad gives you two main ways to reuse work from elsewhere on the canvas:
-
-- <EdgeChip type="reference">`@` references</EdgeChip> for targeted cross-links
-- <EdgeChip type="merge">merge sources</EdgeChip> for broader synthesis drafts
-
-Both help you move context across branches without copy-pasting conversation text by hand.
-
-<ProductScreenshot
-  light="/images/placeholder-light.svg"
-  dark="/images/placeholder-dark.svg"
-  alt="A draft with an @-reference token and a violet reference edge connecting it to another branch."
-/>
+Two ways to reuse work from elsewhere on the canvas: <EdgeChip type="reference">`@` references</EdgeChip> for targeted cross-links, and <EdgeChip type="merge">merge sources</EdgeChip> for broader synthesis drafts. Both move context across branches without copy-pasting conversation text by hand.
 
 ## Use `@` when you want one precise source
 
-Type `@` in a draft to open the reference picker. You can choose either:
+Type `@` in a draft to open the reference picker. Choose either a branch or a specific message. NodePad inserts the visible token into the draft and stores the actual linked node behind it. That matters because the text token alone is not the source of truth.
 
-- a branch
-- a specific message
-
-NodePad inserts the visible token into the draft and stores the actual linked node behind it. That matters because the text token alone is not the source of truth.
-
-<Callout tone="tip">
-  Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
-</Callout>
+Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
 
 ## Use merge sources when you want synthesis
 
 Merge flows are better when the next prompt needs several sources at once. Instead of pointing to one message, you are asking the model to reason across a set of messages from different branches.
 
-That is useful for:
+That is useful for comparing recommendations, combining research findings, rewriting a draft using evidence gathered elsewhere, or deciding between alternate approaches.
 
-- comparing recommendations
-- combining research findings
-- rewriting a draft using evidence gathered elsewhere
-- deciding between alternate approaches
+## How to choose
 
-## How to choose between them
-
-<CompareTable
-  leftAccent="reference"
-  rightAccent="merge"
-  left={{
-    title: '@ reference',
-    points: [
-      'One specific message or branch',
-      'Narrow, explicit cross-link',
-      'Lightweight prompt footprint',
-      'Best when the source already says it',
-    ],
-  }}
-  right={{
-    title: 'Merge sources',
-    points: [
-      'Multiple messages from different branches',
-      'Synthesis, comparison, or decision context',
-      'Larger prompt footprint',
-      'Best when the next turn must reason across sources',
-    ],
-  }}
-/>
+Reach for `@` when you need one specific message and a narrow, explicit cross-link with a lightweight prompt footprint. Reach for merge sources when the next turn must reason across multiple messages from different branches and the prompt can carry a larger context.
 
 ## Practical examples
 
@@ -84,12 +38,11 @@ That is useful for:
   </Accordion>
 </AccordionGroup>
 
-## Related behaviors
+> Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt — keep an eye on scope. Text notes are not referenceable model context by default; they are canvas annotations for humans.
 
-<Callout tone="info">
-  Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt. Keep an eye on scope.
-</Callout>
+## Continue
 
-<Callout tone="info">
-  Text notes are not referenceable model context by default. They are canvas annotations for humans.
-</Callout>
+<NavList items={[
+  { title: 'Merging', body: 'How a merge composer assembles source messages.', href: '/concepts/merging' },
+  { title: 'Forking', body: 'Branching is what makes cross-branch references possible.', href: '/concepts/forking' },
+]} />

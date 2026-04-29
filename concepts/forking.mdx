@@ -3,45 +3,28 @@ title: "Forking"
 description: "Branch from any message so you can explore a new path without overwriting the current one."
 ---
 
-import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
-import { Callout } from '/snippets/Callout.jsx';
-import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 
-Forking is how NodePad turns one conversation into two. Instead of asking every follow-up in the same branch, you can split at a specific message and test another direction beside it. Each split appears on the canvas as a <EdgeChip type="fork">fork edge</EdgeChip>.
-
-<ProductScreenshot
-  light="/images/placeholder-light.svg"
-  dark="/images/placeholder-dark.svg"
-  alt="Two branches diverging from the same message, with a blue fork edge between them."
-/>
+Branch from any message so you can explore a new path without overwriting the current one. Each split appears on the canvas as a <EdgeChip type="fork">fork edge</EdgeChip>.
 
 ## When to fork
 
-<FeatureGrid
-  cols={2}
-  accent="fork"
-  items={[
-    { title: 'Get a second opinion', body: 'Ask another model the same question before you commit to a decision.' },
-    { title: 'Chase a tangent', body: 'Explore a side question without polluting the branch you still care about.' },
-    { title: 'Compare prompts', body: 'Send two different follow-ups from the same point and see which framing works better.' },
-    { title: 'Preserve a checkpoint', body: 'Split before a risky change so the original path stays intact.' },
-  ]}
-/>
+You fork when you want to:
+
+- **Get a second opinion.** Ask another model the same question before you commit to a decision.
+- **Chase a tangent.** Explore a side question without polluting the branch you still care about.
+- **Compare prompts.** Send two different follow-ups from the same point and see which framing works better.
+- **Preserve a checkpoint.** Split before a risky change so the original path stays intact.
 
 ## How branching works
 
-<NumberedSteps
-  items={[
-    { title: 'Pick the message to branch from', body: 'Right-click the node that represents the context you want to preserve.' },
-    { title: 'Choose Branch from here', body: 'NodePad creates a new draft connected to that source node.' },
-    { title: 'Send a new follow-up', body: 'The new draft starts from the same history up to that point, then diverges based on what you send next.' },
-    { title: 'Compare both branches on the canvas', body: 'Because both branches stay visible, you can compare results without switching tabs or losing provenance.' },
-  ]}
-/>
+1. Right-click the node that represents the context you want to preserve.
+2. Choose **Branch from here**. NodePad creates a new draft connected to that source node.
+3. Send a new follow-up. The new draft starts from the same history up to that point, then diverges from what you send next.
+4. Both branches stay visible on the canvas, so you can compare results without losing provenance.
 
-## Branching patterns that work well
+## Patterns that work well
 
 <AccordionGroup>
   <Accordion title="Same question, different model">
@@ -58,6 +41,11 @@ Forking is how NodePad turns one conversation into two. Instead of asking every 
   </Accordion>
 </AccordionGroup>
 
-<Callout tone="info">
-  Branches are explicit graph structure. They are not just copied text in a new chat window.
-</Callout>
+> Branches are explicit graph structure. They are not just copied text in a new chat window.
+
+## Continue
+
+<NavList items={[
+  { title: 'Merging', body: 'Combine messages from different branches into one new draft.', href: '/concepts/merging' },
+  { title: 'References', body: 'Cross-link across branches with `@`.', href: '/concepts/references' },
+]} />

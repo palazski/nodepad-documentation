@@ -3,8 +3,7 @@ title: "Installing NodePad"
 description: "Install NodePad via Helm, docker compose, or the offline bundle. Covers connected, proxied-mirror, fully air-gapped, and single-VM trial postures."
 ---
 
-import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { Callout } from '/snippets/Callout.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 
 NodePad ships as a set of container images and a Helm chart. The same artifacts serve every supported install posture. Choose the row that matches your environment, then follow that section below.
 
@@ -193,12 +192,9 @@ curl https://api.nodepad.yourcompany.com/api/health
 open https://api.nodepad.yourcompany.com/admin/
 ```
 
-## Next steps
+## Continue
 
-<FeatureGrid
-  cols={2}
-  items={[
-    { title: 'Upgrade & rollback playbook', body: 'How to upgrade safely, roll back, and handle migration-incompatible rollbacks.', href: '/enterprise/operations/upgrade' },
-    { title: 'Air-gapped install details', body: 'Bundle contents, offline upgrade flow, and the zero-outbound-telemetry guarantee.', href: '/enterprise/operations/air-gapped' },
-  ]}
-/>
+<NavList items={[
+  { title: 'Upgrade & rollback playbook', body: 'How to upgrade safely, roll back, and handle migration-incompatible rollbacks.', href: '/enterprise/operations/upgrade' },
+  { title: 'Air-gapped install details', body: 'Bundle contents, offline upgrade flow, and the zero-outbound-telemetry guarantee.', href: '/enterprise/operations/air-gapped' },
+]} />

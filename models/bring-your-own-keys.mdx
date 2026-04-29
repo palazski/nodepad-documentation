@@ -3,46 +3,37 @@ title: "Bring your own keys"
 description: "Connect your own provider keys so NodePad can route model requests through your account."
 ---
 
-import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
-import { Callout } from '/snippets/Callout.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 
 NodePad can use provider keys that belong to you or your organization. That is useful when you want usage, limits, and billing to stay attached to your own provider account.
 
 ## Why teams do this
 
-<FeatureGrid
-  cols={2}
-  items={[
-    { title: 'Keep spend where it belongs', body: 'Usage lands on your provider account instead of a shared platform pool.' },
-    { title: 'Use your own limits', body: "Your team's rate limits come from your provider relationship." },
-    { title: 'Match your security model', body: 'Enterprise teams often want provider credentials managed inside their own environment.' },
-    { title: 'Unlock deployment-specific models', body: 'Some model options may only appear once the relevant provider key is configured.' },
-  ]}
-/>
+- **Keep spend where it belongs.** Usage lands on your provider account instead of a shared platform pool.
+- **Use your own limits.** Your team's rate limits come from your provider relationship.
+- **Match your security model.** Enterprise teams often want provider credentials managed inside their own environment.
+- **Unlock deployment-specific models.** Some model options may only appear once the relevant provider key is configured.
 
 ## Where keys live
 
-- In the hosted product, a user can add keys through settings when that feature is enabled.
-- In self-hosted environments, operators often configure provider access at the deployment level.
+In the hosted product, a user can add keys through settings when that feature is enabled. In self-hosted environments, operators often configure provider access at the deployment level.
 
-<NumberedSteps
-  items={[
-    { title: 'Open Settings', body: 'Open the app settings and go to the area for API keys or provider configuration.' },
-    { title: 'Choose the provider', body: 'Select the provider you want NodePad to use through your account.' },
-    { title: 'Add your key', body: 'Paste the key, give it a label if you want one, and save it.' },
-    { title: 'Test and use it', body: 'Return to your workspace and choose one of the models exposed through that provider configuration.' },
-  ]}
-/>
+1. Open the app settings and go to the area for API keys or provider configuration.
+2. Select the provider you want NodePad to use through your account.
+3. Paste the key, give it a label if you want one, and save it.
+4. Return to your workspace and choose one of the models exposed through that provider configuration.
 
-<Callout tone="info">
-  The exact providers available depend on your NodePad environment. The UI lists only the providers that environment knows how to use.
-</Callout>
+The exact providers available depend on your NodePad environment. The UI lists only the providers that environment knows how to use.
 
 ## When you do not need BYOK
 
 If your current NodePad environment already exposes the models you need, you may not need to add anything. BYOK matters most when you want control over billing, throughput, compliance posture, or model availability.
 
-<Callout tone="note">
-  Removing a key can change what appears in the model picker. If a workspace depends on that provider, update the default model after the key change.
-</Callout>
+> Removing a key can change what appears in the model picker. If a workspace depends on that provider, update the default model after the key change.
+
+## Continue
+
+<NavList items={[
+  { title: 'Models in NodePad', body: 'How model selection fits into the workflow.', href: '/models/overview' },
+  { title: 'Self-hosting', body: 'Provider keys at the deployment level.', href: '/enterprise/self-hosting' },
+]} />

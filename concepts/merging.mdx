@@ -3,19 +3,10 @@ title: "Merging"
 description: "Combine messages from different branches into one new draft so the next step can synthesize multiple sources."
 ---
 
-import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
-import { Callout } from '/snippets/Callout.jsx';
-import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 
 Merging in NodePad is about source selection. You choose messages from different branches, open a new draft with those sources attached, and ask for the next step with that combined context. Each source appears on the canvas as a <EdgeChip type="merge">merge edge</EdgeChip>.
-
-<ProductScreenshot
-  light="/images/placeholder-light.svg"
-  dark="/images/placeholder-dark.svg"
-  alt="A merge composer drawing two source messages from different branches into one new draft."
-/>
 
 ## What merging is not
 
@@ -23,32 +14,27 @@ NodePad does not silently auto-summarize branches into one canonical answer. You
 
 ## Ways to start a merge
 
-<NumberedSteps
-  items={[
-    { title: 'Select messages from different branches', body: <>Multi-select messages that should feed the next draft, then choose <strong>Merge into new message</strong>.</> },
-    { title: 'Or drag a merge connection', body: 'If you prefer a visual flow, create merge connections across branches and then continue from a draft that has those sources attached.' },
-    { title: 'Review the source chips', body: 'The new draft shows the source messages it will pull from. Remove any that do not belong before you send.' },
-    { title: 'Ask for synthesis, comparison, or decision support', body: 'Send the merged draft with a prompt such as "compare these approaches," "write a recommendation," or "turn these findings into one concise brief."' },
-  ]}
-/>
+1. Multi-select messages that should feed the next draft, then choose **Merge into new message**.
+2. Or, if you prefer a visual flow, drag a merge connection across branches and continue from a draft that has those sources attached.
+3. The new draft shows the source chips it will pull from. Remove any that do not belong before you send.
+4. Send the merged draft with a prompt such as "compare these approaches," "write a recommendation," or "turn these findings into one concise brief."
 
 ## Good merge prompts
 
-<FeatureGrid
-  cols={2}
-  accent="merge"
-  items={[
-    { title: 'Compare', body: '"Compare these approaches and call out the tradeoffs."' },
-    { title: 'Decide', body: '"Given these two branches, recommend the next action and explain why."' },
-    { title: 'Synthesize', body: '"Turn these findings into one short summary for a product manager."' },
-    { title: 'Rewrite', body: '"Use the evidence from these branches to rewrite the draft introduction."' },
-  ]}
-/>
+- **Compare.** "Compare these approaches and call out the tradeoffs."
+- **Decide.** "Given these two branches, recommend the next action and explain why."
+- **Synthesize.** "Turn these findings into one short summary for a product manager."
+- **Rewrite.** "Use the evidence from these branches to rewrite the draft introduction."
 
 ## What happens to the source branches
 
 Nothing is lost. The source branches stay on the canvas, and the merged draft becomes one more node that can itself be branched from, referenced, or merged again later.
 
-<Callout tone="warning">
-  Merge more than one branch, not more than one idea at a time. If the source set is too broad, the next prompt becomes muddy fast.
-</Callout>
+> Merge more than one branch, not more than one idea at a time. If the source set is too broad, the next prompt becomes muddy fast.
+
+## Continue
+
+<NavList items={[
+  { title: 'References', body: 'Use `@` for one precise source instead of a synthesis draft.', href: '/concepts/references' },
+  { title: 'Forking', body: 'How branches get created in the first place.', href: '/concepts/forking' },
+]} />

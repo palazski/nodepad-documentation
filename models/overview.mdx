@@ -1,43 +1,30 @@
 ---
 title: "Models in NodePad"
-description: "Choose workspace defaults, switch models per message, and compare outputs across branches."
+description: "Workspace defaults, per-message overrides, and cross-branch comparison."
 ---
 
-import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
-import { Callout } from '/snippets/Callout.jsx';
+import { NavList } from '/snippets/NavList.jsx';
 
 NodePad treats models as part of the workflow, not a one-time setup choice. A workspace can have a default model, but any send can use a different one if that move makes more sense for the task.
 
-## The three model decisions you make
+## Three model decisions
 
-<FeatureGrid
-  cols={3}
-  items={[
-    { title: 'Workspace default', body: 'Pick the model you want new work in this workspace to start from.' },
-    { title: 'Per-message override', body: 'Change the model for a single send when a branch needs a different strength.', href: '/models/per-message-selection' },
-    { title: 'Cross-branch comparison', body: 'Run parallel branches with different models when you want to compare answers side by side.', href: '/concepts/forking' },
-  ]}
-/>
+You make three model decisions in NodePad. The **workspace default** is the model new work in this workspace starts from. A **per-message override** changes the model for a single send when a branch needs a different strength. A **cross-branch comparison** runs parallel branches with different models so you can compare answers side by side.
 
 ## Why this matters
 
-Different models are good at different things. NodePad lets you act on that without breaking the shape of the work.
+Different models are good at different things. NodePad lets you act on that without breaking the shape of the work. You can branch a prompt and ask two models the same question. You can keep one branch on a fast model and another on a slower, deeper one. You can preserve a workspace default while still making local overrides. You can bring your own keys when you want the provider relationship to stay with your account.
 
-You can:
-
-- branch a prompt and ask two models the same question
-- keep one branch on a fast model and another on a slower, deeper one
-- preserve a workspace default while still making local overrides
-- bring your own keys when you want the provider relationship to stay with your account
-
-<Callout tone="tip">
-  A clean branching strategy is what makes model comparison useful. If both branches start from the same point, you can compare the answers instead of comparing two unrelated prompt histories.
-</Callout>
+> A clean branching strategy is what makes model comparison useful. If both branches start from the same point, you can compare the answers instead of comparing two unrelated prompt histories.
 
 ## What the picker shows
 
-The exact model list depends on how your NodePad environment is configured. Hosted beta, enterprise deployments, and bring-your-own-key setups can expose different providers and model options.
+The exact model list depends on how your NodePad environment is configured. The hosted beta, enterprise deployments, and bring-your-own-key setups can expose different providers and model options. If you are self-hosting, the available models depend on the providers and keys your deployment exposes.
 
-<Callout tone="info">
-  If you are self-hosting, the available models depend on the providers and keys your deployment exposes. If you are using the hosted product, the picker shows the models available in that environment.
-</Callout>
+## Continue
+
+<NavList items={[
+  { title: 'Per-message model selection', body: 'Override the model on any individual send.', href: '/models/per-message-selection' },
+  { title: 'Bring your own keys', body: 'Route model requests through your own provider account.', href: '/models/bring-your-own-keys' },
+  { title: 'Forking', body: 'Branching is what makes model comparison clean.', href: '/concepts/forking' },
+]} />

@@ -1,26 +1,15 @@
 /* ==========================================================================
    NodePad documentation — design system
 
-   Single source of truth: /root/working/nodepad/src/index.css (the product app).
-   Every token here mirrors a specific line range from that file so the docs
-   visually read as the same product the reader is learning to use.
+   Typography-led. The page is structured by whitespace and heading hierarchy.
+   No bordered cards. No background patterns. One blue accent.
 
-   Block A — Tokens (light + dark)
-   Block B — Edge color vocabulary (teaching device)
-   Block C — Typography
-   Block D — Touch & overscroll
-   Block E — Mintlify shell selectors
-   Block F — Built-in component overrides
-   Block G — Background grid override
-   Block H — Motion library
-   Block I — Reduced motion + a11y
+   Tokens mirror the product app at /root/working/nodepad/src/index.css.
    ========================================================================== */
 
 
 /* ==========================================================================
-   Block A — Tokens
-   Mirrors product /root/working/nodepad/src/index.css :48-106 (light) and
-   :120-166 (dark). oklch primaries with hex fallback at the end.
+   Tokens
    ========================================================================== */
 
 :root {
@@ -35,79 +24,48 @@
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
-  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 120ms;
-  --duration-normal: 180ms;
-  --duration-slow: 280ms;
+  --duration-normal: 200ms;
 
   --background: oklch(1 0.003 250);
-  --foreground: oklch(0.145 0.005 250);
+  --foreground: oklch(0.18 0.005 250);
   --card: oklch(1 0.003 250);
-  --card-foreground: oklch(0.145 0.005 250);
-  --popover: oklch(1 0.003 250);
-  --popover-foreground: oklch(0.145 0.005 250);
   --primary: oklch(0.45 0.2 250);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0.003 250);
-  --secondary-foreground: oklch(0.205 0.005 250);
-  --muted: oklch(0.97 0.003 250);
-  --muted-foreground: oklch(0.556 0.005 250);
-  --accent: oklch(0.97 0.003 250);
-  --accent-foreground: oklch(0.205 0.005 250);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0.003 250);
-  --input: oklch(0.922 0.003 250);
-  --ring: oklch(0.45 0.2 250);
-}
+  --muted: oklch(0.965 0.004 250);
+  --muted-foreground: oklch(0.5 0.005 250);
+  --border: oklch(0.92 0.003 250);
 
-.dark {
-  --background: oklch(0.145 0.005 250);
-  --foreground: oklch(0.985 0.005 250);
-  --card: oklch(0.185 0.007 250);
-  --card-foreground: oklch(0.985 0.005 250);
-  --popover: oklch(0.185 0.007 250);
-  --popover-foreground: oklch(0.985 0.005 250);
-  --primary: oklch(0.55 0.18 250);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.24 0.008 250);
-  --secondary-foreground: oklch(0.985 0.005 250);
-  --muted: oklch(0.24 0.008 250);
-  --muted-foreground: oklch(0.65 0.01 250);
-  --accent: oklch(0.24 0.012 250);
-  --accent-foreground: oklch(0.985 0.005 250);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0.005 250 / 12%);
-  --input: oklch(1 0.005 250 / 15%);
-  --ring: oklch(0.55 0.18 250);
-}
+  --tone-tip-bg: oklch(0.97 0.04 145);
+  --tone-tip-fg: oklch(0.4 0.12 145);
+  --tone-warn-bg: oklch(0.97 0.04 27);
+  --tone-warn-fg: oklch(0.42 0.16 27);
 
-
-/* ==========================================================================
-   Block B — Edge color vocabulary
-   The same colors the user sees on canvas. Used as page-scoped accents on
-   /concepts/forking (blue), /concepts/merging (green), /concepts/references
-   (violet). EdgeChip snippet pulls from these. Mirrors product :94-105 +
-   :154-165.
-   ========================================================================== */
-
-:root {
   --color-edge-continuation: #6b7280;
   --color-edge-fork: #3b82f6;
-  --color-edge-merge: oklch(0.62 0.16 145);
-  --color-edge-reference: oklch(0.6 0.22 305);
-  --color-edge-merge-glow: oklch(0.62 0.16 145 / 35%);
-  --color-edge-reference-glow: oklch(0.6 0.22 305 / 35%);
+  --color-edge-merge: oklch(0.55 0.16 145);
+  --color-edge-reference: oklch(0.55 0.22 305);
 }
 
 .dark {
+  --background: oklch(0.13 0.005 250);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.16 0.006 250);
+  --primary: oklch(0.7 0.18 250);
+  --primary-foreground: oklch(0.13 0 0);
+  --muted: oklch(0.2 0.008 250);
+  --muted-foreground: oklch(0.62 0.01 250);
+  --border: oklch(1 0.005 250 / 10%);
+
+  --tone-tip-bg: oklch(0.22 0.05 145);
+  --tone-tip-fg: oklch(0.78 0.16 145);
+  --tone-warn-bg: oklch(0.22 0.05 27);
+  --tone-warn-fg: oklch(0.78 0.18 27);
+
   --color-edge-continuation: #9ca3af;
   --color-edge-fork: #60a5fa;
   --color-edge-merge: oklch(0.72 0.18 145);
   --color-edge-reference: oklch(0.7 0.22 305);
-  --color-edge-merge-glow: oklch(0.72 0.18 145 / 45%);
-  --color-edge-reference-glow: oklch(0.7 0.22 305 / 45%);
 }
 
 @supports not (color: oklch(0 0 0)) {
@@ -115,69 +73,123 @@
     --background: #ffffff;
     --foreground: #1a1a1a;
     --card: #ffffff;
-    --popover: #ffffff;
     --primary: #2563eb;
-    --secondary: #f5f6f7;
     --muted: #f5f6f7;
     --muted-foreground: #6b7280;
-    --accent: #f5f6f7;
-    --destructive: #dc2626;
     --border: #e5e7eb;
-    --input: #e5e7eb;
-    --ring: #2563eb;
-    --color-edge-merge: #22c55e;
-    --color-edge-reference: #a855f7;
-    --color-edge-merge-glow: rgba(34, 197, 94, 0.35);
-    --color-edge-reference-glow: rgba(168, 85, 247, 0.35);
+    --tone-tip-bg: #ecfdf5;
+    --tone-tip-fg: #047857;
+    --tone-warn-bg: #fef3c7;
+    --tone-warn-fg: #b45309;
+    --color-edge-merge: #16a34a;
+    --color-edge-reference: #9333ea;
   }
   .dark {
     --background: #0a0a0f;
     --foreground: #ededed;
-    --card: #161620;
-    --popover: #161620;
-    --primary: #3b82f6;
-    --secondary: #1f1f29;
+    --card: #16161c;
+    --primary: #60a5fa;
     --muted: #1f1f29;
     --muted-foreground: #9ca3af;
-    --accent: #24242f;
-    --border: rgba(255, 255, 255, 0.12);
-    --input: rgba(255, 255, 255, 0.15);
-    --ring: #3b82f6;
-    --color-edge-merge: #4ade80;
-    --color-edge-reference: #c084fc;
-    --color-edge-merge-glow: rgba(74, 222, 128, 0.45);
-    --color-edge-reference-glow: rgba(192, 132, 252, 0.45);
+    --border: rgba(255, 255, 255, 0.1);
+    --tone-tip-bg: #052e1a;
+    --tone-tip-fg: #4ade80;
+    --tone-warn-bg: #2a1d05;
+    --tone-warn-fg: #fbbf24;
   }
 }
 
 
 /* ==========================================================================
-   Block C — Typography
-   Geist for body + headings. Outfit reserved for the .brand-wordmark only
-   (mirrors product :202-207). System monospace stack mirrors product :902.
+   Typography — the heart of the system
    ========================================================================== */
 
 body {
   font-family: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--foreground);
+  background: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  color: var(--foreground);
-  background: var(--background);
 }
-
-h1, h2, h3, h4 {
-  text-wrap: balance;
-  letter-spacing: -0.01em;
-  color: var(--foreground);
-}
-
-h1 { letter-spacing: -0.02em; font-weight: 600; }
-h2 { letter-spacing: -0.015em; font-weight: 600; }
-h3, h4 { font-weight: 600; }
 
 code, pre, kbd, samp {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 4.5rem;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  text-wrap: pretty;
+  margin-block: 1rem;
+}
+
+article > p:first-of-type {
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+ul, ol {
+  margin-block: 1rem;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-block: 0.4rem;
+}
+
+li > ul, li > ol {
+  margin-block: 0.4rem;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
 .brand-wordmark {
@@ -186,15 +198,400 @@ code, pre, kbd, samp {
   font-weight: 500;
 }
 
-::selection {
-  background: var(--primary);
-  color: var(--primary-foreground);
+
+/* ==========================================================================
+   Links — the only persistent color
+   ========================================================================== */
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out-cubic);
+}
+
+@media (hover: hover) {
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 
 /* ==========================================================================
-   Block D — Touch & overscroll
-   Mirrors product :184-189 and :226-235. Prevents iOS Safari input zoom.
+   Backgrounds — strip every pattern decoration Mintlify might inject
+   ========================================================================== */
+
+[class*="background"][class*="decoration"],
+[data-decoration],
+[data-decoration="grid"],
+[data-decoration="gradient"],
+[data-decoration="windows"] {
+  background-image: none !important;
+  background: var(--background) !important;
+}
+
+
+/* ==========================================================================
+   Mintlify shell — quiet
+   ========================================================================== */
+
+#navbar {
+  border-bottom: none !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: var(--background) !important;
+}
+
+#sidebar,
+aside[id*="sidebar"] {
+  border-right: none !important;
+  background: var(--background);
+}
+
+#table-of-contents {
+  color: var(--muted-foreground);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#search-input {
+  border-radius: var(--radius-xl);
+  background: var(--muted);
+  border: none;
+}
+#search-input:focus-visible {
+  outline: 2px solid color-mix(in oklch, var(--primary), transparent 60%);
+  outline-offset: 2px;
+}
+
+[data-active="true"],
+[data-active-deepest="true"] {
+  background: var(--muted) !important;
+  border-radius: 9999px !important;
+  color: var(--foreground) !important;
+}
+
+
+/* ==========================================================================
+   Component overrides — soft, tinted, no chrome
+   ========================================================================== */
+
+card {
+  background: var(--muted) !important;
+  border: none !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: 1.5rem !important;
+  box-shadow: none !important;
+  transition: background var(--duration-fast) var(--ease-out-cubic);
+}
+@media (hover: hover) {
+  card:hover {
+    background: color-mix(in oklch, var(--muted), var(--foreground) 4%) !important;
+  }
+}
+
+accordion {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+step {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+callout,
+note,
+info,
+tip,
+check,
+warning,
+danger {
+  border: none !important;
+  border-left: none !important;
+  border-radius: var(--radius-2xl) !important;
+  box-shadow: none !important;
+  padding: 1.125rem 1.25rem !important;
+  margin-block: 1.5rem !important;
+}
+
+note,
+info,
+callout[data-tone="note"],
+callout[data-tone="info"] {
+  background: oklch(from var(--primary) 0.97 0.025 h) !important;
+  color: var(--foreground) !important;
+}
+.dark note,
+.dark info,
+.dark callout[data-tone="note"],
+.dark callout[data-tone="info"] {
+  background: oklch(from var(--primary) 0.22 0.04 h) !important;
+}
+
+tip,
+check,
+callout[data-tone="tip"],
+callout[data-tone="check"] {
+  background: var(--tone-tip-bg) !important;
+  color: var(--foreground) !important;
+}
+
+warning,
+danger,
+callout[data-tone="warning"],
+callout[data-tone="danger"] {
+  background: var(--tone-warn-bg) !important;
+  color: var(--foreground) !important;
+}
+
+frame,
+.np-figure {
+  border-radius: var(--radius-3xl) !important;
+  border: none !important;
+  background: var(--muted) !important;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.04),
+    0 24px 48px -16px rgba(0, 0, 0, 0.08) !important;
+  padding: 0 !important;
+  overflow: hidden;
+  margin-block: 2rem !important;
+}
+.dark frame,
+.dark .np-figure {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04),
+    0 24px 48px -16px rgba(0, 0, 0, 0.4) !important;
+}
+
+img {
+  border-radius: var(--radius-2xl);
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.np-figure img,
+.np-figure svg {
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.np-figure figcaption {
+  display: block;
+  padding: 0.75rem 1.25rem 1rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  text-align: center;
+  background: var(--muted);
+}
+
+pre {
+  background: oklch(0.97 0.005 60) !important;
+  border: none !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: none !important;
+  padding: 1.125rem 1.25rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  overflow-x: auto;
+}
+.dark pre {
+  background: oklch(0.2 0.005 60) !important;
+}
+
+:not(pre) > code {
+  background: var(--muted);
+  padding: 0.125em 0.4em;
+  border-radius: 6px;
+  font-size: 0.92em;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+table {
+  border-collapse: collapse;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin-block: 1.5rem;
+  font-size: 0.95em;
+  width: 100%;
+}
+
+thead {
+  background: transparent !important;
+}
+
+thead th {
+  font-weight: 600 !important;
+  text-align: left;
+  padding: 0.625rem 1rem !important;
+  border-bottom: 2px solid var(--foreground) !important;
+  background: transparent !important;
+}
+
+tbody td {
+  padding: 0.625rem 1rem !important;
+  border-bottom: 1px solid var(--border) !important;
+  background: transparent !important;
+}
+
+tbody tr {
+  background: transparent !important;
+}
+
+tbody tr:nth-child(even) td {
+  background: transparent !important;
+}
+
+blockquote {
+  border: none !important;
+  background: transparent !important;
+  padding: 0.5rem 0 0.5rem 1.5rem !important;
+  margin-block: 1.75rem !important;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--foreground);
+  border-radius: 0 !important;
+  position: relative;
+}
+blockquote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  width: 2px;
+  background: var(--border);
+  border-radius: 1px;
+}
+blockquote p {
+  font-size: 1.125rem;
+  color: var(--foreground);
+  margin-block: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-block: 3rem;
+}
+
+
+/* ==========================================================================
+   NavList — the only "navigation" primitive in the docs
+   ========================================================================== */
+
+.np-navlist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.np-navlist li {
+  margin: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.np-navlist a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  color: var(--foreground);
+  text-decoration: none !important;
+  transition: color var(--duration-fast) var(--ease-out-cubic);
+}
+
+.np-navlist .body {
+  display: block;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+
+.np-navlist .title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--foreground);
+  display: block;
+}
+
+.np-navlist .arrow {
+  display: inline-block;
+  color: var(--muted-foreground);
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 400;
+  transition: transform var(--duration-fast) var(--ease-out-cubic), color var(--duration-fast) var(--ease-out-cubic);
+}
+
+@media (hover: hover) {
+  .np-navlist a:hover .title {
+    color: var(--primary);
+  }
+  .np-navlist a:hover .arrow {
+    color: var(--primary);
+    transform: translateX(2px);
+  }
+}
+
+
+/* ==========================================================================
+   EdgeChip — inline canvas vocabulary in prose
+   ========================================================================== */
+
+.np-edge-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.55em;
+  font-size: 0.85em;
+  font-weight: 500;
+  line-height: 1.65;
+  border-radius: 9999px;
+  vertical-align: baseline;
+  white-space: nowrap;
+  border: 1px solid;
+}
+
+.np-edge-chip[data-type="fork"] {
+  color: var(--color-edge-fork);
+  border-color: color-mix(in oklch, var(--color-edge-fork), transparent 60%);
+  background: color-mix(in oklch, var(--color-edge-fork), transparent 92%);
+}
+.np-edge-chip[data-type="merge"] {
+  color: var(--color-edge-merge);
+  border-color: color-mix(in oklch, var(--color-edge-merge), transparent 60%);
+  background: color-mix(in oklch, var(--color-edge-merge), transparent 92%);
+}
+.np-edge-chip[data-type="reference"] {
+  color: var(--color-edge-reference);
+  border-color: color-mix(in oklch, var(--color-edge-reference), transparent 60%);
+  background: color-mix(in oklch, var(--color-edge-reference), transparent 92%);
+}
+.np-edge-chip[data-type="continuation"] {
+  color: var(--color-edge-continuation);
+  border-color: color-mix(in oklch, var(--color-edge-continuation), transparent 50%);
+  background: color-mix(in oklch, var(--color-edge-continuation), transparent 92%);
+}
+
+
+/* ==========================================================================
+   Touch / overscroll (from product app)
    ========================================================================== */
 
 button, a, [role="button"] {
@@ -217,393 +614,13 @@ html, body {
 
 
 /* ==========================================================================
-   Block E — Mintlify shell selectors
-   Stable IDs documented at https://mintlify.com/docs/customize/custom-scripts.
-   ========================================================================== */
-
-#navbar {
-  border-bottom: 1px solid var(--border);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background: color-mix(in oklch, var(--background) 80%, transparent);
-}
-
-#sidebar {
-  border-right: 1px solid var(--border);
-  background: var(--background);
-}
-
-#content-area {
-  padding-inline: clamp(16px, 3vw, 32px);
-}
-
-#page-title {
-  text-wrap: balance;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-#table-of-contents {
-  color: var(--muted-foreground);
-}
-
-#search-input {
-  border-radius: var(--radius);
-}
-#search-input:focus-visible {
-  outline: 2px solid color-mix(in oklch, var(--ring), transparent 50%);
-  outline-offset: 2px;
-}
-
-/* Sidebar active item — mirrors product workspace-item :412-430 */
-[data-active="true"],
-[data-active-deepest="true"] {
-  background: var(--accent) !important;
-  border-radius: var(--radius-md);
-  position: relative;
-}
-[data-active="true"]::before,
-[data-active-deepest="true"]::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) scaleY(1);
-  width: 2px;
-  height: 60%;
-  background: var(--primary);
-  border-radius: 1px;
-  transform-origin: center;
-  transition: transform var(--duration-normal) var(--ease-out-quint);
-}
-
-/* Per-section accent on edge-named pages */
-html[data-current-path^="/concepts/forking"] {
-  --primary: var(--color-edge-fork);
-  --ring: var(--color-edge-fork);
-}
-html[data-current-path^="/concepts/merging"] {
-  --primary: var(--color-edge-merge);
-  --ring: var(--color-edge-merge);
-}
-html[data-current-path^="/concepts/references"] {
-  --primary: var(--color-edge-reference);
-  --ring: var(--color-edge-reference);
-}
-
-
-/* ==========================================================================
-   Block F — Component overrides
-   Targets Mintlify's documented element selectors (card, accordion, step,
-   callout, frame). Pulls shadows + transitions from product :374-407.
-   ========================================================================== */
-
-card {
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border) !important;
-  background: var(--card);
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%);
-  transition:
-    transform var(--duration-fast) var(--ease-out-cubic),
-    box-shadow var(--duration-fast) var(--ease-out-cubic),
-    border-color var(--duration-fast) var(--ease-out-cubic);
-}
-@media (hover: hover) {
-  card:hover {
-    transform: translateY(-1px);
-    box-shadow:
-      0 2px 4px oklch(0 0 0 / 8%),
-      0 4px 12px oklch(0 0 0 / 6%);
-    border-color: color-mix(in oklch, var(--border) 70%, var(--primary)) !important;
-  }
-}
-card:active {
-  transform: scale(0.98);
-}
-.dark card {
-  box-shadow:
-    0 1px 3px oklch(0 0 0 / 25%),
-    0 4px 12px oklch(0 0 0 / 15%);
-}
-@media (hover: hover) {
-  .dark card:hover {
-    box-shadow:
-      0 2px 6px oklch(0 0 0 / 30%),
-      0 8px 20px oklch(0 0 0 / 20%);
-  }
-}
-
-accordion {
-  border-radius: var(--radius);
-  border: 1px solid var(--border) !important;
-  background: var(--card);
-  box-shadow: none !important;
-}
-
-step {
-  /* Mintlify's step number circle */
-  --step-number-bg: color-mix(in oklch, var(--primary), transparent 88%);
-  --step-number-color: var(--primary);
-}
-
-callout {
-  border-radius: var(--radius-lg);
-  background: var(--card);
-  border: 1px solid var(--border) !important;
-  border-left-width: 3px !important;
-  box-shadow: none !important;
-}
-callout[data-tone="note"],
-callout[data-tone="info"],
-note, info {
-  border-left-color: var(--ring) !important;
-}
-callout[data-tone="tip"],
-callout[data-tone="check"],
-tip, check {
-  border-left-color: var(--color-edge-merge) !important;
-}
-callout[data-tone="warning"],
-warning {
-  border-left-color: var(--destructive) !important;
-}
-callout[data-tone="danger"],
-danger {
-  border-left-color: var(--destructive) !important;
-}
-
-frame {
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border) !important;
-  box-shadow:
-    0 4px 8px oklch(0 0 0 / 10%),
-    0 8px 24px oklch(0 0 0 / 8%);
-  padding: 4px;
-  background: var(--card);
-}
-.dark frame {
-  box-shadow:
-    0 4px 12px oklch(0 0 0 / 35%),
-    0 12px 32px oklch(0 0 0 / 25%);
-}
-
-pre {
-  border-radius: var(--radius-md) !important;
-  border: 1px solid var(--border) !important;
-  background: var(--secondary) !important;
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%) !important;
-}
-
-code {
-  font-size: 0.9em;
-}
-
-table {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--border) !important;
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%);
-}
-thead tr,
-tbody tr {
-  border-color: var(--border) !important;
-}
-thead {
-  background: var(--secondary);
-}
-thead th {
-  font-weight: 600;
-  border-bottom: 2px solid var(--border) !important;
-}
-tbody tr:nth-child(even) td {
-  background: oklch(0.5 0 0 / 5%);
-}
-
-blockquote {
-  border-left: 3px solid var(--border);
-  background: transparent;
-  color: var(--muted-foreground);
-  border-radius: 0;
-  padding: 0.25em 0 0.25em 0.75em;
-}
-
-a {
-  color: var(--primary);
-  transition: color var(--duration-fast) var(--ease-out-cubic);
-}
-@media (hover: hover) {
-  a:hover {
-    color: color-mix(in oklch, var(--primary), var(--foreground) 25%);
-  }
-}
-
-img {
-  border-radius: var(--radius);
-}
-
-hr {
-  border-color: var(--border);
-}
-
-
-/* ==========================================================================
-   Block G — Background grid override
-   Mintlify's "grid" decoration ships its own colors. Override the rendered
-   element to use --border at 60×60 (matches the product canvas grid).
-   ========================================================================== */
-
-[class*="grid"][class*="background"],
-[class*="background"][class*="grid"],
-[data-decoration="grid"] {
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px) !important;
-  background-size: 60px 60px !important;
-  opacity: 0.5;
-}
-.dark [class*="grid"][class*="background"],
-.dark [class*="background"][class*="grid"],
-.dark [data-decoration="grid"] {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) !important;
-}
-
-
-/* ==========================================================================
-   Block H — Motion library
-   Lifted from product :250-347. Same animation vocabulary as the app.
-   ========================================================================== */
-
-@keyframes np-fade-in-up {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes np-fade-out-down {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(6px); }
-}
-@keyframes np-scale-in {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes np-slide-in-left {
-  from { opacity: 0; transform: translateX(-8px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes np-slide-in-right {
-  from { opacity: 0; transform: translateX(8px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes np-slide-in-top {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes np-pulse-ring {
-  0%   { box-shadow: 0 0 0 0 oklch(0.55 0.18 250 / 40%); }
-  70%  { box-shadow: 0 0 0 4px oklch(0.55 0.18 250 / 0%); }
-  100% { box-shadow: 0 0 0 0 oklch(0.55 0.18 250 / 0%); }
-}
-
-/* Page entry — first three children of the article fade up in sequence */
-#content-area > article > *:nth-child(1) {
-  animation: np-fade-in-up var(--duration-normal) var(--ease-out-quint) both;
-}
-#content-area > article > *:nth-child(2) {
-  animation: np-fade-in-up var(--duration-normal) var(--ease-out-quint) both;
-  animation-delay: 80ms;
-}
-#content-area > article > *:nth-child(3) {
-  animation: np-fade-in-up var(--duration-normal) var(--ease-out-quint) both;
-  animation-delay: 160ms;
-}
-
-/* Theme-switch quiet (mirrors product :238-243) */
-.no-transitions,
-.no-transitions *,
-.no-transitions *::before,
-.no-transitions *::after {
-  transition: none !important;
-}
-
-/* Utility shadow classes available to snippets */
-.shadow-node {
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%);
-}
-.dark .shadow-node {
-  box-shadow:
-    0 1px 3px oklch(0 0 0 / 25%),
-    0 4px 12px oklch(0 0 0 / 15%);
-}
-.shadow-elevated {
-  box-shadow:
-    0 4px 8px oklch(0 0 0 / 10%),
-    0 8px 24px oklch(0 0 0 / 8%);
-}
-.dark .shadow-elevated {
-  box-shadow:
-    0 4px 12px oklch(0 0 0 / 35%),
-    0 12px 32px oklch(0 0 0 / 25%);
-}
-
-/* Scroll reveal — modern CSS, falls back to "instantly visible" */
-@supports (animation-timeline: view()) {
-  .reveal {
-    animation: np-fade-in-up linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 40%;
-  }
-}
-
-
-/* ==========================================================================
-   Block I — Reduced motion + a11y
-   Mirrors product :213-220 + focus / scrollbar conventions.
+   Accessibility
    ========================================================================== */
 
 :focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 2px solid color-mix(in oklch, var(--primary), transparent 50%);
   outline-offset: 2px;
-  border-radius: var(--radius-md);
-}
-
-nav a,
-button,
-summary,
-[role="button"],
-header a,
-aside a {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-}
-
-/* Custom scrollbar — mirrors product :747-792 */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: oklch(0.5 0 0 / 25%) transparent;
-}
-*::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-*::-webkit-scrollbar-thumb {
-  background: oklch(0.5 0 0 / 25%);
-  border-radius: 3px;
-}
-*::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.5 0 0 / 45%);
+  border-radius: 6px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -613,403 +630,4 @@ aside a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-
-/* ==========================================================================
-   Snippet utility classes
-   Used by /snippets/*.jsx to opt into specific looks without inline styles.
-   ========================================================================== */
-
-/* Eyebrow — used in HeroBlock and SectionHeading */
-.np-eyebrow {
-  display: inline-block;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted-foreground);
-}
-
-/* HeroBlock layout */
-.np-hero {
-  display: grid;
-  gap: 2rem;
-  align-items: center;
-  padding-block: clamp(2rem, 5vw, 4rem);
-}
-@media (min-width: 768px) {
-  .np-hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 3rem;
-  }
-}
-.np-hero h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.05;
-  margin: 0.5rem 0 1rem;
-}
-.np-hero p.lead {
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
-  line-height: 1.6;
-  color: var(--muted-foreground);
-  margin: 0 0 1.5rem;
-  text-wrap: pretty;
-}
-.np-hero .ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-/* HeroBlock CTA — primary + secondary variants */
-.np-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  height: 40px;
-  padding: 0 1rem;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  border-radius: var(--radius);
-  text-decoration: none !important;
-  transition:
-    background var(--duration-fast) var(--ease-out-cubic),
-    transform var(--duration-fast) var(--ease-out-cubic),
-    box-shadow var(--duration-fast) var(--ease-out-cubic);
-}
-.np-cta-primary {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%);
-}
-@media (hover: hover) {
-  .np-cta-primary:hover {
-    background: color-mix(in oklch, var(--primary), var(--foreground) 12%);
-    transform: translateY(-1px);
-  }
-}
-.np-cta-primary:active {
-  transform: scale(0.97);
-}
-.np-cta-secondary {
-  background: var(--card);
-  color: var(--foreground);
-  border: 1px solid var(--border);
-}
-@media (hover: hover) {
-  .np-cta-secondary:hover {
-    background: var(--muted);
-    transform: translateY(-1px);
-  }
-}
-.np-cta-secondary:active {
-  transform: scale(0.97);
-}
-
-/* Numbered steps — "01 / 02 / 03" mono numbers */
-.np-numbered-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-block: 1.5rem;
-}
-.np-numbered-step {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: auto minmax(0, 1fr);
-  padding: 1.25rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%);
-}
-.dark .np-numbered-step {
-  box-shadow:
-    0 1px 3px oklch(0 0 0 / 25%),
-    0 4px 12px oklch(0 0 0 / 15%);
-}
-.np-numbered-step .num {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-feature-settings: "tnum", "zero";
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--muted-foreground);
-  letter-spacing: 0.05em;
-  align-self: start;
-  padding-top: 0.25rem;
-  min-width: 2.5em;
-}
-.np-numbered-step .body h3 {
-  margin: 0 0 0.375rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-.np-numbered-step .body > :last-child {
-  margin-bottom: 0;
-}
-
-/* Edge chip — visually mirrors a canvas merge/reference chip */
-.np-edge-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 8px;
-  margin: 0 1px;
-  font-size: 0.85em;
-  font-weight: 500;
-  font-feature-settings: "tnum", "zero";
-  line-height: 1.4;
-  color: var(--foreground);
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  vertical-align: baseline;
-  white-space: nowrap;
-}
-.np-edge-chip[data-type="fork"] {
-  border-color: color-mix(in oklch, var(--color-edge-fork), transparent 60%);
-}
-.np-edge-chip[data-type="merge"] {
-  border-color: color-mix(in oklch, var(--color-edge-merge), transparent 60%);
-}
-.np-edge-chip[data-type="reference"] {
-  border-color: color-mix(in oklch, var(--color-edge-reference), transparent 60%);
-}
-.np-edge-chip[data-type="continuation"] {
-  border-color: color-mix(in oklch, var(--color-edge-continuation), transparent 60%);
-}
-.np-edge-chip .dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 9999px;
-  margin-right: 6px;
-  flex-shrink: 0;
-}
-.np-edge-chip[data-type="fork"] .dot { background: var(--color-edge-fork); }
-.np-edge-chip[data-type="merge"] .dot { background: var(--color-edge-merge); }
-.np-edge-chip[data-type="reference"] .dot { background: var(--color-edge-reference); }
-.np-edge-chip[data-type="continuation"] .dot { background: var(--color-edge-continuation); }
-
-/* DiagramFrame */
-.np-diagram-frame {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  background: var(--card);
-  box-shadow:
-    0 4px 8px oklch(0 0 0 / 10%),
-    0 8px 24px oklch(0 0 0 / 8%);
-  padding: 4px;
-  margin-block: 1.5rem;
-  overflow: hidden;
-}
-.dark .np-diagram-frame {
-  box-shadow:
-    0 4px 12px oklch(0 0 0 / 35%),
-    0 12px 32px oklch(0 0 0 / 25%);
-}
-.np-diagram-frame img,
-.np-diagram-frame svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: calc(var(--radius-xl) - 4px);
-  margin: 0;
-  border: none;
-  box-shadow: none;
-}
-.np-diagram-caption {
-  display: block;
-  padding: 0.5rem 0.75rem 0.25rem;
-  font-size: 0.85em;
-  color: var(--muted-foreground);
-  text-align: center;
-}
-
-/* FeatureGrid — accent prop colors the top hairline */
-.np-feature-grid {
-  display: grid;
-  gap: 1rem;
-  margin-block: 1.5rem;
-}
-.np-feature-grid[data-cols="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.np-feature-grid[data-cols="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.np-feature-grid[data-cols="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-@media (max-width: 768px) {
-  .np-feature-grid[data-cols="2"],
-  .np-feature-grid[data-cols="3"],
-  .np-feature-grid[data-cols="4"] {
-    grid-template-columns: 1fr;
-  }
-}
-@media (min-width: 768px) and (max-width: 1024px) {
-  .np-feature-grid[data-cols="3"],
-  .np-feature-grid[data-cols="4"] {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-.np-feature-tile {
-  position: relative;
-  display: block;
-  padding: 1.25rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-  color: inherit;
-  text-decoration: none !important;
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%);
-  transition:
-    transform var(--duration-fast) var(--ease-out-cubic),
-    box-shadow var(--duration-fast) var(--ease-out-cubic),
-    border-color var(--duration-fast) var(--ease-out-cubic);
-}
-.dark .np-feature-tile {
-  box-shadow:
-    0 1px 3px oklch(0 0 0 / 25%),
-    0 4px 12px oklch(0 0 0 / 15%);
-}
-@media (hover: hover) {
-  .np-feature-tile:hover {
-    transform: translateY(-1px);
-    border-color: color-mix(in oklch, var(--border) 60%, var(--primary));
-    box-shadow:
-      0 2px 4px oklch(0 0 0 / 8%),
-      0 4px 12px oklch(0 0 0 / 6%);
-  }
-  .dark .np-feature-tile:hover {
-    box-shadow:
-      0 2px 6px oklch(0 0 0 / 30%),
-      0 8px 20px oklch(0 0 0 / 20%);
-  }
-}
-.np-feature-tile:active {
-  transform: scale(0.99);
-}
-.np-feature-grid[data-accent="fork"] .np-feature-tile {
-  border-top: 2px solid var(--color-edge-fork);
-}
-.np-feature-grid[data-accent="merge"] .np-feature-tile {
-  border-top: 2px solid var(--color-edge-merge);
-}
-.np-feature-grid[data-accent="reference"] .np-feature-tile {
-  border-top: 2px solid var(--color-edge-reference);
-}
-.np-feature-grid[data-accent="continuation"] .np-feature-tile {
-  border-top: 2px solid var(--color-edge-continuation);
-}
-.np-feature-tile h3 {
-  margin: 0 0 0.375rem;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.np-feature-tile p {
-  margin: 0;
-  font-size: 0.9em;
-  color: var(--muted-foreground);
-  line-height: 1.5;
-}
-.np-feature-tile .icon {
-  display: inline-flex;
-  margin-bottom: 0.5rem;
-  color: var(--primary);
-}
-
-/* CompareTable — two-column "use this when / use that when" */
-.np-compare-table {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  margin-block: 1.5rem;
-}
-@media (min-width: 768px) {
-  .np-compare-table {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-.np-compare-col {
-  padding: 1.25rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-  box-shadow:
-    0 1px 2px oklch(0 0 0 / 6%),
-    0 2px 6px oklch(0 0 0 / 4%);
-}
-.dark .np-compare-col {
-  box-shadow:
-    0 1px 3px oklch(0 0 0 / 25%),
-    0 4px 12px oklch(0 0 0 / 15%);
-}
-.np-compare-col[data-accent="fork"] { border-top: 2px solid var(--color-edge-fork); }
-.np-compare-col[data-accent="merge"] { border-top: 2px solid var(--color-edge-merge); }
-.np-compare-col[data-accent="reference"] { border-top: 2px solid var(--color-edge-reference); }
-.np-compare-col h3 {
-  margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-.np-compare-col ul {
-  margin: 0;
-  padding-left: 1.1em;
-  font-size: 0.9em;
-  color: var(--muted-foreground);
-}
-
-/* ReleaseTile — minimal timeline entry */
-.np-release-tile {
-  position: relative;
-  padding: 1.25rem 1.25rem 1.25rem 2rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--card);
-  margin-block: 1rem;
-}
-.np-release-tile::before {
-  content: '';
-  position: absolute;
-  left: 0.75rem;
-  top: 1.5rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background: var(--primary);
-  box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary), transparent 80%);
-}
-.np-release-tile .meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-.np-release-tile .version {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  padding: 1px 8px;
-  border-radius: 9999px;
-  background: var(--muted);
-  color: var(--foreground);
-}
-.np-release-tile .date {
-  font-size: 12px;
-  color: var(--muted-foreground);
-}
-.np-release-tile h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
-}
-.np-release-tile .body {
-  font-size: 0.9em;
-  color: var(--muted-foreground);
 }
