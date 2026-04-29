@@ -26,7 +26,8 @@
 
   --background: #ffffff;
   --foreground: oklch(0.18 0.005 250);
-  --card: oklch(0.985 0.003 250);
+  /* Card == background — no tinted slab on content */
+  --card: #ffffff;
   --primary: oklch(0.45 0.2 250);
   --primary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.965 0.004 250);
@@ -43,11 +44,11 @@
   --color-edge-reference: oklch(0.55 0.22 305);
 }
 
-/* DARK: pure black body, slightly raised cards. No grey-on-black mismatch. */
 .dark {
   --background: #0a0a0a;
   --foreground: oklch(0.96 0 0);
-  --card: oklch(0.165 0 0);
+  /* Card == background in dark too */
+  --card: #0a0a0a;
   --primary: oklch(0.7 0.18 250);
   --primary-foreground: oklch(0.13 0 0);
   --muted: oklch(0.18 0 0);
@@ -68,7 +69,7 @@
   :root {
     --background: #ffffff;
     --foreground: #1a1a1a;
-    --card: #fafafa;
+    --card: #ffffff;
     --primary: #2563eb;
     --muted: #f5f6f7;
     --muted-foreground: #6b7280;
@@ -82,7 +83,7 @@
   .dark {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --card: #161616;
+    --card: #0a0a0a;
     --primary: #60a5fa;
     --muted: #1c1c1c;
     --muted-foreground: #9ca3af;
@@ -113,74 +114,78 @@ code, pre, kbd, samp {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+/* Headings — left-aligned and Outfit. Scoped under article so we don't
+   touch sidebar / TOC / navbar headings. */
+article h1, article h2, article h3, article h4, article h5, article h6,
+#page-title,
+[class*="page-title"],
+[class*="PageTitle"],
+[data-component-name="PageTitle"],
+header[class*="page"] h1,
+header[class*="header"] h1 {
+  font-family: 'Outfit', 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important;
   color: var(--foreground);
   text-align: left !important;
   text-wrap: balance;
 }
 
-h1, #page-title {
-  font-family: 'Outfit', 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important;
-  font-size: clamp(2.25rem, 5vw, 3.25rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  text-align: left !important;
-  margin-bottom: 1rem;
+article h1, #page-title, [class*="PageTitle"] {
+  font-size: clamp(2.25rem, 5vw, 3.25rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+  margin-bottom: 1rem !important;
 }
 
-h2 {
+article h2 {
   font-size: clamp(1.5rem, 3vw, 1.875rem);
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.25;
   margin-top: 4rem;
   margin-bottom: 1.125rem;
-  text-align: left !important;
 }
 
-h3 {
+article h3 {
   font-size: 1.3125rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.3;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
-  text-align: left !important;
 }
 
-h4 {
+article h4 {
   font-size: 1.0625rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-  text-align: left !important;
 }
 
-p {
+article p {
   text-wrap: pretty;
   text-align: left;
   margin-block: 1rem;
 }
 
-article > p:first-of-type {
+article > p:first-of-type,
+article > div > p:first-of-type {
   font-size: 1.1875rem;
   line-height: 1.6;
   color: var(--muted-foreground);
   margin-bottom: 1.5rem;
 }
 
-ul, ol {
+article ul, article ol {
   margin-block: 1rem;
   padding-left: 1.5em;
 }
 
-li {
+article li {
   margin-block: 0.4rem;
 }
 
-li > ul, li > ol {
+article li > ul, article li > ol {
   margin-block: 0.4rem;
 }
 
@@ -205,7 +210,13 @@ strong {
    Links
    ========================================================================== */
 
-a {
+article a, .np-navlist a {
+  color: inherit;
+}
+
+article p a,
+article li a,
+article blockquote a {
   color: var(--primary);
   text-decoration: none;
   text-underline-offset: 3px;
@@ -214,14 +225,16 @@ a {
 }
 
 @media (hover: hover) {
-  a:hover {
+  article p a:hover,
+  article li a:hover,
+  article blockquote a:hover {
     text-decoration: underline;
   }
 }
 
 
 /* ==========================================================================
-   Backgrounds — strip every pattern decoration
+   Strip every pattern decoration
    ========================================================================== */
 
 [class*="background"][class*="decoration"],
@@ -235,8 +248,7 @@ a {
 
 
 /* ==========================================================================
-   Mintlify shell — page margins, larger logo, centered search,
-   compact and hierarchical sidebar
+   Mintlify shell — quiet, with breathing room
    ========================================================================== */
 
 #navbar {
@@ -257,7 +269,7 @@ header svg[role="img"] {
   max-height: 32px;
 }
 
-/* Search bar: visually centered in the navbar */
+/* Search bar — pill, soft tint, centered (max-width caps it) */
 #search-input,
 [id*="search"] input[type="search"],
 [id*="search"] input[type="text"] {
@@ -278,61 +290,28 @@ header svg[role="img"] {
   border-color: var(--border) !important;
 }
 
-/* Page margins — wider gutters around the content */
-#content-area,
-main[role="main"],
-[class*="content-area"] {
-  padding-inline: clamp(24px, 5vw, 64px) !important;
-  padding-top: 2rem !important;
-  padding-bottom: 4rem !important;
+/* Article: comfortable max-width so prose breathes without being shifted */
+article {
+  max-width: 760px;
 }
 
-/* Sidebar — let Mintlify defaults handle most of it,
-   only adjust spacing and group-header hierarchy */
+/* Sidebar — minimal overrides, just spacing + hierarchy */
 #sidebar,
 aside[id*="sidebar"] {
   background: var(--background);
 }
 
-/* Compact sidebar list: tighter row height + smaller padding */
+/* Compact sidebar list */
 #sidebar a,
 #sidebar [role="link"],
-#sidebar [data-active],
 aside[id*="sidebar"] a {
   padding-block: 0.3rem !important;
   padding-inline: 0.625rem !important;
   font-size: 13.5px !important;
   line-height: 1.45 !important;
   min-height: 0 !important;
-}
-
-/* Sidebar group headers: muted + smaller, gives clear hierarchy */
-#sidebar [role="heading"],
-#sidebar h2, #sidebar h3, #sidebar h4,
-#sidebar [class*="group"][class*="header"],
-#sidebar [class*="group"][class*="title"],
-#sidebar [class*="GroupHeader"],
-#sidebar [class*="group-header"],
-#sidebar [class*="sidebar-group-title"],
-aside[id*="sidebar"] [role="heading"],
-aside[id*="sidebar"] [class*="group"][class*="title"] {
-  color: var(--muted-foreground-soft) !important;
-  font-size: 11.5px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-  text-transform: uppercase;
-  margin-top: 1.25rem !important;
-  margin-bottom: 0.25rem !important;
-  padding-inline: 0.625rem !important;
-}
-
-/* Sidebar items: muted by default, full-color when active. Hover keeps
-   text strong but adds a subtle background. */
-#sidebar a,
-#sidebar [role="link"],
-aside[id*="sidebar"] a {
-  color: var(--muted-foreground) !important;
   border-radius: var(--radius-md) !important;
+  color: var(--muted-foreground) !important;
   transition: background var(--duration-fast) var(--ease-out-cubic),
               color var(--duration-fast) var(--ease-out-cubic);
 }
@@ -354,34 +333,113 @@ aside[id*="sidebar"] [data-active="true"] {
   border-radius: var(--radius-md) !important;
 }
 
-/* Right TOC: muted text, current item primary blue */
-#table-of-contents,
-[id*="table-of-contents"],
-[id*="toc"] {
-  color: var(--muted-foreground) !important;
-  font-size: 12.5px !important;
-  line-height: 1.55 !important;
-}
-
-#table-of-contents a {
-  color: var(--muted-foreground) !important;
-  padding-block: 0.2rem !important;
-}
-
-#table-of-contents [data-active="true"],
-#table-of-contents .active,
-#table-of-contents [aria-current="true"] {
-  color: var(--primary) !important;
+/* Sidebar group headers — uppercase, muted, smaller */
+#sidebar [role="heading"],
+#sidebar h2, #sidebar h3, #sidebar h4,
+#sidebar [class*="group"][class*="header"],
+#sidebar [class*="group"][class*="title"],
+#sidebar [class*="GroupHeader"],
+#sidebar [class*="group-header"],
+#sidebar [class*="sidebar-group-title"],
+aside[id*="sidebar"] [role="heading"],
+aside[id*="sidebar"] [class*="group"][class*="title"] {
+  color: var(--muted-foreground-soft) !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.25rem !important;
+  padding-inline: 0.625rem !important;
 }
 
 
 /* ==========================================================================
-   Component overrides — soft, tinted, no chrome
+   Right TOC — vertical-rail "On this page" pattern
+   ========================================================================== */
+
+#table-of-contents,
+[id*="table-of-contents"],
+nav[aria-label*="On this page" i],
+nav[aria-label*="table of contents" i] {
+  padding: 1.5rem 1.25rem 2rem !important;
+  margin-top: 1rem !important;
+  font-size: 12.5px !important;
+  line-height: 1.55 !important;
+  color: var(--muted-foreground) !important;
+}
+
+#table-of-contents ul,
+nav[aria-label*="On this page" i] ul,
+nav[aria-label*="table of contents" i] ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-left: 1px solid var(--border);
+}
+
+#table-of-contents li,
+nav[aria-label*="On this page" i] li {
+  position: relative;
+  margin: 0 !important;
+}
+
+#table-of-contents a,
+nav[aria-label*="On this page" i] a {
+  display: block !important;
+  padding: 0.45rem 1rem !important;
+  color: var(--muted-foreground) !important;
+  font-size: 12.5px !important;
+  text-decoration: none !important;
+  border-radius: 0 !important;
+  transition: color var(--duration-fast) var(--ease-out-cubic);
+}
+
+@media (hover: hover) {
+  #table-of-contents a:hover,
+  nav[aria-label*="On this page" i] a:hover {
+    color: var(--foreground) !important;
+  }
+}
+
+/* Active item: 2px primary segment overlaying the rail + bold + foreground */
+#table-of-contents a[aria-current="true"],
+#table-of-contents li[data-active="true"] > a,
+#table-of-contents .active,
+#table-of-contents [data-active="true"] {
+  color: var(--foreground) !important;
+  font-weight: 500 !important;
+}
+
+#table-of-contents a[aria-current="true"]::before,
+#table-of-contents li[data-active="true"] > a::before,
+#table-of-contents [data-active="true"] > a::before,
+nav[aria-label*="On this page" i] a[aria-current="true"]::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0.55rem;
+  bottom: 0.55rem;
+  width: 2px;
+  background: var(--primary);
+  border-radius: 1px;
+}
+
+/* Indent nested (h3) items under their h2 parent */
+#table-of-contents li li a,
+nav[aria-label*="On this page" i] li li a {
+  padding-left: 1.75rem !important;
+  font-size: 12px !important;
+}
+
+
+/* ==========================================================================
+   Component overrides — soft, no chrome, all radii ≥18px
    ========================================================================== */
 
 card {
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
+  background: var(--muted) !important;
+  border: none !important;
   border-radius: var(--radius-2xl) !important;
   padding: 1.5rem !important;
   box-shadow: none !important;
@@ -389,7 +447,7 @@ card {
 }
 @media (hover: hover) {
   card:hover {
-    background: color-mix(in oklch, var(--card), var(--foreground) 4%) !important;
+    background: color-mix(in oklch, var(--muted), var(--foreground) 4%) !important;
   }
 }
 
@@ -414,7 +472,7 @@ tip,
 check,
 warning,
 danger {
-  border: 1px solid var(--border) !important;
+  border: none !important;
   border-left: none !important;
   border-radius: var(--radius-2xl) !important;
   box-shadow: none !important;
@@ -426,7 +484,7 @@ note,
 info,
 callout[data-tone="note"],
 callout[data-tone="info"] {
-  background: var(--card) !important;
+  background: var(--muted) !important;
   color: var(--foreground) !important;
 }
 
@@ -435,7 +493,6 @@ check,
 callout[data-tone="tip"],
 callout[data-tone="check"] {
   background: var(--tone-tip-bg) !important;
-  border-color: color-mix(in oklch, var(--tone-tip-bg), var(--foreground) 12%) !important;
   color: var(--foreground) !important;
 }
 
@@ -444,14 +501,13 @@ danger,
 callout[data-tone="warning"],
 callout[data-tone="danger"] {
   background: var(--tone-warn-bg) !important;
-  border-color: color-mix(in oklch, var(--tone-warn-bg), var(--foreground) 12%) !important;
   color: var(--foreground) !important;
 }
 
 frame {
   border-radius: var(--radius-3xl) !important;
-  border: 1px solid var(--border) !important;
-  background: var(--card) !important;
+  border: none !important;
+  background: var(--muted) !important;
   padding: 0 !important;
   overflow: hidden;
   margin-block: 2rem !important;
@@ -464,11 +520,11 @@ img {
   height: auto;
 }
 
-/* Code blocks */
+/* Code blocks: tinted muted bg, big radius, no border */
 pre {
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-xl) !important;
+  background: var(--muted) !important;
+  border: none !important;
+  border-radius: var(--radius-2xl) !important;
   box-shadow: none !important;
   padding: 1.125rem 1.25rem !important;
   font-size: 0.875rem !important;
@@ -567,9 +623,10 @@ hr {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 1rem;
-  padding: 1.125rem 0.25rem;
+  padding: 1.125rem 0.5rem;
   color: var(--foreground);
   text-decoration: none !important;
+  border-radius: var(--radius-md);
   transition: background var(--duration-fast) var(--ease-out-cubic),
               color var(--duration-fast) var(--ease-out-cubic);
 }
