@@ -18,16 +18,18 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
   --duration-fast: 120ms;
   --duration-normal: 200ms;
 
-  --background: #ffffff;
-  --foreground: oklch(0.18 0.005 250);
+  /* Tokens mirror nodepad/ (the React app) — single cool-blue undertone (hue 250). */
+  --background: oklch(1 0.003 250);
+  --foreground: oklch(0.145 0.005 250);
   /* Card == background — no tinted slab on content */
-  --card: #ffffff;
+  --card: oklch(1 0.003 250);
   --primary: oklch(0.45 0.2 250);
   --primary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.965 0.004 250);
@@ -35,8 +37,11 @@
   --muted-foreground-soft: oklch(0.62 0.005 250);
   --border: oklch(0.92 0.003 250);
 
-  --tone-tip-bg: oklch(0.97 0.04 145);
-  --tone-warn-bg: oklch(0.97 0.04 27);
+  /* Tone accents (rails, icons, labels) — never used as backgrounds. */
+  --tone-note: var(--primary);
+  --tone-tip: oklch(0.55 0.16 145);
+  --tone-warn: oklch(0.65 0.18 50);
+  --tone-danger: oklch(0.6 0.22 27);
 
   --color-edge-continuation: #6b7280;
   --color-edge-fork: #3b82f6;
@@ -45,19 +50,20 @@
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: oklch(0.96 0 0);
-  /* Card == background in dark too */
-  --card: #0a0a0a;
-  --primary: oklch(0.7 0.18 250);
-  --primary-foreground: oklch(0.13 0 0);
-  --muted: oklch(0.18 0 0);
-  --muted-foreground: oklch(0.62 0 0);
-  --muted-foreground-soft: oklch(0.48 0 0);
-  --border: oklch(1 0 0 / 8%);
+  --background: oklch(0.145 0.005 250);
+  --foreground: oklch(0.985 0.005 250);
+  --card: oklch(0.145 0.005 250);
+  --primary: oklch(0.55 0.18 250);
+  --primary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.185 0.007 250);
+  --muted-foreground: oklch(0.65 0.01 250);
+  --muted-foreground-soft: oklch(0.5 0.008 250);
+  --border: oklch(1 0.005 250 / 12%);
 
-  --tone-tip-bg: oklch(0.22 0.05 145);
-  --tone-warn-bg: oklch(0.22 0.05 27);
+  --tone-note: var(--primary);
+  --tone-tip: oklch(0.72 0.18 145);
+  --tone-warn: oklch(0.78 0.16 50);
+  --tone-danger: oklch(0.7 0.22 27);
 
   --color-edge-continuation: #9ca3af;
   --color-edge-fork: #60a5fa;
@@ -67,30 +73,34 @@
 
 @supports not (color: oklch(0 0 0)) {
   :root {
-    --background: #ffffff;
+    --background: #fefefe;
     --foreground: #1a1a1a;
-    --card: #ffffff;
+    --card: #fefefe;
     --primary: #2563eb;
     --muted: #f5f6f7;
     --muted-foreground: #6b7280;
     --muted-foreground-soft: #9ca3af;
     --border: #e5e7eb;
-    --tone-tip-bg: #ecfdf5;
-    --tone-warn-bg: #fef3c7;
+    --tone-note: #2563eb;
+    --tone-tip: #16a34a;
+    --tone-warn: #d97706;
+    --tone-danger: #dc2626;
     --color-edge-merge: #16a34a;
     --color-edge-reference: #9333ea;
   }
   .dark {
-    --background: #0a0a0a;
+    --background: #1f2023;
     --foreground: #ededed;
-    --card: #0a0a0a;
-    --primary: #60a5fa;
-    --muted: #1c1c1c;
+    --card: #1f2023;
+    --primary: #3a82eb;
+    --muted: #26282d;
     --muted-foreground: #9ca3af;
     --muted-foreground-soft: #6b7280;
-    --border: rgba(255, 255, 255, 0.08);
-    --tone-tip-bg: #052e1a;
-    --tone-warn-bg: #2a1d05;
+    --border: rgba(232, 237, 250, 0.12);
+    --tone-note: #60a5fa;
+    --tone-tip: #4ade80;
+    --tone-warn: #fbbf24;
+    --tone-danger: #f87171;
   }
 }
 
@@ -465,43 +475,63 @@ step {
   box-shadow: none !important;
 }
 
+/* Callouts: one shared --muted surface; tone is conveyed by an inset left rail
+   so we never introduce a second background colour. */
 callout,
 note,
 info,
 tip,
 check,
 warning,
-danger {
+danger,
+[data-component="callout"] {
+  background: var(--muted) !important;
+  color: var(--foreground) !important;
   border: none !important;
   border-left: none !important;
   border-radius: var(--radius-2xl) !important;
-  box-shadow: none !important;
+  box-shadow: inset 3px 0 0 var(--tone-note) !important;
   padding: 1.125rem 1.25rem !important;
   margin-block: 1.5rem !important;
-}
-
-note,
-info,
-callout[data-tone="note"],
-callout[data-tone="info"] {
-  background: var(--muted) !important;
-  color: var(--foreground) !important;
 }
 
 tip,
 check,
 callout[data-tone="tip"],
-callout[data-tone="check"] {
-  background: var(--tone-tip-bg) !important;
-  color: var(--foreground) !important;
+callout[data-tone="check"],
+[data-component="callout"][data-tone="tip"],
+[data-component="callout"][data-tone="check"] {
+  box-shadow: inset 3px 0 0 var(--tone-tip) !important;
 }
 
 warning,
-danger,
 callout[data-tone="warning"],
-callout[data-tone="danger"] {
-  background: var(--tone-warn-bg) !important;
-  color: var(--foreground) !important;
+[data-component="callout"][data-tone="warning"] {
+  box-shadow: inset 3px 0 0 var(--tone-warn) !important;
+}
+
+danger,
+callout[data-tone="danger"],
+[data-component="callout"][data-tone="danger"] {
+  box-shadow: inset 3px 0 0 var(--tone-danger) !important;
+}
+
+/* Tone the icon Mintlify injects into each callout, without changing the bg. */
+note svg, info svg,
+callout[data-tone="note"] svg, callout[data-tone="info"] svg {
+  color: var(--tone-note);
+}
+tip svg, check svg,
+callout[data-tone="tip"] svg, callout[data-tone="check"] svg {
+  color: var(--tone-tip);
+}
+warning svg,
+callout[data-tone="warning"] svg {
+  color: var(--tone-warn);
+}
+danger svg,
+callout[data-tone="danger"] svg {
+  color: var(--tone-danger);
 }
 
 frame {

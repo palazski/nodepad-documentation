@@ -4,8 +4,8 @@
   "theme": "willow",
   "colors": {
     "primary": "#2563eb",
-    "light": "#ffffff",
-    "dark": "#0a0a0a"
+    "light": "#fefefe",
+    "dark": "#1f2023"
   },
   "logo": {
     "light": "/logo-wordmark-light.svg",
@@ -34,8 +34,8 @@
   },
   "background": {
     "color": {
-      "light": "#ffffff",
-      "dark": "#0a0a0a"
+      "light": "#fefefe",
+      "dark": "#1f2023"
     }
   },
   "navbar": {
