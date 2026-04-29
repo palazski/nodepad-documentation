@@ -49,3 +49,7 @@
   - `../nodepad-landing` for public product positioning
 - When changing information architecture, keep `docs.json` and page cross-links aligned
 - When changing branding or header behavior, prefer `docs.json` settings first and use `custom.css` only for the gaps Mintlify does not cover
+
+## Multi-repo workflow note
+
+`cwd` is sticky across Bash invocations. When orchestrating across the sibling NodePad repos (`nodepad`, `nodepad-api`, `nodepad-landing`, `nodepad-context`, `nodepad-documentation`), tools like `gh pr merge <N>`, `gh pr view <N>`, and `git push` infer the target repo from `cwd` — running them from the wrong directory will silently operate on a different repo, or fail with a misleading message (e.g. "already merged" when the PR number doesn't exist in the current repo). Always `cd` into the target repo first, or use explicit flags: `gh -R <owner>/<repo> ...`, `git -C <path> ...`.
