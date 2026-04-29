@@ -1,0 +1,36 @@
+---
+title: "Support and troubleshooting"
+description: "Where to ask, what to include in a report, and a few common issues."
+---
+
+If something is broken or behaving unexpectedly, this page covers what to try first and how to reach the team.
+
+## Common issues
+
+<AccordionGroup>
+  <Accordion title="A model is missing from the picker">
+    The picker shows the models the running deployment has configured. On the hosted beta, the available list is curated by the team. On a self-hosted install, it's whatever your operators have wired up. If a model you expect is not there, ping the team (hosted beta) or check `models.yaml` (self-hosted).
+  </Accordion>
+  <Accordion title="A streamed reply stalled or never finished">
+    Refresh the workspace. Streaming uses a WebSocket connection, and a network blip can leave a node mid-flight. The message will not be lost — open the node menu and re-run.
+  </Accordion>
+  <Accordion title="An attachment will not upload">
+    Check the file size and type. NodePad supports common image and document formats; very large files may be rejected by the storage layer. If you keep hitting the same error, capture the workspace ID and file name and send them in a report.
+  </Accordion>
+</AccordionGroup>
+
+## Where to ask
+
+- **Bugs and feature requests** — open an issue at [github.com/palazski/nodepad-api/issues](https://github.com/palazski/nodepad-api/issues).
+- **Hosted beta access questions** — see [beta access](/beta-access).
+- **Enterprise / self-hosting** — contact the team via the link in [enterprise overview](/enterprise/overview).
+
+## What to include in a report
+
+A good bug report has:
+
+- The **workspace ID** (visible in the URL).
+- The **browser** and OS.
+- The **time** and roughly what you were doing.
+- Any **error message** the UI showed, or a screenshot.
+- For self-hosted reports, the **NodePad version** and a sanitised log excerpt.

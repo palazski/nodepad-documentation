@@ -3,42 +3,36 @@ title: "Engineering"
 description: "Use branches for alternate diagnoses, second opinions, and merge drafts before you ship a fix."
 ---
 
-Engineering work benefits from clean alternate paths. One branch can hold the main diagnosis. Another can challenge it. A third can turn the decision into a rollout plan.
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
+Engineering work benefits from clean alternate paths. One branch can hold the main diagnosis. Another can <EdgeChip type="fork">fork</EdgeChip> from it to challenge the conclusion. A third can <EdgeChip type="merge">merge</EdgeChip> the useful pieces into a rollout plan.
 
 ## A practical incident pattern
 
-<Steps>
-  <Step title="Start one branch with the raw problem">
-    Put the logs, stack trace, or failing behavior into the first branch and ask for a diagnosis.
-  </Step>
-  <Step title="Branch before you act">
-    Fork from the diagnosis point and ask another model or another prompt framing to challenge the first answer.
-  </Step>
-  <Step title="Use references for exact evidence">
-    If one branch finds the crucial clue, reference that exact message in the branch where you are forming the plan.
-  </Step>
-  <Step title="Merge sources into the rollout draft">
-    Merge the branches that matter into one new message and ask for the remediation plan, rollback plan, or test checklist.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    { title: 'Start one branch with the raw problem', body: 'Put the logs, stack trace, or failing behavior into the first branch and ask for a diagnosis.' },
+    { title: 'Branch before you act', body: 'Fork from the diagnosis point and ask another model or another prompt framing to challenge the first answer.' },
+    { title: 'Use references for exact evidence', body: 'If one branch finds the crucial clue, reference that exact message in the branch where you are forming the plan.' },
+    { title: 'Merge sources into the rollout draft', body: 'Merge the branches that matter into one new message and ask for the remediation plan, rollback plan, or test checklist.' },
+  ]}
+/>
 
 ## Where NodePad helps most
 
-<CardGroup cols={2}>
-  <Card title="Second opinions without context loss" icon="git-fork">
-    The alternate diagnosis starts from the same evidence, not from a retyped summary.
-  </Card>
-  <Card title="Cleaner change decisions" icon="git-merge">
-    A merged draft can ask for a test plan or rollout sequence using the best findings from several branches.
-  </Card>
-  <Card title="Visible reasoning trail" icon="waypoints">
-    Teammates can see which branch produced which recommendation.
-  </Card>
-  <Card title="Safer prompting" icon="shield-check">
-    You can isolate risky exploratory questions from the branch you plan to act on.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Second opinions without context loss', body: 'The alternate diagnosis starts from the same evidence, not from a retyped summary.' },
+    { title: 'Cleaner change decisions', body: 'A merged draft can ask for a test plan or rollout sequence using the best findings from several branches.' },
+    { title: 'Visible reasoning trail', body: 'Teammates can see which branch produced which recommendation.' },
+    { title: 'Safer prompting', body: 'You can isolate risky exploratory questions from the branch you plan to act on.' },
+  ]}
+/>
 
-<Tip>
+<Callout tone="tip">
   Keep a text note on the canvas with the production constraints that matter: blast radius, rollback requirement, deadline, and systems you do not want the model to invent changes for.
-</Tip>
+</Callout>

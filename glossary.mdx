@@ -1,0 +1,44 @@
+---
+title: "Glossary"
+description: "Every term used in NodePad, in one place."
+---
+
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
+
+A short reference for the words this documentation uses. Canvas-related terms include the same color you see in the app.
+
+## Workspace
+
+A saved NodePad canvas. A workspace holds branches, text notes, references, merge sources, and a default model. Each workspace has its own URL.
+
+## Branch
+
+A conversation path through the canvas. A branch is a chain of nodes connected by <EdgeChip type="continuation">continuation</EdgeChip> edges. Most workspaces have several branches that diverge at chosen messages.
+
+## Node
+
+A single message on the canvas: a user message, an assistant reply, or an in-progress draft. Nodes are the units you fork, edit, re-run, reference, and merge.
+
+## Text note
+
+A freeform note pinned to the canvas. Text notes are for human context — research questions, decision logs, checklists. They do not act as persistent prompt constraints.
+
+## Reference
+
+A targeted cross-link from one node to another, created with `@`. References travel with the message that owns them. Visually a <EdgeChip type="reference">reference edge</EdgeChip> on the canvas.
+
+## Merge sources
+
+A set of nodes selected as source context for a new draft. Merging combines messages from different branches into one new message. Visually a <EdgeChip type="merge">merge edge</EdgeChip> on the canvas.
+
+## Workspace instructions
+
+Workspace-level prompting and guidance. Applies to every send in the workspace unless overridden.
+
+## Default model
+
+The model NodePad picks when you start a new branch in this workspace. You can override it for any individual send.
+
+## Posture (enterprise)
+
+The deployment shape: connected to the internet, proxied through a mirror, fully air-gapped, or a single-VM trial. See [installing NodePad](/enterprise/operations/install) for the matrix.

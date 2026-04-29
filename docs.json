@@ -4,8 +4,8 @@
   "theme": "willow",
   "colors": {
     "primary": "#2563eb",
-    "light": "#f8fafc",
-    "dark": "#0f172a"
+    "light": "#ffffff",
+    "dark": "#0a0a0a"
   },
   "logo": {
     "light": "/logo-wordmark-light.svg",
@@ -15,22 +15,41 @@
     "light": "/logo-icon-light.svg",
     "dark": "/logo-icon-dark.svg"
   },
-  "font": {
-    "headings": {
-      "family": "Outfit"
+  "appearance": {
+    "default": "system",
+    "strict": false
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Geist",
+      "weight": 600
     },
     "body": {
-      "family": "Outfit"
+      "family": "Geist",
+      "weight": 400
     }
   },
   "background": {
     "decoration": "grid",
     "color": {
-      "light": "#f8fafc",
-      "dark": "#0f172a"
+      "light": "#ffffff",
+      "dark": "#0a0a0a"
     }
   },
   "navbar": {
+    "links": [
+      {
+        "label": "Product",
+        "href": "https://node-pad.com"
+      },
+      {
+        "label": "App",
+        "href": "https://app.node-pad.com"
+      }
+    ],
     "primary": {
       "type": "button",
       "label": "Join beta",
@@ -39,64 +58,85 @@
   },
   "styling": {
     "eyebrows": "breadcrumbs",
-    "codeblocks": "dark"
+    "codeblocks": "system"
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Start here",
-        "pages": [
-          "introduction",
-          "quickstart",
-          "beta-access"
+        "tab": "Product",
+        "groups": [
+          {
+            "group": "Start here",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "beta-access",
+              "support",
+              "glossary",
+              "whats-new"
+            ]
+          },
+          {
+            "group": "Core workflow",
+            "pages": [
+              "concepts/canvas",
+              "concepts/nodes",
+              "concepts/forking",
+              "concepts/merging",
+              "concepts/references",
+              "concepts/sticky-notes"
+            ]
+          },
+          {
+            "group": "Models and settings",
+            "pages": [
+              "models/overview",
+              "models/per-message-selection",
+              "models/bring-your-own-keys"
+            ]
+          },
+          {
+            "group": "Use cases",
+            "pages": [
+              "use-cases/research",
+              "use-cases/engineering",
+              "use-cases/writing"
+            ]
+          },
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog"
+            ]
+          }
         ]
       },
       {
-        "group": "Core workflow",
-        "pages": [
-          "concepts/canvas",
-          "concepts/nodes",
-          "concepts/forking",
-          "concepts/merging",
-          "concepts/references",
-          "concepts/sticky-notes"
-        ]
-      },
-      {
-        "group": "Models and settings",
-        "pages": [
-          "models/overview",
-          "models/per-message-selection",
-          "models/bring-your-own-keys"
-        ]
-      },
-      {
-        "group": "Use cases",
-        "pages": [
-          "use-cases/research",
-          "use-cases/engineering",
-          "use-cases/writing"
-        ]
-      },
-      {
-        "group": "Enterprise",
-        "pages": [
-          "enterprise/overview",
-          "enterprise/self-hosting",
-          "enterprise/operations/install",
-          "enterprise/operations/upgrade",
-          "enterprise/operations/air-gapped"
-        ]
-      },
-      {
-        "group": "Changelog",
-        "pages": [
-          "changelog"
+        "tab": "Self-hosting",
+        "groups": [
+          {
+            "group": "Enterprise",
+            "pages": [
+              "enterprise/overview",
+              "enterprise/self-hosting"
+            ]
+          },
+          {
+            "group": "Operations",
+            "directory": "card",
+            "pages": [
+              "enterprise/operations/install",
+              "enterprise/operations/upgrade",
+              "enterprise/operations/air-gapped"
+            ]
+          }
         ]
       }
     ]
   },
   "footer": {
-    "socials": {}
+    "socials": {
+      "github": "https://github.com/palazski"
+    }
   }
 }

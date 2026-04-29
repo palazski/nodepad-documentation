@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Screenshot placeholder — pending capture">
+  <defs>
+    <pattern id="ph-grid-light" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#fafafa"/>
+  <rect width="800" height="500" fill="url(#ph-grid-light)" opacity="0.6"/>
+  <g opacity="0.55">
+    <rect x="60" y="60" width="180" height="40" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="60" y="120" width="120" height="40" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="320" y="100" width="220" height="60" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="600" y="60" width="140" height="50" rx="6" fill="#fef3c7" stroke="#fbbf24"/>
+    <path d="M 240 80 C 280 80, 280 130, 320 130" fill="none" stroke="#6b7280" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(400, 280)">
+    <rect x="-110" y="-30" width="220" height="60" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="0" y="-6" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#6b7280" letter-spacing="0.06em">SCREENSHOT PENDING</text>
+    <text x="0" y="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="9" fill="#9ca3af" letter-spacing="0.04em">replaced by real capture before launch</text>
+  </g>
+</svg>

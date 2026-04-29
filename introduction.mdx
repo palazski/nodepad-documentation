@@ -3,60 +3,51 @@ title: "What NodePad is"
 description: "NodePad is a canvas-based AI workspace for branching conversations, references, merge flows, and model comparison."
 ---
 
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { SectionHeading } from '/snippets/SectionHeading.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
 NodePad is an AI workspace built around a canvas instead of a single transcript. You still send prompts and get replies, but you can also branch from any message, keep separate lines of thought visible at once, and carry context across the canvas when you need it.
 
-## The core idea
+<SectionHeading eyebrow="Why NodePad" title="The core idea" />
 
 Linear chat is fine until the work stops being linear. Research splits into sub-questions. Debugging needs a second opinion. Writing needs a fact-check side path that should not leak back into the draft. In a normal chat app, all of that gets tangled together.
 
 NodePad gives that work a shape:
 
-<CardGroup cols={2}>
-  <Card title="Workspaces" icon="layout-dashboard">
-    Each workspace is a canvas with its own title, default model, instructions, layout, and set of conversations.
-  </Card>
-  <Card title="Branches" icon="git-fork">
-    Any message can become the starting point for a new branch, so you can explore a second path without losing the first one.
-  </Card>
-  <Card title="References" icon="at-sign">
-    Type `@` to reference another branch or specific message when the next prompt needs context from elsewhere on the canvas.
-  </Card>
-  <Card title="Merge flows" icon="git-merge">
-    Combine source messages from different branches into a new draft when you want the next turn to synthesize multiple threads.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Workspaces', body: 'Each workspace is a canvas with its own title, default model, instructions, layout, and set of conversations.' },
+    { title: 'Branches', body: 'Any message can become the starting point for a new branch, so you can explore a second path without losing the first one.' },
+    { title: 'References', body: 'Type `@` to reference another branch or specific message when the next prompt needs context from elsewhere on the canvas.' },
+    { title: 'Merge flows', body: 'Combine source messages from different branches into a new draft when you want the next turn to synthesize multiple threads.' },
+  ]}
+/>
 
-## How people actually use it
+<SectionHeading eyebrow="In practice" title="How people actually use it" />
 
-<AccordionGroup>
-  <Accordion title="Research">
-    Keep separate threads for separate questions. Compare findings side by side. Pull only the messages you want into the next synthesis turn.
-  </Accordion>
-  <Accordion title="Engineering">
-    Branch from a diagnosis message, ask another model for a second read, and merge the useful pieces before you change code or infrastructure.
-  </Accordion>
-  <Accordion title="Writing">
-    Draft in one branch, fact-check in another, then reference or merge the result back into the main draft without dragging the whole research thread with it.
-  </Accordion>
-</AccordionGroup>
+<FeatureGrid
+  cols={3}
+  items={[
+    { title: 'Research', body: 'Keep separate threads for separate questions. Compare findings side by side. Pull only the messages you want into the next synthesis turn.', href: '/use-cases/research' },
+    { title: 'Engineering', body: 'Branch from a diagnosis message, ask another model for a second read, and merge the useful pieces before you change code or infrastructure.', href: '/use-cases/engineering' },
+    { title: 'Writing', body: 'Draft in one branch, fact-check in another, then reference or merge the result back into the main draft without dragging the whole research thread with it.', href: '/use-cases/writing' },
+  ]}
+/>
 
-## What lives on the canvas
+<SectionHeading eyebrow="On the canvas" title="What lives on the canvas" />
 
-<Steps>
-  <Step title="Conversation nodes">
-    Messages and replies are stored as nodes in a branch. They are the main units of AI interaction.
-  </Step>
-  <Step title="Text notes">
-    Text notes are freeform annotations on the canvas. They are for you, not for the model.
-  </Step>
-  <Step title="Edges">
-    Edges show continuation, branching, merge relationships, and cross-branch references.
-  </Step>
-  <Step title="Attachments">
-    You can attach supported files and images to prompts. When you branch or merge, those attachments can travel with the message context too.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    { title: 'Conversation nodes', body: 'Messages and replies are stored as nodes in a branch. They are the main units of AI interaction.' },
+    { title: 'Text notes', body: 'Text notes are freeform annotations on the canvas. They are for you, not for the model.' },
+    { title: 'Edges', body: 'Edges show continuation, branching, merge relationships, and cross-branch references.' },
+    { title: 'Attachments', body: 'You can attach supported files and images to prompts. When you branch or merge, those attachments can travel with the message context too.' },
+  ]}
+/>
 
-<Note>
+<Callout tone="note">
   NodePad is currently in beta. The fastest way to see the product flow is the [quickstart](/quickstart), then the concept pages for [forking](/concepts/forking), [references](/concepts/references), and [merging](/concepts/merging).
-</Note>
+</Callout>

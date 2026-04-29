@@ -3,39 +3,35 @@ title: "Writing"
 description: "Keep drafting, fact-checking, and editing in separate branches so the voice of the piece stays intact."
 ---
 
-Writing often breaks when drafting and research happen in the same thread. NodePad gives those jobs separate branches so the voice of the piece does not get washed out by fact-finding, outlining, or critique.
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
+Writing often breaks when drafting and research happen in the same thread. NodePad gives those jobs separate branches so the voice of the piece does not get washed out by fact-finding, outlining, or critique. A <EdgeChip type="reference">reference</EdgeChip> brings one fact back into the draft; a <EdgeChip type="merge">merge</EdgeChip> brings several at once.
 
 ## A strong writing workflow
 
-<Steps>
-  <Step title="Keep one branch for the draft">
-    Use a main branch for the actual prose so the branch history stays about tone, structure, and revisions.
-  </Step>
-  <Step title="Branch for research">
-    When you need facts, examples, or citations, branch from the draft instead of asking inside it.
-  </Step>
-  <Step title="Reference one exact finding or merge several">
-    Use an `@` reference when one fact should come back into the draft. Use merge sources when the next turn needs several research findings or alternate versions at once.
-  </Step>
-  <Step title="Keep critique separate too">
-    If you want structural criticism or an alternate tone pass, make that a separate branch instead of muddying the main draft history.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    { title: 'Keep one branch for the draft', body: 'Use a main branch for the actual prose so the branch history stays about tone, structure, and revisions.' },
+    { title: 'Branch for research', body: 'When you need facts, examples, or citations, branch from the draft instead of asking inside it.' },
+    { title: 'Reference one exact finding or merge several', body: 'Use an `@` reference when one fact should come back into the draft. Use merge sources when the next turn needs several research findings or alternate versions at once.' },
+    { title: 'Keep critique separate too', body: 'If you want structural criticism or an alternate tone pass, make that a separate branch instead of muddying the main draft history.' },
+  ]}
+/>
 
 ## Why this works
 
-<CardGroup cols={3}>
-  <Card title="Cleaner draft context" icon="pen-tool">
-    The draft branch stays about the piece itself, not about every research side trip.
-  </Card>
-  <Card title="Better fact reuse" icon="at-sign">
-    You can reference the exact message that found the fact instead of paraphrasing it from memory.
-  </Card>
-  <Card title="Easier revision branches" icon="git-fork">
-    Alternate openings, structural edits, and critique passes can each get their own branch.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={3}
+  items={[
+    { title: 'Cleaner draft context', body: 'The draft branch stays about the piece itself, not about every research side trip.' },
+    { title: 'Better fact reuse', body: 'You can reference the exact message that found the fact instead of paraphrasing it from memory.' },
+    { title: 'Easier revision branches', body: 'Alternate openings, structural edits, and critique passes can each get their own branch.' },
+  ]}
+/>
 
-<Tip>
+<Callout tone="tip">
   For long pieces, use one branch per section and one text note that records the target audience, publication, and tone constraints.
-</Tip>
+</Callout>

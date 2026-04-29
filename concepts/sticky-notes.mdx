@@ -3,38 +3,40 @@ title: "Text notes"
 description: "Use text notes for annotations, reminders, and visual wayfinding on the NodePad canvas."
 ---
 
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+
 Text notes are freeform notes that live on the canvas beside your conversation branches. They help you annotate the workspace, keep track of decisions, and leave yourself or teammates breadcrumbs about what to do next.
+
+<ProductScreenshot
+  light="/images/placeholder-light.svg"
+  dark="/images/placeholder-dark.svg"
+  alt="A canvas with two branches and a text note labeling the cluster."
+/>
 
 ## What text notes are for
 
-<CardGroup cols={2}>
-  <Card title="Session notes" icon="notebook-pen">
-    Capture what the workspace is for, what you are testing, or what still needs review.
-  </Card>
-  <Card title="Checklists" icon="list-todo">
-    Keep a short list of open questions, next actions, or review criteria.
-  </Card>
-  <Card title="Wayfinding" icon="map">
-    Label clusters of branches so a large workspace stays readable when you zoom out.
-  </Card>
-  <Card title="Human context" icon="users">
-    Leave notes for collaborators that should stay visible on the canvas but out of model prompts.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Session notes', body: 'Capture what the workspace is for, what you are testing, or what still needs review.' },
+    { title: 'Checklists', body: 'Keep a short list of open questions, next actions, or review criteria.' },
+    { title: 'Wayfinding', body: 'Label clusters of branches so a large workspace stays readable when you zoom out.' },
+    { title: 'Human context', body: 'Leave notes for collaborators that should stay visible on the canvas but out of model prompts.' },
+  ]}
+/>
 
 ## How to create one
 
-<Steps>
-  <Step title="Right-click empty canvas space">
-    Open the canvas context menu where you want the note to appear.
-  </Step>
-  <Step title="Choose New text note here">
-    NodePad drops a new note at that position.
-  </Step>
-  <Step title="Edit the note">
-    Type whatever annotation or checklist you need and place it near the relevant branches.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    { title: 'Right-click empty canvas space', body: 'Open the canvas context menu where you want the note to appear.' },
+    { title: 'Choose New text note here', body: 'NodePad drops a new note at that position.' },
+    { title: 'Edit the note', body: 'Type whatever annotation or checklist you need and place it near the relevant branches.' },
+  ]}
+/>
 
 ## What text notes do not do
 
@@ -60,6 +62,6 @@ If you want instructions to affect the model, put them in:
   </Accordion>
 </AccordionGroup>
 
-<Note>
+<Callout tone="note">
   Earlier drafts of these docs described text notes as prompt constraints. In the current product, they are canvas annotations for humans.
-</Note>
+</Callout>

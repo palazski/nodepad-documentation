@@ -3,12 +3,23 @@ title: "References and cross-branch context"
 description: "Use @ references and merge sources to pull context across branches without flattening the whole workspace into one prompt."
 ---
 
+import { CompareTable } from '/snippets/CompareTable.jsx';
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+
 NodePad gives you two main ways to reuse work from elsewhere on the canvas:
 
-- `@` references for targeted cross-links
-- merge sources for broader synthesis drafts
+- <EdgeChip type="reference">`@` references</EdgeChip> for targeted cross-links
+- <EdgeChip type="merge">merge sources</EdgeChip> for broader synthesis drafts
 
 Both help you move context across branches without copy-pasting conversation text by hand.
+
+<ProductScreenshot
+  light="/images/placeholder-light.svg"
+  dark="/images/placeholder-dark.svg"
+  alt="A draft with an @-reference token and a violet reference edge connecting it to another branch."
+/>
 
 ## Use `@` when you want one precise source
 
@@ -19,9 +30,9 @@ Type `@` in a draft to open the reference picker. You can choose either:
 
 NodePad inserts the visible token into the draft and stores the actual linked node behind it. That matters because the text token alone is not the source of truth.
 
-<Tip>
+<Callout tone="tip">
   Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
-</Tip>
+</Callout>
 
 ## Use merge sources when you want synthesis
 
@@ -36,14 +47,28 @@ That is useful for:
 
 ## How to choose between them
 
-<CardGroup cols={2}>
-  <Card title="@ reference" icon="at-sign">
-    Best when one branch or message should inform the next turn in a narrow, explicit way.
-  </Card>
-  <Card title="Merge sources" icon="git-merge">
-    Best when the next turn needs to synthesize, compare, or reconcile several messages.
-  </Card>
-</CardGroup>
+<CompareTable
+  leftAccent="reference"
+  rightAccent="merge"
+  left={{
+    title: '@ reference',
+    points: [
+      'One specific message or branch',
+      'Narrow, explicit cross-link',
+      'Lightweight prompt footprint',
+      'Best when the source already says it',
+    ],
+  }}
+  right={{
+    title: 'Merge sources',
+    points: [
+      'Multiple messages from different branches',
+      'Synthesis, comparison, or decision context',
+      'Larger prompt footprint',
+      'Best when the next turn must reason across sources',
+    ],
+  }}
+/>
 
 ## Practical examples
 
@@ -61,10 +86,10 @@ That is useful for:
 
 ## Related behaviors
 
-<Info>
+<Callout tone="info">
   Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt. Keep an eye on scope.
-</Info>
+</Callout>
 
-<Info>
+<Callout tone="info">
   Text notes are not referenceable model context by default. They are canvas annotations for humans.
-</Info>
+</Callout>

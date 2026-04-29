@@ -5,13 +5,26 @@ description: "How to upgrade NodePad safely on Kubernetes or docker compose, rol
 
 NodePad upgrades are designed to fail fast and fail safe: schema migrations run before any application pod rolls, and an upgrade that breaks migrations leaves your existing pods serving the old version.
 
+```mermaid
+flowchart TD
+    A[helm upgrade / docker compose pull] --> B[Pre-upgrade hook: run migrations]
+    B -->|success| C[Roll new pods / restart api containers]
+    B -->|failure| D[Abort upgrade · existing pods keep serving old version]
+    C --> E[Smoke test · monitor 15 min]
+    E -->|regression| F[helm rollback / VERSION pin to previous]
+    E -->|stable| G[Done]
+    F --> H{Migration was destructive?}
+    H -- no --> G
+    H -- yes --> I[Restore backup before rollback completes]
+```
+
 ## Upgrade checklist
 
-<Checkbox>Read the [changelog](/changelog) for the target version. Note any breaking changes.</Checkbox>
-<Checkbox>Back up the database (see below).</Checkbox>
-<Checkbox>For Kubernetes: verify the pre-upgrade hook succeeded before api pods roll.</Checkbox>
-<Checkbox>Smoke-test after: `/api/health`, admin login, canvas load, LLM stream.</Checkbox>
-<Checkbox>Monitor logs and error rates for 15 minutes post-rollout.</Checkbox>
+- [ ] Read the [changelog](/changelog) for the target version. Note any breaking changes.
+- [ ] Back up the database (see below).
+- [ ] For Kubernetes: verify the pre-upgrade hook succeeded before api pods roll.
+- [ ] Smoke-test after: `/api/health`, admin login, canvas load, LLM stream.
+- [ ] Monitor logs and error rates for 15 minutes post-rollout.
 
 ## Kubernetes (Helm)
 

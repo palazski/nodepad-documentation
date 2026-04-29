@@ -3,56 +3,60 @@ title: "Enterprise overview"
 description: "NodePad Enterprise is the self-hosted deployment path for teams that need the product inside their own infrastructure."
 ---
 
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { SectionHeading } from '/snippets/SectionHeading.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+
 NodePad Enterprise is for teams that want the NodePad workflow inside their own environment. You deploy the application stack, bring the backing services it needs, and control how provider access is configured.
 
-<Note>
+<Callout tone="note">
   Enterprise is separate from the hosted beta. The beta runs on NodePad-managed infrastructure. Enterprise runs in yours.
-</Note>
+</Callout>
 
-## What ships today
+<SectionHeading eyebrow="What ships today" title="The Enterprise feature set" />
 
-<CardGroup cols={2}>
-  <Card title="Self-hosting" icon="server" href="/enterprise/self-hosting">
-    Deploy on Kubernetes with Helm or on a single VM with Docker Compose.
-  </Card>
-  <Card title="Offline / air-gapped install" icon="shield-halved" href="/enterprise/operations/air-gapped">
-    Install from an offline bundle when the target environment has no internet access.
-  </Card>
-  <Card title="Immutable release tags" icon="box" href="/enterprise/operations/install">
-    Releases ship as versioned artifacts so upgrades are deliberate and pin-able.
-  </Card>
-  <Card title="Bring your own provider keys" icon="key" href="/models/bring-your-own-keys">
-    Provider access is under your control rather than tied to a shared hosted setup.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Self-hosting', body: 'Deploy on Kubernetes with Helm or on a single VM with Docker Compose.', href: '/enterprise/self-hosting' },
+    { title: 'Offline / air-gapped install', body: 'Install from an offline bundle when the target environment has no internet access.', href: '/enterprise/operations/air-gapped' },
+    { title: 'Immutable release tags', body: 'Releases ship as versioned artifacts so upgrades are deliberate and pin-able.', href: '/enterprise/operations/install' },
+    { title: 'Bring your own provider keys', body: 'Provider access is under your control rather than tied to a shared hosted setup.', href: '/models/bring-your-own-keys' },
+  ]}
+/>
 
-## What to plan for
+<SectionHeading eyebrow="Plan before deploy" title="What to plan for" />
 
-An enterprise deployment is not only "run these containers." You should plan for:
+<FeatureGrid
+  cols={3}
+  items={[
+    { title: 'Postgres', body: 'NodePad needs PostgreSQL 15+ for its application schema.' },
+    { title: 'Redis', body: 'Redis 6+ powers WebSocket streaming and async tasks.' },
+    { title: 'Object storage', body: 'Any S3-compatible service for user uploads.' },
+    { title: 'Provider credentials', body: 'Anthropic and/or OpenAI keys, scoped to your account.' },
+    { title: 'Upgrade & rollback', body: 'A documented process for rolling forward and back, with backups.' },
+    { title: 'Identity & compliance', body: 'Your usual access control, audit, and compliance requirements.' },
+  ]}
+/>
 
-- PostgreSQL
-- Redis
-- S3-compatible object storage
-- provider credentials and egress policy
-- your upgrade and rollback process
-- your identity, access, and compliance requirements
+<SectionHeading eyebrow="Audience fit" title="Who this is for" />
 
-## Who this is for
-
-Enterprise is a fit when you want the NodePad product shape but need deployment control. That usually includes:
-
-- internal infrastructure ownership
-- controlled provider access
-- offline or restricted-network installation paths
-- explicit change management around upgrades
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Internal infrastructure ownership', body: 'You want NodePad running inside your own VPC or on-premises.' },
+    { title: 'Controlled provider access', body: 'You need provider keys and egress to flow through your own accounts and policies.' },
+    { title: 'Offline or restricted-network installs', body: 'Your target environment cannot reach the public internet.' },
+    { title: 'Explicit change management', body: 'Upgrades and rollbacks must be deliberate, auditable, and reversible.' },
+  ]}
+/>
 
 ## Where to go next
 
-<CardGroup cols={2}>
-  <Card title="Self-hosting details" icon="server" href="/enterprise/self-hosting">
-    See the two main deployment shapes and what services you need to bring.
-  </Card>
-  <Card title="Installation guide" icon="download" href="/enterprise/operations/install">
-    Walk through connected, mirrored, air-gapped, and single-VM install paths.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Self-hosting details', body: 'See the two main deployment shapes and what services you need to bring.', href: '/enterprise/self-hosting' },
+    { title: 'Installation guide', body: 'Walk through connected, mirrored, air-gapped, and single-VM install paths.', href: '/enterprise/operations/install' },
+  ]}
+/>

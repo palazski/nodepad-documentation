@@ -3,64 +3,67 @@ title: "The canvas"
 description: "The NodePad canvas is the workspace where branches, references, notes, attachments, and merges stay visible together."
 ---
 
+import { FeatureGrid } from '/snippets/FeatureGrid.jsx';
+import { NumberedSteps } from '/snippets/NumberedSteps.jsx';
+import { Callout } from '/snippets/Callout.jsx';
+import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
+
 The canvas is the main surface inside a NodePad workspace. It holds your conversation branches, text notes, and cross-branch connections in one view so you can see the structure of the work, not only the latest reply.
+
+<ProductScreenshot
+  light="/images/placeholder-light.svg"
+  dark="/images/placeholder-dark.svg"
+  alt="A NodePad canvas with multiple branches, a text note, and a merge edge."
+/>
 
 ## Why it matters
 
-Most AI interfaces flatten everything into one timeline. That becomes hard to manage when:
+Most AI interfaces flatten everything into one timeline. The canvas keeps structure visible so the work scales:
 
-- one question splits into several sub-questions
-- you want a second opinion from another model
-- a fact-check should stay separate from the main draft
-- you need one reply to draw from messages that happened elsewhere
-
-The canvas fixes that by making space a first-class part of the workflow.
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Sub-questions stay separate', body: 'When one question splits into several, each gets its own branch instead of polluting the main thread.' },
+    { title: 'Second opinions are first-class', body: 'You can branch a prompt to another model without losing the original answer.' },
+    { title: 'Fact-checks stay out of the draft', body: 'Research side trips live next to the work, not inside it.' },
+    { title: 'Reuse without copy-paste', body: 'References and merges pull context from elsewhere on the canvas without flattening it back into prose.' },
+  ]}
+/>
 
 ## What you can place on it
 
-<CardGroup cols={2}>
-  <Card title="Conversation branches" icon="messages-square">
-    Each branch is a sequence of user and assistant messages. Branches can continue, split, and reconnect through merge flows.
-  </Card>
-  <Card title="Text notes" icon="sticky-note">
-    Text notes are canvas annotations for you and your team. They are not model instructions.
-  </Card>
-  <Card title="Reference and merge edges" icon="git-merge">
-    Edges show how messages relate across branches. They make provenance visible instead of hiding it in prompt text.
-  </Card>
-  <Card title="Attachments" icon="paperclip">
-    Image and file attachments stay attached to the messages that used them and can carry forward into branches and merged drafts.
-  </Card>
-</CardGroup>
+<FeatureGrid
+  cols={2}
+  items={[
+    { title: 'Conversation branches', body: 'Each branch is a sequence of user and assistant messages. Branches can continue, split, and reconnect through merge flows.' },
+    { title: 'Text notes', body: 'Text notes are canvas annotations for you and your team. They are not model instructions.' },
+    { title: 'Reference and merge edges', body: 'Edges show how messages relate across branches. They make provenance visible instead of hiding it in prompt text.' },
+    { title: 'Attachments', body: 'Image and file attachments stay attached to the messages that used them and can carry forward into branches and merged drafts.' },
+  ]}
+/>
 
 ## Common canvas actions
 
-<Steps>
-  <Step title="Pan and zoom">
-    Move around the canvas to inspect one branch closely or zoom out to understand the whole workspace.
-  </Step>
-  <Step title="Search messages">
-    Use workspace search to jump between matching messages without losing your spatial layout.
-  </Step>
-  <Step title="Use the command palette">
-    Open the palette to jump to actions such as merge composition or the reference picker.
-  </Step>
-  <Step title="Organize the sidebar">
-    Favorite workspaces, add tags, duplicate a workspace, or export it when you want a checkpoint.
-  </Step>
-</Steps>
+<NumberedSteps
+  items={[
+    { title: 'Pan and zoom', body: 'Move around the canvas to inspect one branch closely or zoom out to understand the whole workspace.' },
+    { title: 'Search messages', body: 'Use workspace search to jump between matching messages without losing your spatial layout.' },
+    { title: 'Use the command palette', body: 'Open the palette to jump to actions such as merge composition or the reference picker.' },
+    { title: 'Organize the sidebar', body: 'Favorite workspaces, add tags, duplicate a workspace, or export it when you want a checkpoint.' },
+  ]}
+/>
 
 ## Think in workspaces, not chats
 
 Each canvas belongs to a workspace. A workspace keeps its own:
 
-- title
-- default model
-- reasoning preference
-- workspace instructions
-- branch layout
-- tags and favorite state
+- `title`
+- `default model`
+- `reasoning preference`
+- `workspace instructions`
+- `branch layout`
+- `tags` and `favorite` state
 
-<Note>
+<Callout tone="note">
   A good mental model is "one workspace per problem space." Keep one for a feature investigation, another for a long research project, and another for a piece of writing.
-</Note>
+</Callout>
