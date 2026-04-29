@@ -5,7 +5,6 @@ description: "Individual messages and replies that make up a branch."
 
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
 import { NavList } from '/snippets/NavList.jsx';
-import { ProductScreenshot } from '/snippets/ProductScreenshot.jsx';
 
 A node is one message on the canvas. User messages, assistant replies, and in-progress drafts all behave like nodes in the graph. Most NodePad actions start by selecting a node or branching from one.
 
@@ -16,12 +15,6 @@ Message content rendered as Markdown — lists, code blocks, links — so the me
 ## How nodes become branches
 
 Nodes connect in sequence. Each link forward is a <EdgeChip type="continuation">continuation edge</EdgeChip>. When you branch from a node, NodePad creates a new path from that point — a <EdgeChip type="fork">fork edge</EdgeChip> — without changing the original branch.
-
-<ProductScreenshot
-  light="/images/concepts/four-node-light.svg"
-  dark="/images/concepts/four-node-dark.svg"
-  alt="Four nodes in a chain — you, assistant, you, assistant — with a forked branch starting from the last node."
-/>
 
 ## What you can do from a node
 

@@ -1,10 +1,8 @@
 /* ==========================================================================
    NodePad documentation — design system
 
-   Typography-led. The page is structured by whitespace and heading hierarchy.
-   No bordered cards. No background patterns. One blue accent.
-
-   Tokens mirror the product app at /root/working/nodepad/src/index.css.
+   Typography-led. Outfit on headings, Geist on body. Soft, restrained,
+   one blue accent. Pages are structured by whitespace and headings.
    ========================================================================== */
 
 
@@ -20,26 +18,24 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
   --duration-fast: 120ms;
   --duration-normal: 200ms;
 
-  --background: oklch(1 0.003 250);
+  --background: #ffffff;
   --foreground: oklch(0.18 0.005 250);
-  --card: oklch(1 0.003 250);
+  --card: oklch(0.985 0.003 250);
   --primary: oklch(0.45 0.2 250);
   --primary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.965 0.004 250);
   --muted-foreground: oklch(0.5 0.005 250);
+  --muted-foreground-soft: oklch(0.62 0.005 250);
   --border: oklch(0.92 0.003 250);
 
   --tone-tip-bg: oklch(0.97 0.04 145);
-  --tone-tip-fg: oklch(0.4 0.12 145);
   --tone-warn-bg: oklch(0.97 0.04 27);
-  --tone-warn-fg: oklch(0.42 0.16 27);
 
   --color-edge-continuation: #6b7280;
   --color-edge-fork: #3b82f6;
@@ -47,20 +43,20 @@
   --color-edge-reference: oklch(0.55 0.22 305);
 }
 
+/* DARK: pure black body, slightly raised cards. No grey-on-black mismatch. */
 .dark {
-  --background: oklch(0.13 0.005 250);
-  --foreground: oklch(0.96 0.005 250);
-  --card: oklch(0.16 0.006 250);
+  --background: #0a0a0a;
+  --foreground: oklch(0.96 0 0);
+  --card: oklch(0.165 0 0);
   --primary: oklch(0.7 0.18 250);
   --primary-foreground: oklch(0.13 0 0);
-  --muted: oklch(0.2 0.008 250);
-  --muted-foreground: oklch(0.62 0.01 250);
-  --border: oklch(1 0.005 250 / 10%);
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.62 0 0);
+  --muted-foreground-soft: oklch(0.48 0 0);
+  --border: oklch(1 0 0 / 8%);
 
   --tone-tip-bg: oklch(0.22 0.05 145);
-  --tone-tip-fg: oklch(0.78 0.16 145);
   --tone-warn-bg: oklch(0.22 0.05 27);
-  --tone-warn-fg: oklch(0.78 0.18 27);
 
   --color-edge-continuation: #9ca3af;
   --color-edge-fork: #60a5fa;
@@ -72,36 +68,34 @@
   :root {
     --background: #ffffff;
     --foreground: #1a1a1a;
-    --card: #ffffff;
+    --card: #fafafa;
     --primary: #2563eb;
     --muted: #f5f6f7;
     --muted-foreground: #6b7280;
+    --muted-foreground-soft: #9ca3af;
     --border: #e5e7eb;
     --tone-tip-bg: #ecfdf5;
-    --tone-tip-fg: #047857;
     --tone-warn-bg: #fef3c7;
-    --tone-warn-fg: #b45309;
     --color-edge-merge: #16a34a;
     --color-edge-reference: #9333ea;
   }
   .dark {
-    --background: #0a0a0f;
+    --background: #0a0a0a;
     --foreground: #ededed;
-    --card: #16161c;
+    --card: #161616;
     --primary: #60a5fa;
-    --muted: #1f1f29;
+    --muted: #1c1c1c;
     --muted-foreground: #9ca3af;
-    --border: rgba(255, 255, 255, 0.1);
+    --muted-foreground-soft: #6b7280;
+    --border: rgba(255, 255, 255, 0.08);
     --tone-tip-bg: #052e1a;
-    --tone-tip-fg: #4ade80;
     --tone-warn-bg: #2a1d05;
-    --tone-warn-fg: #fbbf24;
   }
 }
 
 
 /* ==========================================================================
-   Typography — the heart of the system
+   Typography — Outfit on headings, Geist on body
    ========================================================================== */
 
 body {
@@ -120,45 +114,53 @@ code, pre, kbd, samp {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   color: var(--foreground);
+  text-align: left !important;
   text-wrap: balance;
 }
 
-h1 {
+h1, #page-title {
+  font-family: 'Outfit', 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important;
   font-size: clamp(2.25rem, 5vw, 3.25rem);
   font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: left !important;
   margin-bottom: 1rem;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-top: 4.5rem;
-  margin-bottom: 1.25rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-top: 4rem;
+  margin-bottom: 1.125rem;
+  text-align: left !important;
 }
 
 h3 {
-  font-size: 1.375rem;
+  font-size: 1.3125rem;
   font-weight: 600;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.01em;
   line-height: 1.3;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
+  text-align: left !important;
 }
 
 h4 {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
+  text-align: left !important;
 }
 
 p {
   text-wrap: pretty;
+  text-align: left;
   margin-block: 1rem;
 }
 
@@ -200,7 +202,7 @@ strong {
 
 
 /* ==========================================================================
-   Links — the only persistent color
+   Links
    ========================================================================== */
 
 a {
@@ -219,7 +221,7 @@ a {
 
 
 /* ==========================================================================
-   Backgrounds — strip every pattern decoration Mintlify might inject
+   Backgrounds — strip every pattern decoration
    ========================================================================== */
 
 [class*="background"][class*="decoration"],
@@ -233,43 +235,143 @@ a {
 
 
 /* ==========================================================================
-   Mintlify shell — quiet
+   Mintlify shell — page margins, larger logo, centered search,
+   compact and hierarchical sidebar
    ========================================================================== */
 
 #navbar {
-  border-bottom: none !important;
+  background: var(--background) !important;
+  border-bottom: 1px solid var(--border) !important;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
-  background: var(--background) !important;
 }
 
+/* Logo: render bigger than the Mintlify default */
+#header-logo,
+[id*="logo"] img,
+nav img[alt*="logo" i],
+header img[alt*="logo" i],
+header svg[role="img"] {
+  height: 32px !important;
+  width: auto !important;
+  max-height: 32px;
+}
+
+/* Search bar: visually centered in the navbar */
+#search-input,
+[id*="search"] input[type="search"],
+[id*="search"] input[type="text"] {
+  width: 100% !important;
+  max-width: 480px;
+  height: 36px;
+  border-radius: 9999px !important;
+  background: var(--muted) !important;
+  border: 1px solid transparent !important;
+  font-size: 14px;
+  padding-inline: 14px !important;
+}
+
+#search-input:focus-visible,
+[id*="search"] input:focus-visible {
+  outline: 2px solid color-mix(in oklch, var(--primary), transparent 60%);
+  outline-offset: 2px;
+  border-color: var(--border) !important;
+}
+
+/* Page margins — wider gutters around the content */
+#content-area,
+main[role="main"],
+[class*="content-area"] {
+  padding-inline: clamp(24px, 5vw, 64px) !important;
+  padding-top: 2rem !important;
+  padding-bottom: 4rem !important;
+}
+
+/* Sidebar — let Mintlify defaults handle most of it,
+   only adjust spacing and group-header hierarchy */
 #sidebar,
 aside[id*="sidebar"] {
-  border-right: none !important;
   background: var(--background);
 }
 
-#table-of-contents {
-  color: var(--muted-foreground);
-  font-size: 13px;
-  line-height: 1.6;
+/* Compact sidebar list: tighter row height + smaller padding */
+#sidebar a,
+#sidebar [role="link"],
+#sidebar [data-active],
+aside[id*="sidebar"] a {
+  padding-block: 0.3rem !important;
+  padding-inline: 0.625rem !important;
+  font-size: 13.5px !important;
+  line-height: 1.45 !important;
+  min-height: 0 !important;
 }
 
-#search-input {
-  border-radius: var(--radius-xl);
-  background: var(--muted);
-  border: none;
-}
-#search-input:focus-visible {
-  outline: 2px solid color-mix(in oklch, var(--primary), transparent 60%);
-  outline-offset: 2px;
+/* Sidebar group headers: muted + smaller, gives clear hierarchy */
+#sidebar [role="heading"],
+#sidebar h2, #sidebar h3, #sidebar h4,
+#sidebar [class*="group"][class*="header"],
+#sidebar [class*="group"][class*="title"],
+#sidebar [class*="GroupHeader"],
+#sidebar [class*="group-header"],
+#sidebar [class*="sidebar-group-title"],
+aside[id*="sidebar"] [role="heading"],
+aside[id*="sidebar"] [class*="group"][class*="title"] {
+  color: var(--muted-foreground-soft) !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.25rem !important;
+  padding-inline: 0.625rem !important;
 }
 
-[data-active="true"],
-[data-active-deepest="true"] {
+/* Sidebar items: muted by default, full-color when active. Hover keeps
+   text strong but adds a subtle background. */
+#sidebar a,
+#sidebar [role="link"],
+aside[id*="sidebar"] a {
+  color: var(--muted-foreground) !important;
+  border-radius: var(--radius-md) !important;
+  transition: background var(--duration-fast) var(--ease-out-cubic),
+              color var(--duration-fast) var(--ease-out-cubic);
+}
+
+@media (hover: hover) {
+  #sidebar a:hover,
+  aside[id*="sidebar"] a:hover {
+    background: var(--muted) !important;
+    color: var(--foreground) !important;
+  }
+}
+
+#sidebar [data-active="true"],
+#sidebar [data-active-deepest="true"],
+aside[id*="sidebar"] [data-active="true"] {
   background: var(--muted) !important;
-  border-radius: 9999px !important;
   color: var(--foreground) !important;
+  font-weight: 500 !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Right TOC: muted text, current item primary blue */
+#table-of-contents,
+[id*="table-of-contents"],
+[id*="toc"] {
+  color: var(--muted-foreground) !important;
+  font-size: 12.5px !important;
+  line-height: 1.55 !important;
+}
+
+#table-of-contents a {
+  color: var(--muted-foreground) !important;
+  padding-block: 0.2rem !important;
+}
+
+#table-of-contents [data-active="true"],
+#table-of-contents .active,
+#table-of-contents [aria-current="true"] {
+  color: var(--primary) !important;
 }
 
 
@@ -278,8 +380,8 @@ aside[id*="sidebar"] {
    ========================================================================== */
 
 card {
-  background: var(--muted) !important;
-  border: none !important;
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
   border-radius: var(--radius-2xl) !important;
   padding: 1.5rem !important;
   box-shadow: none !important;
@@ -287,7 +389,7 @@ card {
 }
 @media (hover: hover) {
   card:hover {
-    background: color-mix(in oklch, var(--muted), var(--foreground) 4%) !important;
+    background: color-mix(in oklch, var(--card), var(--foreground) 4%) !important;
   }
 }
 
@@ -312,7 +414,7 @@ tip,
 check,
 warning,
 danger {
-  border: none !important;
+  border: 1px solid var(--border) !important;
   border-left: none !important;
   border-radius: var(--radius-2xl) !important;
   box-shadow: none !important;
@@ -324,14 +426,8 @@ note,
 info,
 callout[data-tone="note"],
 callout[data-tone="info"] {
-  background: oklch(from var(--primary) 0.97 0.025 h) !important;
+  background: var(--card) !important;
   color: var(--foreground) !important;
-}
-.dark note,
-.dark info,
-.dark callout[data-tone="note"],
-.dark callout[data-tone="info"] {
-  background: oklch(from var(--primary) 0.22 0.04 h) !important;
 }
 
 tip,
@@ -339,6 +435,7 @@ check,
 callout[data-tone="tip"],
 callout[data-tone="check"] {
   background: var(--tone-tip-bg) !important;
+  border-color: color-mix(in oklch, var(--tone-tip-bg), var(--foreground) 12%) !important;
   color: var(--foreground) !important;
 }
 
@@ -347,26 +444,17 @@ danger,
 callout[data-tone="warning"],
 callout[data-tone="danger"] {
   background: var(--tone-warn-bg) !important;
+  border-color: color-mix(in oklch, var(--tone-warn-bg), var(--foreground) 12%) !important;
   color: var(--foreground) !important;
 }
 
-frame,
-.np-figure {
+frame {
   border-radius: var(--radius-3xl) !important;
-  border: none !important;
-  background: var(--muted) !important;
-  box-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.04),
-    0 24px 48px -16px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--card) !important;
   padding: 0 !important;
   overflow: hidden;
   margin-block: 2rem !important;
-}
-.dark frame,
-.dark .np-figure {
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.04),
-    0 24px 48px -16px rgba(0, 0, 0, 0.4) !important;
 }
 
 img {
@@ -376,35 +464,16 @@ img {
   height: auto;
 }
 
-.np-figure img,
-.np-figure svg {
-  border-radius: 0;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.np-figure figcaption {
-  display: block;
-  padding: 0.75rem 1.25rem 1rem;
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-  text-align: center;
-  background: var(--muted);
-}
-
+/* Code blocks */
 pre {
-  background: oklch(0.97 0.005 60) !important;
-  border: none !important;
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
   border-radius: var(--radius-xl) !important;
   box-shadow: none !important;
   padding: 1.125rem 1.25rem !important;
   font-size: 0.875rem !important;
   line-height: 1.6 !important;
   overflow-x: auto;
-}
-.dark pre {
-  background: oklch(0.2 0.005 60) !important;
 }
 
 :not(pre) > code {
@@ -427,10 +496,6 @@ table {
   width: 100%;
 }
 
-thead {
-  background: transparent !important;
-}
-
 thead th {
   font-weight: 600 !important;
   text-align: left;
@@ -445,38 +510,32 @@ tbody td {
   background: transparent !important;
 }
 
-tbody tr {
-  background: transparent !important;
-}
-
-tbody tr:nth-child(even) td {
-  background: transparent !important;
-}
-
 blockquote {
   border: none !important;
   background: transparent !important;
   padding: 0.5rem 0 0.5rem 1.5rem !important;
   margin-block: 1.75rem !important;
-  font-size: 1.125rem;
-  line-height: 1.55;
-  color: var(--foreground);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--muted-foreground) !important;
   border-radius: 0 !important;
   position: relative;
 }
+
 blockquote::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.85rem;
-  bottom: 0.85rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
   width: 2px;
   background: var(--border);
   border-radius: 1px;
 }
+
 blockquote p {
-  font-size: 1.125rem;
-  color: var(--foreground);
+  font-size: inherit;
+  color: inherit;
   margin-block: 0;
 }
 
@@ -488,7 +547,7 @@ hr {
 
 
 /* ==========================================================================
-   NavList — the only "navigation" primitive in the docs
+   NavList — the only navigation primitive
    ========================================================================== */
 
 .np-navlist {
@@ -508,10 +567,17 @@ hr {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 1rem;
-  padding: 1.25rem 0;
+  padding: 1.125rem 0.25rem;
   color: var(--foreground);
   text-decoration: none !important;
-  transition: color var(--duration-fast) var(--ease-out-cubic);
+  transition: background var(--duration-fast) var(--ease-out-cubic),
+              color var(--duration-fast) var(--ease-out-cubic);
+}
+
+@media (hover: hover) {
+  .np-navlist a:hover {
+    background: var(--muted);
+  }
 }
 
 .np-navlist .body {
@@ -524,6 +590,7 @@ hr {
 }
 
 .np-navlist .title {
+  font-family: 'Outfit', 'Geist', system-ui, sans-serif;
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.005em;
@@ -533,11 +600,13 @@ hr {
 
 .np-navlist .arrow {
   display: inline-block;
-  color: var(--muted-foreground);
+  color: var(--muted-foreground-soft);
   font-size: 1.25rem;
   line-height: 1;
   font-weight: 400;
-  transition: transform var(--duration-fast) var(--ease-out-cubic), color var(--duration-fast) var(--ease-out-cubic);
+  transition: transform var(--duration-fast) var(--ease-out-cubic),
+              color var(--duration-fast) var(--ease-out-cubic);
+  padding-right: 0.5rem;
 }
 
 @media (hover: hover) {
@@ -552,7 +621,7 @@ hr {
 
 
 /* ==========================================================================
-   EdgeChip — inline canvas vocabulary in prose
+   EdgeChip
    ========================================================================== */
 
 .np-edge-chip {
@@ -591,7 +660,7 @@ hr {
 
 
 /* ==========================================================================
-   Touch / overscroll (from product app)
+   Touch / overscroll
    ========================================================================== */
 
 button, a, [role="button"] {
