@@ -1,28 +1,28 @@
 ---
 title: "Air-gapped install"
-description: "Install and upgrade NodePad in environments without internet access."
+description: "Run NodePad in environments without internet access."
 ---
 
-NodePad supports environments with no internet access. Everything needed to install, upgrade, and operate ships in one offline bundle.
+NodePad supports environments with no internet access. The application makes no outbound calls of its own, so once it is installed and configured, the only network traffic comes from the LLM provider calls users initiate.
 
 <Info>
-  NodePad's air-gap story is a **packaging guarantee**, not a network-policy one. The install and upgrade flows require no internet access. In operation, outbound calls are made only to the LLM providers you explicitly configure, using keys you supply. If your environment has no egress to those providers either, route those endpoints through your internal mirror or proxy policy.
+  NodePad's air-gap story is a **packaging guarantee**, not a network-policy one. The install and upgrade flows do not require internet access. In operation, outbound calls are made only to the LLM providers you explicitly configure, using keys you supply. If your environment has no egress to those providers either, route those endpoints through your internal mirror or proxy policy.
 </Info>
 
 ## What air-gap covers
 
 <Columns cols={2}>
-  <Card title="Single offline bundle" icon="package">
-    Application images, deployment artifacts, configuration templates, and install instructions ship in one signed bundle.
-  </Card>
   <Card title="No outbound calls of its own" icon="shield">
     NodePad never phones home for updates, license, or telemetry.
   </Card>
-  <Card title="Verifiable integrity" icon="shield-check">
-    The bundle ships with a checksum so you can verify integrity before installing.
-  </Card>
   <Card title="Operator-driven upgrades" icon="circle-arrow-up">
-    You decide when to bring in a new version and apply it through the same offline flow.
+    You decide when to bring in a new version and apply it on your own schedule.
+  </Card>
+  <Card title="Providers stay on your terms" icon="key-round">
+    Each LLM provider is reached only with the keys you configure, through the egress path your network team approves.
+  </Card>
+  <Card title="Air-gap delivery" icon="package">
+    Air-gapped deployment is scoped together with the team. We package the distribution to fit your environment and walk you through the install.
   </Card>
 </Columns>
 
@@ -41,10 +41,10 @@ By default:
 
 **Network-review sign-off sentence:** *"NodePad, as shipped, makes no outbound network calls of its own; only user-initiated LLM calls to the providers the operator has configured."*
 
-## What you receive
+## Get the air-gapped distribution
 
-The air-gapped install package includes the full bundle, the install and upgrade playbooks, and the verification procedure for image integrity. The playbooks are matched to the platform you run.
+The air-gapped distribution and its install playbook are delivered alongside your deployment package after we scope the environment together.
 
 <Card title="Talk to the team" icon="mail" type="info" href="https://node-pad.com/enterprise">
-  Tell us about your environment and we will send the air-gapped install package and walk you through it.
+  Tell us about your environment and we will scope the air-gapped distribution and walk you through the install.
 </Card>

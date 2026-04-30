@@ -69,7 +69,7 @@
             "group": "Models and settings",
             "pages": [
               "models/overview",
-              "models/per-message-selection",
+              "models/per-branch-selection",
               "models/bring-your-own-keys"
             ]
           },

@@ -1,0 +1,52 @@
+---
+title: "Per-branch model selection"
+description: "Use a workspace default when it helps, then switch the model for a specific branch when that branch needs something different."
+---
+
+NodePad does not lock a workspace to one model forever. You can keep a sensible default, and individual branches can use a different model when they need to.
+
+## The basic pattern
+
+<Steps>
+  <Step title="Set a workspace default" icon="star">
+    Pick the model you want most new work in this workspace to use.
+  </Step>
+  <Step title="Switch the default when a branch needs something else" icon="sparkles">
+    Use the model selector in the workspace header to switch the default before you start a new branch. New branches inherit whichever default is current.
+  </Step>
+  <Step title="Branch to lock in a different model" icon="git-branch">
+    Each branch carries its own model. If you want a real comparison between two models, branch first and start the new branch on a different model.
+  </Step>
+</Steps>
+
+## Good reasons to switch
+
+<AccordionGroup>
+  <Accordion title="You need a second opinion">
+    Branch from the same message, switch the workspace default, and start the new branch on another model.
+  </Accordion>
+  <Accordion title="The branch changed jobs">
+    A branch that started as ideation may now need critique, summarization, or deeper reasoning. Branch and pick a model that fits the new job.
+  </Accordion>
+  <Accordion title="Speed in one branch, depth in another">
+    Keep one branch on a lighter model for rapid iteration while another branch runs on a heavier model for analysis.
+  </Accordion>
+  <Accordion title="A real A/B comparison">
+    Use the same source message in two branches, change only the model, and compare the outputs side by side.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Comparisons are most useful when you change one thing at a time. If the prompt and the branch history change too, you lose the clean comparison.
+</Tip>
+
+## Continue
+
+<Columns cols={2}>
+  <Card title="Models in NodePad" icon="sparkles" href="/models/overview">
+    The three model decisions you make.
+  </Card>
+  <Card title="Bring your own keys" icon="key-round" href="/models/bring-your-own-keys">
+    Route model requests through your own provider account.
+  </Card>
+</Columns>
