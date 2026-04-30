@@ -3,24 +3,36 @@ title: "NodePad documentation"
 description: "Learn how NodePad works: the canvas, branching, references, merges, models, and self-hosted deployment."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 A canvas for AI conversations. Branch from any message, reference across the canvas, and merge sources into the next step.
 
 ## Start here
 
-<NavList items={[
-  { title: 'Quickstart', body: 'A real first session in seven steps — open a workspace, branch, reference, merge.', href: '/quickstart' },
-  { title: 'Core workflow', body: 'How the canvas, nodes, branches, and edges fit together.', href: '/concepts/canvas' },
-  { title: 'Self-hosting', body: 'Deploy NodePad in your own infrastructure.', href: '/enterprise/overview' },
-]} />
+<Columns cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    A real first session in seven steps — open a workspace, branch, reference, merge.
+  </Card>
+  <Card title="Core workflow" icon="frame" href="/concepts/canvas">
+    How the canvas, nodes, branches, and edges fit together.
+  </Card>
+  <Card title="Self-hosting" icon="server" href="/enterprise/overview">
+    Deploy NodePad in your own infrastructure.
+  </Card>
+</Columns>
 
 ## By job to be done
 
-<NavList items={[
-  { title: 'Research', body: 'Keep parallel investigations visible instead of burying them in one chat.', href: '/use-cases/research' },
-  { title: 'Engineering', body: 'Branch for a second opinion before you change production.', href: '/use-cases/engineering' },
-  { title: 'Writing', body: 'Keep drafting, fact-checking, and editing in separate branches.', href: '/use-cases/writing' },
-]} />
+<Columns cols={3}>
+  <Card title="Research" icon="microscope" href="/use-cases/research">
+    Keep parallel investigations visible instead of burying them in one chat.
+  </Card>
+  <Card title="Engineering" icon="wrench" href="/use-cases/engineering">
+    Branch for a second opinion before you change production.
+  </Card>
+  <Card title="Writing" icon="pen-line" href="/use-cases/writing">
+    Keep drafting, fact-checking, and editing in separate branches.
+  </Card>
+</Columns>
 
-NodePad is currently in beta. [Join the beta →](https://node-pad.com/beta)
+<Card title="Currently in beta" icon="rocket" type="tip" href="https://node-pad.com/beta">
+  Access is free and granted in waves. Join the list to get an invite.
+</Card>

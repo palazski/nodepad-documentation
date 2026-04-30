@@ -3,26 +3,42 @@ title: "Text notes"
 description: "Annotations, reminders, and visual wayfinding on the NodePad canvas."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 Text notes are freeform notes that live on the canvas beside your conversation branches. They help you annotate the workspace, keep track of decisions, and leave yourself or teammates breadcrumbs about what to do next.
 
 ## What text notes are for
 
-- **Session notes.** Capture what the workspace is for, what you are testing, or what still needs review.
-- **Checklists.** Keep a short list of open questions, next actions, or review criteria.
-- **Wayfinding.** Label clusters of branches so a large workspace stays readable when you zoom out.
-- **Human context.** Leave notes for collaborators that should stay visible on the canvas but out of model prompts.
+<Columns cols={2}>
+  <Card title="Session notes" icon="notebook-pen">
+    Capture what the workspace is for, what you are testing, or what still needs review.
+  </Card>
+  <Card title="Checklists" icon="list-checks">
+    Keep a short list of open questions, next actions, or review criteria.
+  </Card>
+  <Card title="Wayfinding" icon="map">
+    Label clusters of branches so a large workspace stays readable when you zoom out.
+  </Card>
+  <Card title="Human context" icon="users">
+    Leave notes for collaborators that should stay visible on the canvas but out of model prompts.
+  </Card>
+</Columns>
 
 ## How to create one
 
-1. Right-click empty canvas space to open the canvas context menu.
-2. Choose **New text note here**. NodePad drops a new note at that position.
-3. Type whatever annotation or checklist you need and place it near the relevant branches.
+<Steps>
+  <Step title="Open the canvas context menu" icon="mouse-pointer-2">
+    Right-click empty canvas space.
+  </Step>
+  <Step title="Choose New text note here" icon="sticky-note">
+    NodePad drops a new note at that position.
+  </Step>
+  <Step title="Type your annotation" icon="type">
+    Write whatever annotation or checklist you need and place it near the relevant branches.
+  </Step>
+</Steps>
 
-## What text notes do not do
-
-Text notes are not model instructions. They are not automatically injected into the prompt context for nearby branches. If you want instructions to affect the model, put them in your message, in the workspace instructions, or in a branching strategy that keeps different prompt intents separate.
+<Warning>
+  Text notes are not model instructions. They are not automatically injected into the prompt context for nearby branches. If you want instructions to affect the model, put them in your message, in the workspace instructions, or in a branching strategy that keeps different prompt intents separate.
+</Warning>
 
 ## Patterns that work
 
@@ -40,7 +56,11 @@ Text notes are not model instructions. They are not automatically injected into 
 
 ## Continue
 
-<NavList items={[
-  { title: 'The canvas', body: 'How notes sit beside branches and edges in a workspace.', href: '/concepts/canvas' },
-  { title: 'References', body: 'When you do want context to move into a prompt, use `@`.', href: '/concepts/references' },
-]} />
+<Columns cols={2}>
+  <Card title="The canvas" icon="frame" href="/concepts/canvas">
+    How notes sit beside branches and edges in a workspace.
+  </Card>
+  <Card title="References" icon="at-sign" href="/concepts/references">
+    When you do want context to move into a prompt, use `@`.
+  </Card>
+</Columns>

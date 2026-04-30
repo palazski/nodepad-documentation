@@ -4,25 +4,42 @@ description: "Branch from any message so you can explore a new path without over
 ---
 
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
-import { NavList } from '/snippets/NavList.jsx';
 
 Branch from any message so you can explore a new path without overwriting the current one. Each split appears on the canvas as a <EdgeChip type="fork">fork edge</EdgeChip>.
 
 ## When to fork
 
-You fork when you want to:
-
-- **Get a second opinion.** Ask another model the same question before you commit to a decision.
-- **Chase a tangent.** Explore a side question without polluting the branch you still care about.
-- **Compare prompts.** Send two different follow-ups from the same point and see which framing works better.
-- **Preserve a checkpoint.** Split before a risky change so the original path stays intact.
+<Columns cols={2}>
+  <Card title="Get a second opinion" icon="scale">
+    Ask another model the same question before you commit to a decision.
+  </Card>
+  <Card title="Chase a tangent" icon="split">
+    Explore a side question without polluting the branch you still care about.
+  </Card>
+  <Card title="Compare prompts" icon="columns-2">
+    Send two different follow-ups from the same point and see which framing works better.
+  </Card>
+  <Card title="Preserve a checkpoint" icon="bookmark">
+    Split before a risky change so the original path stays intact.
+  </Card>
+</Columns>
 
 ## How branching works
 
-1. Right-click the node that represents the context you want to preserve.
-2. Choose **Branch from here**. NodePad creates a new draft connected to that source node.
-3. Send a new follow-up. The new draft starts from the same history up to that point, then diverges from what you send next.
-4. Both branches stay visible on the canvas, so you can compare results without losing provenance.
+<Steps>
+  <Step title="Pick the source node" icon="mouse-pointer-2">
+    Right-click the node that represents the context you want to preserve.
+  </Step>
+  <Step title="Branch from here" icon="git-branch">
+    Choose **Branch from here**. NodePad creates a new draft connected to that source node.
+  </Step>
+  <Step title="Send a new follow-up" icon="send">
+    The new draft starts from the same history up to that point, then diverges from what you send next.
+  </Step>
+  <Step title="Compare results" icon="columns-2">
+    Both branches stay visible on the canvas, so you can compare results without losing provenance.
+  </Step>
+</Steps>
 
 ## Patterns that work well
 
@@ -41,11 +58,17 @@ You fork when you want to:
   </Accordion>
 </AccordionGroup>
 
-> Branches are explicit graph structure. They are not just copied text in a new chat window.
+<Note>
+  Branches are explicit graph structure. They are not just copied text in a new chat window.
+</Note>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Merging', body: 'Combine messages from different branches into one new draft.', href: '/concepts/merging' },
-  { title: 'References', body: 'Cross-link across branches with `@`.', href: '/concepts/references' },
-]} />
+<Columns cols={2}>
+  <Card title="Merging" icon="git-merge" href="/concepts/merging">
+    Combine messages from different branches into one new draft.
+  </Card>
+  <Card title="References" icon="at-sign" href="/concepts/references">
+    Cross-link across branches with `@`.
+  </Card>
+</Columns>

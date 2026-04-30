@@ -4,26 +4,43 @@ description: "Branches for alternate diagnoses, second opinions, and merge draft
 ---
 
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
-import { NavList } from '/snippets/NavList.jsx';
 
-Engineering work benefits from clean alternate paths. One branch can hold the main diagnosis. Another can <EdgeChip type="fork">fork</EdgeChip> from it to challenge the conclusion. A third can <EdgeChip type="merge">merge</EdgeChip> the useful pieces into a rollout plan.
+<Card title="Engineering workflow" icon="wrench" type="tip">
+  Engineering work benefits from clean alternate paths. One branch can hold the main diagnosis. Another can <EdgeChip type="fork">fork</EdgeChip> from it to challenge the conclusion. A third can <EdgeChip type="merge">merge</EdgeChip> the useful pieces into a rollout plan.
+</Card>
 
 ## A practical incident pattern
 
-1. Start one branch with the raw problem — logs, stack trace, or failing behavior — and ask for a diagnosis.
-2. Branch before you act. Fork from the diagnosis point and ask another model or another prompt framing to challenge the first answer.
-3. Use references for exact evidence. If one branch finds the crucial clue, reference that exact message in the branch where you are forming the plan.
-4. Merge sources into the rollout draft. Combine the branches that matter into one new message and ask for the remediation plan, rollback plan, or test checklist.
+<Steps>
+  <Step title="Capture the raw problem" icon="bug">
+    Start one branch with the raw problem — logs, stack trace, or failing behavior — and ask for a diagnosis.
+  </Step>
+  <Step title="Branch before you act" icon="git-branch">
+    Fork from the diagnosis point and ask another model or another prompt framing to challenge the first answer.
+  </Step>
+  <Step title="Use references for exact evidence" icon="at-sign">
+    If one branch finds the crucial clue, reference that exact message in the branch where you are forming the plan.
+  </Step>
+  <Step title="Merge sources into the rollout draft" icon="git-merge">
+    Combine the branches that matter into one new message and ask for the remediation plan, rollback plan, or test checklist.
+  </Step>
+</Steps>
 
 ## Where NodePad helps most
 
 Second opinions start from the same evidence, not from a retyped summary. A merged draft can ask for a test plan or rollout sequence using the best findings from several branches. Teammates can see which branch produced which recommendation. Risky exploratory questions stay isolated from the branch you plan to act on.
 
-> Keep a text note on the canvas with the production constraints that matter: blast radius, rollback requirement, deadline, and systems you do not want the model to invent changes for.
+<Tip>
+  Keep a text note on the canvas with the production constraints that matter: blast radius, rollback requirement, deadline, and systems you do not want the model to invent changes for.
+</Tip>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Forking', body: 'How to branch for a second opinion before you ship.', href: '/concepts/forking' },
-  { title: 'Merging', body: 'Synthesize across branches into a single decision draft.', href: '/concepts/merging' },
-]} />
+<Columns cols={2}>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    How to branch for a second opinion before you ship.
+  </Card>
+  <Card title="Merging" icon="git-merge" href="/concepts/merging">
+    Synthesize across branches into a single decision draft.
+  </Card>
+</Columns>

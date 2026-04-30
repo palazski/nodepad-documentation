@@ -3,56 +3,62 @@ title: "Quickstart"
 description: "Open your first NodePad workspace, send messages, branch a thread, add a text note, and try references and merge flows."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 This walkthrough gives you a real first session in NodePad. By the end, you will have a workspace with multiple branches, a text note, a cross-branch reference, and a merged follow-up message.
 
-You need beta access before you can sign in to the hosted product. If you do not have an account yet, start with [Beta access](/beta-access).
+<Note>
+  You need beta access before you can sign in to the hosted product. If you do not have an account yet, start with [Beta access](/beta-access).
+</Note>
 
 <Steps>
-  <Step title="Open a workspace">
+  <Step title="Open a workspace" icon="mouse-pointer-2">
     After you sign in, open a workspace from the sidebar or create a new one. A fresh workspace starts as an empty canvas with a draft message node ready to use.
   </Step>
 
-  <Step title="Send your first message">
+  <Step title="Send your first message" icon="send">
     Type a prompt into the draft composer and send it. Pick a model from the header if you want something other than the current workspace default.
 
     Once the assistant replies, you have your first branch.
   </Step>
 
-  <Step title="Branch from a message">
+  <Step title="Branch from a message" icon="git-branch">
     Right-click the message you want to branch from and choose **Branch from here**. NodePad creates a new draft connected to that point in the conversation.
 
     Send a different follow-up in the new branch so you can compare the outcomes side by side.
   </Step>
 
-  <Step title="Add a text note to the canvas">
+  <Step title="Add a text note to the canvas" icon="sticky-note">
     Right-click empty canvas space and choose **New text note here**. Use the note for your own annotations, to-do items, or reminders about what you want to test next.
 
     Text notes are for you. They do not get injected into model context.
   </Step>
 
-  <Step title="Reference another branch with @">
+  <Step title="Reference another branch with @" icon="at-sign">
     In a new draft, type `@` and select a branch or message from the picker. NodePad inserts a reference token and stores the actual message link behind it.
 
     Send a prompt such as: "Use the idea in `@B1-2`, but rewrite it for a non-technical audience."
   </Step>
 
-  <Step title="Merge multiple sources into one next step">
+  <Step title="Merge multiple sources into one next step" icon="git-merge">
     Select messages from at least two different branches and use **Merge into new message**. NodePad opens a new draft with those sources attached.
 
     Now ask for a synthesis, comparison, or decision. This is the fastest way to combine parallel work without copy-pasting.
   </Step>
 
-  <Step title="Export or duplicate the workspace">
+  <Step title="Export or duplicate the workspace" icon="download">
     Use the export menu in the workspace header when you want a portable `.nodepad` file or an image of the canvas. You can also duplicate a workspace from the sidebar when you want to preserve one version before changing direction.
   </Step>
 </Steps>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Forking', body: 'When to branch, when to re-send, and how to compare cleanly.', href: '/concepts/forking' },
-  { title: 'References and merge sources', body: 'The difference between `@` references, merge edges, and merged drafts.', href: '/concepts/references' },
-  { title: 'Per-message model selection', body: 'Switch models message by message instead of locking a workspace to one.', href: '/models/per-message-selection' },
-]} />
+<Columns cols={3}>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    When to branch, when to re-run, and how to compare cleanly.
+  </Card>
+  <Card title="References and merge sources" icon="at-sign" href="/concepts/references">
+    The difference between `@` references, merge edges, and merged drafts.
+  </Card>
+  <Card title="Per-message model selection" icon="sparkles" href="/models/per-message-selection">
+    Switch models message by message instead of locking a workspace to one.
+  </Card>
+</Columns>

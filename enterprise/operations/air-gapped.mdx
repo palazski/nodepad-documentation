@@ -41,13 +41,13 @@ nodepad-X.Y.Z/
 ## Transfer
 
 <Steps>
-  <Step title="Download the bundle on a connected machine">
+  <Step title="Download the bundle on a connected machine" icon="download">
     Grab the release zip from the GitHub Release page.
   </Step>
-  <Step title="Verify the checksum (sha256) against the release notes">
+  <Step title="Verify the checksum (sha256) against the release notes" icon="shield-check">
     Release notes list the expected hash.
   </Step>
-  <Step title="Move the zip through your approved transfer path">
+  <Step title="Move the zip through your approved transfer path" icon="usb">
     USB, DMZ, sneaker-net, whatever your policy mandates.
   </Step>
 </Steps>
@@ -140,10 +140,18 @@ Specifically, with `NODEPAD_POSTHOG_KEY` unset (the default):
 
 ## Limitations of air-gapped installs
 
-- **No automatic update notifications** — operators must track releases manually via the [changelog](/changelog) or GitHub Releases.
-- **No Sentry/PostHog telemetry** — both are opt-in and can be left blank.
-- **No in-app version check.** To see what's running:
-  ```bash
-  kubectl get deploy nodepad-nodepad-api \
-    -o jsonpath='{.spec.template.spec.containers[0].image}'
-  ```
+<Columns cols={3}>
+  <Card title="No automatic update notifications" icon="bell" type="warning">
+    Operators must track releases manually via the [changelog](/changelog) or GitHub Releases.
+  </Card>
+  <Card title="No telemetry signals" icon="gauge-circle" type="warning">
+    Sentry and PostHog are opt-in and can be left blank.
+  </Card>
+  <Card title="No in-app version check" icon="tag" type="warning">
+    To see what's running:
+    ```bash
+    kubectl get deploy nodepad-nodepad-api \
+      -o jsonpath='{.spec.template.spec.containers[0].image}'
+    ```
+  </Card>
+</Columns>

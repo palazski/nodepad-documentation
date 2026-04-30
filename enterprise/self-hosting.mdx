@@ -3,8 +3,6 @@ title: "Self-hosting NodePad in your own VPC or on-premises"
 description: "Deploy NodePad on your own Kubernetes cluster or a single VM. Bring your own Postgres, Redis, S3-compatible storage, and provider API keys."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad into your own infrastructure — Kubernetes via Helm, or a single VM via docker compose — and connect it to your own database, cache, and object storage. NodePad's application layer runs entirely inside your perimeter.
 
 ## Two install paths
@@ -32,16 +30,34 @@ NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad i
 
 In both postures, you are responsible for:
 
-- **Database.** PostgreSQL 15+. Schema migrations run automatically during install and upgrade.
-- **Cache and queue.** Redis 6+. Used for WebSocket streaming and background async tasks.
-- **Object storage.** Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.
-- **Provider API keys.** Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.
+<Columns cols={2}>
+  <Card title="Database" icon="database">
+    PostgreSQL 15+. Schema migrations run automatically during install and upgrade.
+  </Card>
+  <Card title="Cache and queue" icon="zap">
+    Redis 6+. Used for WebSocket streaming and background async tasks.
+  </Card>
+  <Card title="Object storage" icon="hard-drive">
+    Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.
+  </Card>
+  <Card title="Provider API keys" icon="key-round">
+    Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.
+  </Card>
+</Columns>
 
 ## What NodePad does not do
 
-- **No phone-home.** Once deployed, NodePad makes no outbound calls to NodePad-managed infrastructure. No update checks, no license phone-home, no usage pings.
-- **No outbound telemetry by default.** PostHog product analytics is off unless you explicitly set a `NODEPAD_POSTHOG_KEY` pointing at an instance you control.
-- **No data training.** NodePad does not train models on your conversations, regardless of deployment posture.
+<Columns cols={3}>
+  <Card title="No phone-home" icon="check" type="check">
+    Once deployed, NodePad makes no outbound calls to NodePad-managed infrastructure. No update checks, no license phone-home, no usage pings.
+  </Card>
+  <Card title="No outbound telemetry by default" icon="check" type="check">
+    PostHog product analytics is off unless you explicitly set a `NODEPAD_POSTHOG_KEY` pointing at an instance you control.
+  </Card>
+  <Card title="No data training" icon="check" type="check">
+    NodePad does not train models on your conversations, regardless of deployment posture.
+  </Card>
+</Columns>
 
 ## Release cadence and upgrade model
 
@@ -51,10 +67,18 @@ See [Upgrade & rollback](/enterprise/operations/upgrade) for the full playbook.
 
 ## Continue
 
-<NavList items={[
-  { title: 'Installing NodePad', body: 'Step through the four install postures.', href: '/enterprise/operations/install' },
-  { title: 'Upgrade & rollback', body: 'Safe upgrade flow and migration-incompatible rollback.', href: '/enterprise/operations/upgrade' },
-  { title: 'Air-gapped install', body: 'Bundle contents and offline upgrade flow.', href: '/enterprise/operations/air-gapped' },
-]} />
+<Columns cols={3}>
+  <Card title="Installing NodePad" icon="download" href="/enterprise/operations/install">
+    Step through the four install postures.
+  </Card>
+  <Card title="Upgrade & rollback" icon="circle-arrow-up" href="/enterprise/operations/upgrade">
+    Safe upgrade flow and migration-incompatible rollback.
+  </Card>
+  <Card title="Air-gapped install" icon="shield" href="/enterprise/operations/air-gapped">
+    Bundle contents and offline upgrade flow.
+  </Card>
+</Columns>
 
-To scope an environment with the Enterprise team before going live, [reach out →](https://node-pad.com/enterprise).
+<Card title="Scope an environment with the Enterprise team" icon="mail" type="info" href="https://node-pad.com/enterprise">
+  Reach out before going live to plan posture, capacity, and provider configuration.
+</Card>

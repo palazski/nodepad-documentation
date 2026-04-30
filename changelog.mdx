@@ -4,19 +4,21 @@ description: "Product updates and notable changes to NodePad."
 rss: true
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 New features, behavior changes, and notable fixes for NodePad. Subscribe via the RSS button at the top of this page to follow along without checking back.
 
-## v0.1.0 — pre-release
+<Update label="v0.1.0" description="Pre-release">
+  NodePad has not yet shipped its first tagged release. The first tag will include the canvas, branching, references, merge flows, text notes, model selection, and the self-hosting Helm chart.
 
-NodePad has not yet shipped its first tagged release. The first tag will include the canvas, branching, references, merge flows, text notes, model selection, and the self-hosting Helm chart.
-
-Until `v0.1.0` ships, the canonical engineering log lives on [GitHub Releases](https://github.com/palazski/nodepad-api/releases). After the first tag, releases will be summarised on this page.
+  Until `v0.1.0` ships, the canonical engineering log lives on [GitHub Releases](https://github.com/palazski/nodepad-api/releases). After the first tag, releases will be summarised on this page.
+</Update>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Quickstart', body: 'A real first session in seven steps.', href: '/quickstart' },
-  { title: 'Beta access', body: 'How to join the hosted beta.', href: '/beta-access' },
-]} />
+<Columns cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    A real first session in seven steps.
+  </Card>
+  <Card title="Beta access" icon="mail" href="/beta-access">
+    How to join the hosted beta.
+  </Card>
+</Columns>

@@ -3,15 +3,21 @@ title: "Per-message model selection"
 description: "Use a workspace default when it helps, then override the model for any specific send."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 NodePad does not lock a branch to one model forever. You can keep a sensible default for the workspace and still override the model for a specific send whenever the branch needs something different.
 
 ## The basic pattern
 
-1. Set a workspace default — the model you want most new work in this workspace to use.
-2. Override when a branch needs it. Before sending a message, pick another model for just that send if the branch now needs a different style of output or reasoning depth.
-3. Keep the branch structure stable. If you want a real comparison, branch first and then use a different model in the new branch.
+<Steps>
+  <Step title="Set a workspace default" icon="star">
+    Pick the model you want most new work in this workspace to use.
+  </Step>
+  <Step title="Override when a branch needs it" icon="refresh-cw">
+    Before sending a message, pick another model for just that send if the branch now needs a different style of output or reasoning depth.
+  </Step>
+  <Step title="Keep the branch structure stable" icon="git-branch">
+    If you want a real comparison, branch first and then use a different model in the new branch.
+  </Step>
+</Steps>
 
 ## Good reasons to override
 
@@ -30,11 +36,17 @@ NodePad does not lock a branch to one model forever. You can keep a sensible def
   </Accordion>
 </AccordionGroup>
 
-> Model overrides are most useful when you change one thing at a time. If the prompt and the branch history change too, you lose the clean comparison.
+<Tip>
+  Model overrides are most useful when you change one thing at a time. If the prompt and the branch history change too, you lose the clean comparison.
+</Tip>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Models in NodePad', body: 'The three model decisions you make.', href: '/models/overview' },
-  { title: 'Bring your own keys', body: 'Route model requests through your own provider account.', href: '/models/bring-your-own-keys' },
-]} />
+<Columns cols={2}>
+  <Card title="Models in NodePad" icon="sparkles" href="/models/overview">
+    The three model decisions you make.
+  </Card>
+  <Card title="Bring your own keys" icon="key-round" href="/models/bring-your-own-keys">
+    Route model requests through your own provider account.
+  </Card>
+</Columns>

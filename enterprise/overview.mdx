@@ -3,22 +3,51 @@ title: "Enterprise overview"
 description: "NodePad Enterprise is the self-hosted deployment path for teams that need the product inside their own infrastructure."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 NodePad Enterprise is for teams that want the NodePad workflow inside their own environment. You deploy the application stack, bring the backing services it needs, and control how provider access is configured.
 
-Enterprise is separate from the hosted beta. The beta runs on NodePad-managed infrastructure. Enterprise runs in yours.
+<Info>
+  Enterprise is separate from the hosted beta. The beta runs on NodePad-managed infrastructure. Enterprise runs in yours.
+</Info>
 
 ## What ships today
 
-- **Self-hosting.** Deploy on Kubernetes with Helm or on a single VM with Docker Compose.
-- **Offline / air-gapped install.** Install from an offline bundle when the target environment has no internet access.
-- **Immutable release tags.** Releases ship as versioned artifacts so upgrades are deliberate and pin-able.
-- **Bring your own provider keys.** Provider access is under your control rather than tied to a shared hosted setup.
+<Columns cols={2}>
+  <Card title="Self-hosting" icon="server">
+    Deploy on Kubernetes with Helm or on a single VM with Docker Compose.
+  </Card>
+  <Card title="Offline / air-gapped install" icon="shield">
+    Install from an offline bundle when the target environment has no internet access.
+  </Card>
+  <Card title="Immutable release tags" icon="lock">
+    Releases ship as versioned artifacts so upgrades are deliberate and pin-able.
+  </Card>
+  <Card title="Bring your own provider keys" icon="key-round">
+    Provider access is under your control rather than tied to a shared hosted setup.
+  </Card>
+</Columns>
 
 ## What to plan for
 
-An enterprise deployment is not only "run these containers." Plan for PostgreSQL 15+, Redis 6+, S3-compatible object storage, provider credentials and egress policy, your upgrade and rollback process, and your identity, access, and compliance requirements.
+<Columns cols={2}>
+  <Card title="Database" icon="database">
+    PostgreSQL 15+.
+  </Card>
+  <Card title="Cache and queue" icon="zap">
+    Redis 6+.
+  </Card>
+  <Card title="Object storage" icon="hard-drive">
+    S3-compatible object storage.
+  </Card>
+  <Card title="Provider credentials" icon="key-round">
+    API keys plus your egress policy.
+  </Card>
+  <Card title="Upgrade flow" icon="circle-arrow-up">
+    Your upgrade and rollback process.
+  </Card>
+  <Card title="Identity and compliance" icon="shield-check">
+    Identity, access, and compliance requirements.
+  </Card>
+</Columns>
 
 ## Who this is for
 
@@ -26,8 +55,14 @@ Enterprise is a fit when you want the NodePad product shape but need deployment 
 
 ## Continue
 
-<NavList items={[
-  { title: 'Self-hosting', body: 'The two main deployment shapes and what services you bring.', href: '/enterprise/self-hosting' },
-  { title: 'Installing NodePad', body: 'Connected, mirrored, air-gapped, and single-VM install paths.', href: '/enterprise/operations/install' },
-  { title: 'Upgrade & rollback', body: 'How to upgrade safely and roll back when needed.', href: '/enterprise/operations/upgrade' },
-]} />
+<Columns cols={3}>
+  <Card title="Self-hosting" icon="server" href="/enterprise/self-hosting">
+    The two main deployment shapes and what services you bring.
+  </Card>
+  <Card title="Installing NodePad" icon="download" href="/enterprise/operations/install">
+    Connected, mirrored, air-gapped, and single-VM install paths.
+  </Card>
+  <Card title="Upgrade & rollback" icon="circle-arrow-up" href="/enterprise/operations/upgrade">
+    How to upgrade safely and roll back when needed.
+  </Card>
+</Columns>

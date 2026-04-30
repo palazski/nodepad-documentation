@@ -4,21 +4,21 @@ description: "Use @ references and merge sources to pull context across branches
 ---
 
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
-import { NavList } from '/snippets/NavList.jsx';
 
 Two ways to reuse work from elsewhere on the canvas: <EdgeChip type="reference">`@` references</EdgeChip> for targeted cross-links, and <EdgeChip type="merge">merge sources</EdgeChip> for broader synthesis drafts. Both move context across branches without copy-pasting conversation text by hand.
 
-## Use `@` when you want one precise source
+<Columns cols={2}>
+  <Card title="@ references" icon="at-sign">
+    Type `@` in a draft to open the reference picker. Choose either a branch or a specific message. NodePad inserts the visible token into the draft and stores the actual linked node behind it. The text token alone is not the source of truth.
 
-Type `@` in a draft to open the reference picker. Choose either a branch or a specific message. NodePad inserts the visible token into the draft and stores the actual linked node behind it. That matters because the text token alone is not the source of truth.
+    Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
+  </Card>
+  <Card title="Merge sources" icon="git-merge">
+    Merge flows are better when the next prompt needs several sources at once. Instead of pointing to one message, you are asking the model to reason across a set of messages from different branches.
 
-Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
-
-## Use merge sources when you want synthesis
-
-Merge flows are better when the next prompt needs several sources at once. Instead of pointing to one message, you are asking the model to reason across a set of messages from different branches.
-
-That is useful for comparing recommendations, combining research findings, rewriting a draft using evidence gathered elsewhere, or deciding between alternate approaches.
+    Useful for comparing recommendations, combining research findings, rewriting a draft using evidence gathered elsewhere, or deciding between alternate approaches.
+  </Card>
+</Columns>
 
 ## How to choose
 
@@ -38,11 +38,17 @@ Reach for `@` when you need one specific message and a narrow, explicit cross-li
   </Accordion>
 </AccordionGroup>
 
-> Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt — keep an eye on scope. Text notes are not referenceable model context by default; they are canvas annotations for humans.
+<Note>
+  Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt — keep an eye on scope. Text notes are not referenceable model context by default; they are canvas annotations for humans.
+</Note>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Merging', body: 'How a merge composer assembles source messages.', href: '/concepts/merging' },
-  { title: 'Forking', body: 'Branching is what makes cross-branch references possible.', href: '/concepts/forking' },
-]} />
+<Columns cols={2}>
+  <Card title="Merging" icon="git-merge" href="/concepts/merging">
+    How a merge composer assembles source messages.
+  </Card>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    Branching is what makes cross-branch references possible.
+  </Card>
+</Columns>

@@ -3,19 +3,29 @@ title: "Models in NodePad"
 description: "Workspace defaults, per-message overrides, and cross-branch comparison."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 NodePad treats models as part of the workflow, not a one-time setup choice. A workspace can have a default model, but any send can use a different one if that move makes more sense for the task.
 
 ## Three model decisions
 
-You make three model decisions in NodePad. The **workspace default** is the model new work in this workspace starts from. A **per-message override** changes the model for a single send when a branch needs a different strength. A **cross-branch comparison** runs parallel branches with different models so you can compare answers side by side.
+<Columns cols={3}>
+  <Card title="Workspace default" icon="star">
+    The model new work in this workspace starts from.
+  </Card>
+  <Card title="Per-message override" icon="refresh-cw">
+    Change the model for a single send when a branch needs a different strength.
+  </Card>
+  <Card title="Cross-branch comparison" icon="columns-2">
+    Run parallel branches with different models so you can compare answers side by side.
+  </Card>
+</Columns>
 
 ## Why this matters
 
 Different models are good at different things. NodePad lets you act on that without breaking the shape of the work. You can branch a prompt and ask two models the same question. You can keep one branch on a fast model and another on a slower, deeper one. You can preserve a workspace default while still making local overrides. You can bring your own keys when you want the provider relationship to stay with your account.
 
-> A clean branching strategy is what makes model comparison useful. If both branches start from the same point, you can compare the answers instead of comparing two unrelated prompt histories.
+<Tip>
+  A clean branching strategy is what makes model comparison useful. If both branches start from the same point, you can compare the answers instead of comparing two unrelated prompt histories.
+</Tip>
 
 ## What the picker shows
 
@@ -23,8 +33,14 @@ The exact model list depends on how your NodePad environment is configured. The 
 
 ## Continue
 
-<NavList items={[
-  { title: 'Per-message model selection', body: 'Override the model on any individual send.', href: '/models/per-message-selection' },
-  { title: 'Bring your own keys', body: 'Route model requests through your own provider account.', href: '/models/bring-your-own-keys' },
-  { title: 'Forking', body: 'Branching is what makes model comparison clean.', href: '/concepts/forking' },
-]} />
+<Columns cols={3}>
+  <Card title="Per-message model selection" icon="refresh-cw" href="/models/per-message-selection">
+    Override the model on any individual send.
+  </Card>
+  <Card title="Bring your own keys" icon="key-round" href="/models/bring-your-own-keys">
+    Route model requests through your own provider account.
+  </Card>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    Branching is what makes model comparison clean.
+  </Card>
+</Columns>

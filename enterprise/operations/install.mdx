@@ -3,8 +3,6 @@ title: "Installing NodePad"
 description: "Install NodePad via Helm, docker compose, or the offline bundle. Covers connected, proxied-mirror, fully air-gapped, and single-VM trial postures."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 NodePad ships as a set of container images and a Helm chart. The same artifacts serve every supported install posture. Choose the row that matches your environment, then follow that section below.
 
 ```mermaid
@@ -80,7 +78,11 @@ flowchart TD
 
 ## Posture B — Proxied air-gap (Kubernetes with internal registry)
 
-Your internal registry (Nexus / Harbor / Artifactory) must proxy GHCR (`ghcr.io`) and cache the NodePad images. Point the chart at your mirror via a single value:
+<Note>
+  Your internal registry (Nexus / Harbor / Artifactory) must proxy GHCR (`ghcr.io`) and cache the NodePad images.
+</Note>
+
+Point the chart at your mirror via a single value:
 
 ```yaml values.yaml (excerpt)
 image:
@@ -128,25 +130,36 @@ Install as in Posture A.
 
 ## Posture D — Single-VM trial (docker compose)
 
-```bash
-# 1. Download or unzip the bundle
-curl -LO https://github.com/palazski/nodepad-api/releases/download/v0.1.0/nodepad-0.1.0.zip
-unzip nodepad-0.1.0.zip && cd nodepad-0.1.0
-
-# 2. Load images (offline) OR docker compose will pull them from GHCR
-gunzip -c images/api.tar.gz      | docker load
-gunzip -c images/frontend.tar.gz | docker load
-
-# 3. Copy .env.example to .env and fill in values
-cp .env.example .env
-$EDITOR .env     # pin VERSION + IMAGE_OWNER, set secrets
-
-# 4. Start the stack
-docker compose up -d
-
-# 5. Create the first admin user
-docker compose exec api python manage.py createsuperuser
-```
+<Steps>
+  <Step title="Download or unzip the bundle">
+    ```bash
+    curl -LO https://github.com/palazski/nodepad-api/releases/download/v0.1.0/nodepad-0.1.0.zip
+    unzip nodepad-0.1.0.zip && cd nodepad-0.1.0
+    ```
+  </Step>
+  <Step title="Load images (offline) or let compose pull from GHCR">
+    ```bash
+    gunzip -c images/api.tar.gz      | docker load
+    gunzip -c images/frontend.tar.gz | docker load
+    ```
+  </Step>
+  <Step title="Configure .env">
+    ```bash
+    cp .env.example .env
+    $EDITOR .env     # pin VERSION + IMAGE_OWNER, set secrets
+    ```
+  </Step>
+  <Step title="Start the stack">
+    ```bash
+    docker compose up -d
+    ```
+  </Step>
+  <Step title="Create the first admin user">
+    ```bash
+    docker compose exec api python manage.py createsuperuser
+    ```
+  </Step>
+</Steps>
 
 ## External vs bundled services
 
@@ -181,20 +194,26 @@ The Bitnami sub-charts spin up single-instance Postgres / Redis / MinIO.
 
 ## Verification
 
-```bash
-# Pods are Running
-kubectl get pods -l app.kubernetes.io/instance=nodepad
+<Card title="Verify the install" icon="circle-check" type="check">
+  ```bash
+  # Pods are Running
+  kubectl get pods -l app.kubernetes.io/instance=nodepad
 
-# Health endpoint returns {"status":"ok"}
-curl https://api.nodepad.yourcompany.com/api/health
+  # Health endpoint returns {"status":"ok"}
+  curl https://api.nodepad.yourcompany.com/api/health
 
-# Admin panel loads
-open https://api.nodepad.yourcompany.com/admin/
-```
+  # Admin panel loads
+  open https://api.nodepad.yourcompany.com/admin/
+  ```
+</Card>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Upgrade & rollback playbook', body: 'How to upgrade safely, roll back, and handle migration-incompatible rollbacks.', href: '/enterprise/operations/upgrade' },
-  { title: 'Air-gapped install details', body: 'Bundle contents, offline upgrade flow, and the zero-outbound-telemetry guarantee.', href: '/enterprise/operations/air-gapped' },
-]} />
+<Columns cols={2}>
+  <Card title="Upgrade & rollback playbook" icon="circle-arrow-up" href="/enterprise/operations/upgrade">
+    How to upgrade safely, roll back, and handle migration-incompatible rollbacks.
+  </Card>
+  <Card title="Air-gapped install details" icon="shield" href="/enterprise/operations/air-gapped">
+    Bundle contents, offline upgrade flow, and the zero-outbound-telemetry guarantee.
+  </Card>
+</Columns>

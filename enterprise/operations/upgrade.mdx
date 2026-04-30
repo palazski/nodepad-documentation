@@ -20,11 +20,23 @@ flowchart TD
 
 ## Upgrade checklist
 
-- [ ] Read the [changelog](/changelog) for the target version. Note any breaking changes.
-- [ ] Back up the database (see below).
-- [ ] For Kubernetes: verify the pre-upgrade hook succeeded before api pods roll.
-- [ ] Smoke-test after: `/api/health`, admin login, canvas load, LLM stream.
-- [ ] Monitor logs and error rates for 15 minutes post-rollout.
+<Steps>
+  <Step title="Read the changelog" icon="book-open">
+    Read the [changelog](/changelog) for the target version. Note any breaking changes.
+  </Step>
+  <Step title="Back up the database" icon="database">
+    Take a backup before starting (commands below).
+  </Step>
+  <Step title="Verify the pre-upgrade hook" icon="check">
+    For Kubernetes, verify the pre-upgrade hook succeeded before api pods roll.
+  </Step>
+  <Step title="Smoke-test after rollout" icon="activity">
+    Hit `/api/health`, admin login, canvas load, LLM stream.
+  </Step>
+  <Step title="Monitor 15 minutes" icon="timer">
+    Watch logs and error rates for 15 minutes post-rollout.
+  </Step>
+</Steps>
 
 ## Kubernetes (Helm)
 

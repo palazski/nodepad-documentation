@@ -3,8 +3,6 @@ title: "The canvas"
 description: "The workspace surface where branches, references, notes, attachments, and merges stay visible together."
 ---
 
-import { NavList } from '/snippets/NavList.jsx';
-
 The canvas is the main surface inside a NodePad workspace. It holds your conversation branches, text notes, and cross-branch connections in one view so you can see the structure of the work, not only the latest reply.
 
 ## Why it matters
@@ -13,25 +11,46 @@ Most AI interfaces flatten everything into one timeline. That works until the wo
 
 ## What you can place on it
 
-A workspace canvas can hold:
-
-- **Conversation branches.** A branch is a sequence of user and assistant messages. Branches can continue, split, and reconnect through merge flows.
-- **Text notes.** Freeform annotations for you and your team. They are not model instructions.
-- **Reference and merge edges.** Edges show how messages relate across branches — visible provenance instead of hidden prompt text.
-- **Attachments.** Images and files stay attached to the messages that used them and can carry forward into branches and merged drafts.
+<Columns cols={2}>
+  <Card title="Conversation branches" icon="git-branch">
+    A branch is a sequence of user and assistant messages. Branches can continue, split, and reconnect through merge flows.
+  </Card>
+  <Card title="Text notes" icon="sticky-note">
+    Freeform annotations for you and your team. They are not model instructions.
+  </Card>
+  <Card title="Reference and merge edges" icon="share-2">
+    Edges show how messages relate across branches — visible provenance instead of hidden prompt text.
+  </Card>
+  <Card title="Attachments" icon="paperclip">
+    Images and files stay attached to the messages that used them and can carry forward into branches and merged drafts.
+  </Card>
+</Columns>
 
 ## Common actions
 
-Pan and zoom to inspect one branch closely or zoom out to understand the whole workspace. Use workspace search to jump between matching messages without losing your spatial layout. Open the command palette to jump to actions such as merge composition or the reference picker. From the sidebar you can favorite a workspace, add tags, duplicate it, or export it when you want a checkpoint.
+<Columns cols={2}>
+  <Card title="Navigate" icon="move">
+    Pan and zoom to inspect one branch closely or zoom out to understand the whole workspace. Use workspace search to jump between matching messages without losing your spatial layout.
+  </Card>
+  <Card title="Organise" icon="layout-grid">
+    Open the command palette to jump to actions such as merge composition or the reference picker. From the sidebar you can favorite a workspace, add tags, duplicate it, or export it when you want a checkpoint.
+  </Card>
+</Columns>
 
-## Think in workspaces, not chats
-
-Each canvas belongs to a workspace, which keeps its own `title`, `default model`, `reasoning preference`, `workspace instructions`, `branch layout`, and `tags`. A good mental model is one workspace per problem space — one for a feature investigation, another for a long research project, another for a piece of writing.
+<Tip>
+  Each canvas belongs to a workspace, which keeps its own `title`, `default model`, `reasoning preference`, `workspace instructions`, `branch layout`, and `tags`. A good mental model is one workspace per problem space — one for a feature investigation, another for a long research project, another for a piece of writing.
+</Tip>
 
 ## Continue
 
-<NavList items={[
-  { title: 'Nodes', body: 'The individual messages that make up a branch.', href: '/concepts/nodes' },
-  { title: 'Forking', body: 'Branch from any message to explore an alternate path.', href: '/concepts/forking' },
-  { title: 'Merging', body: 'Combine messages from different branches into one draft.', href: '/concepts/merging' },
-]} />
+<Columns cols={3}>
+  <Card title="Nodes" icon="circle-dot" href="/concepts/nodes">
+    The individual messages that make up a branch.
+  </Card>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    Branch from any message to explore an alternate path.
+  </Card>
+  <Card title="Merging" icon="git-merge" href="/concepts/merging">
+    Combine messages from different branches into one draft.
+  </Card>
+</Columns>

@@ -4,7 +4,6 @@ description: "Combine messages from different branches into one new draft so the
 ---
 
 import { EdgeChip } from '/snippets/EdgeChip.jsx';
-import { NavList } from '/snippets/NavList.jsx';
 
 Merging in NodePad is about source selection. You choose messages from different branches, open a new draft with those sources attached, and ask for the next step with that combined context. Each source appears on the canvas as a <EdgeChip type="merge">merge edge</EdgeChip>.
 
@@ -14,27 +13,53 @@ NodePad does not silently auto-summarize branches into one canonical answer. You
 
 ## Ways to start a merge
 
-1. Multi-select messages that should feed the next draft, then choose **Merge into new message**.
-2. Or, if you prefer a visual flow, drag a merge connection across branches and continue from a draft that has those sources attached.
-3. The new draft shows the source chips it will pull from. Remove any that do not belong before you send.
-4. Send the merged draft with a prompt such as "compare these approaches," "write a recommendation," or "turn these findings into one concise brief."
+<Steps>
+  <Step title="Multi-select messages" icon="check-square">
+    Select messages that should feed the next draft, then choose **Merge into new message**.
+  </Step>
+  <Step title="Or drag a merge connection" icon="link">
+    If you prefer a visual flow, drag a merge connection across branches and continue from a draft that has those sources attached.
+  </Step>
+  <Step title="Review source chips" icon="filter">
+    The new draft shows the source chips it will pull from. Remove any that do not belong before you send.
+  </Step>
+  <Step title="Send the merged draft" icon="send">
+    Send with a prompt such as "compare these approaches," "write a recommendation," or "turn these findings into one concise brief."
+  </Step>
+</Steps>
 
 ## Good merge prompts
 
-- **Compare.** "Compare these approaches and call out the tradeoffs."
-- **Decide.** "Given these two branches, recommend the next action and explain why."
-- **Synthesize.** "Turn these findings into one short summary for a product manager."
-- **Rewrite.** "Use the evidence from these branches to rewrite the draft introduction."
+<Columns cols={2}>
+  <Card title="Compare" icon="scale">
+    "Compare these approaches and call out the tradeoffs."
+  </Card>
+  <Card title="Decide" icon="gavel">
+    "Given these two branches, recommend the next action and explain why."
+  </Card>
+  <Card title="Synthesize" icon="combine">
+    "Turn these findings into one short summary for a product manager."
+  </Card>
+  <Card title="Rewrite" icon="pen-line">
+    "Use the evidence from these branches to rewrite the draft introduction."
+  </Card>
+</Columns>
 
-## What happens to the source branches
+<Check>
+  Nothing is lost. The source branches stay on the canvas, and the merged draft becomes one more node that can itself be branched from, referenced, or merged again later.
+</Check>
 
-Nothing is lost. The source branches stay on the canvas, and the merged draft becomes one more node that can itself be branched from, referenced, or merged again later.
-
-> Merge more than one branch, not more than one idea at a time. If the source set is too broad, the next prompt becomes muddy fast.
+<Tip>
+  Merge more than one branch, not more than one idea at a time. If the source set is too broad, the next prompt becomes muddy fast.
+</Tip>
 
 ## Continue
 
-<NavList items={[
-  { title: 'References', body: 'Use `@` for one precise source instead of a synthesis draft.', href: '/concepts/references' },
-  { title: 'Forking', body: 'How branches get created in the first place.', href: '/concepts/forking' },
-]} />
+<Columns cols={2}>
+  <Card title="References" icon="at-sign" href="/concepts/references">
+    Use `@` for one precise source instead of a synthesis draft.
+  </Card>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    How branches get created in the first place.
+  </Card>
+</Columns>
