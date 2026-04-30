@@ -1,0 +1,50 @@
+---
+title: "Glossary"
+description: "Every term used in NodePad, in one place."
+---
+
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
+
+A short reference for the words this documentation uses. Canvas-related terms include the same color you see in the app.
+
+<Columns cols={2}>
+  <Card title="Workspace" icon="folder">
+    A saved NodePad canvas. A workspace holds branches, text notes, references, merge sources, and a default model. Each workspace has its own URL.
+  </Card>
+  <Card title="Canvas" icon="frame">
+    The 2D surface that holds a workspace's branches, text notes, attachments, and edges. You pan and zoom across the canvas instead of scrolling a single transcript.
+  </Card>
+  <Card title="Branch" icon="git-branch">
+    A conversation path through the canvas. A branch is a chain of nodes connected by <EdgeChip type="continuation">continuation</EdgeChip> edges. Most workspaces have several branches that diverge at chosen messages.
+  </Card>
+  <Card title="Node" icon="circle-dot">
+    A single message on the canvas: a user message, an assistant reply, or an in-progress draft. Nodes are the units you fork, edit, re-run, reference, and merge.
+  </Card>
+  <Card title="Text note" icon="sticky-note">
+    A freeform note pinned to the canvas. Text notes are for human context — research questions, decision logs, checklists. They do not act as persistent prompt constraints.
+  </Card>
+  <Card title="Reference" icon="at-sign">
+    A targeted cross-link from one node to another, created with `@`. References travel with the message that owns them. Visually a <EdgeChip type="reference">reference edge</EdgeChip> on the canvas.
+  </Card>
+  <Card title="Merge sources" icon="git-merge">
+    A set of nodes selected as source context for a new draft. Merging combines messages from different branches into one new message. Visually a <EdgeChip type="merge">merge edge</EdgeChip> on the canvas.
+  </Card>
+  <Card title="Edge" icon="share-2">
+    The visible line between two nodes on the canvas. Edges carry meaning: a <EdgeChip type="continuation">continuation</EdgeChip> moves the conversation forward, a <EdgeChip type="fork">fork</EdgeChip> branches off a new path, a <EdgeChip type="merge">merge</EdgeChip> pulls several sources into one draft, and a <EdgeChip type="reference">reference</EdgeChip> cross-links one message into another.
+  </Card>
+  <Card title="Attachment" icon="paperclip">
+    A file or image attached to a message. Attachments stay with the node that used them and travel into branches and merged drafts so the receiving model has the same context.
+  </Card>
+  <Card title="Workspace instructions" icon="scroll-text">
+    Workspace-level prompting and guidance. Applies to every send in the workspace unless overridden.
+  </Card>
+  <Card title="Default model" icon="sparkles">
+    The model NodePad picks when you start a new branch in this workspace. You can override it for any individual send.
+  </Card>
+  <Card title="Bring your own keys (BYOK)" icon="key-round">
+    Connecting your own provider API keys so NodePad routes model requests through your account. Useful when usage, rate limits, or billing should stay on your provider relationship.
+  </Card>
+  <Card title="Posture (enterprise)" icon="shield">
+    The deployment shape: connected to the internet, proxied through a mirror, fully air-gapped, or a single-VM trial. See [installing NodePad](/enterprise/operations/install) for the matrix.
+  </Card>
+</Columns>

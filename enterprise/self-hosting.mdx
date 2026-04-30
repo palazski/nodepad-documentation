@@ -1,67 +1,60 @@
 ---
-title: "Self-hosting NodePad in your own VPC or on-premises"
-description: "Deploy NodePad on your own Kubernetes cluster or a single VM. Bring your own Postgres, Redis, S3-compatible storage, and provider API keys."
+title: "Self-Hosting NodePad"
+description: "Deploy NodePad inside your own infrastructure. Posture, control, and the guarantees you can rely on."
 ---
 
-NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad into your own infrastructure — Kubernetes via Helm, or a single VM via docker compose — and connect it to your own database, cache, and object storage. NodePad's application layer runs entirely inside your perimeter.
+NodePad is built to be self-hosted. On the Enterprise plan, you deploy NodePad into your own infrastructure and connect it to your own backing services. The application layer runs entirely inside your perimeter.
 
-## Two install paths
+## Deployment shapes
 
-<Tabs>
-  <Tab title="Kubernetes (Helm)">
-    For teams running workloads on Kubernetes. Install via the versioned Helm chart published to GitHub Container Registry:
-
-    - Single `image.registry` / `image.repository` value retargets every component to your internal mirror (Nexus, Harbor, Artifactory) without chart edits.
-    - Pre-install / pre-upgrade hook Job runs database migrations before any api pods roll. Failures abort the upgrade; existing pods keep serving.
-    - Optional Bitnami Postgres / Redis / MinIO sub-charts for self-contained POC installs; production deployments should BYO managed services.
-
-    See the [install guide](/enterprise/operations/install) for the full walkthrough.
-  </Tab>
-  <Tab title="Single VM (docker compose)">
-    For smaller deployments or pilots. An image-only docker compose file ships in the release bundle and pulls pinned immutable tags:
-
-    - One `.env` file captures secrets and configuration.
-    - Version pin via a single `VERSION=X.Y.Z` line; `docker compose pull && up -d` to upgrade.
-    - Bundled Postgres, Redis, and MinIO for the quick-start path; swap any to a managed service by removing the service and pointing env vars externally.
-  </Tab>
-</Tabs>
-
-## What you bring
-
-In both postures, you are responsible for:
-
-<CardGroup cols={2}>
-  <Card title="Database" icon="database">
-    PostgreSQL 15+. NodePad's Django migrations manage the schema.
+<Columns cols={2}>
+  <Card title="Cluster deployment" icon="server">
+    For teams with an existing container orchestration environment. The deployment package targets standard cluster primitives so it slots into the platform you already run.
   </Card>
-  <Card title="Cache + queue" icon="bolt">
-    Redis 6+. Used for Django Channels (WebSocket LLM streaming) and Celery (async tasks).
+  <Card title="Single-host deployment" icon="box">
+    For pilots and smaller teams. A single host runs the full stack with one configuration file.
   </Card>
-  <Card title="Object storage" icon="box">
-    Any S3-compatible service — AWS S3, Cloudflare R2, DigitalOcean Spaces, MinIO. Stores user-uploaded assets.
+</Columns>
+
+## What stays under your control
+
+<Columns cols={2}>
+  <Card title="Application data" icon="database">
+    Workspaces, messages, attachments, and settings all live in services you operate.
   </Card>
-  <Card title="Provider API keys" icon="key">
-    Anthropic and/or OpenAI API keys. Configured once at the deployment level; all users inherit them.
+  <Card title="Provider access" icon="key-round">
+    Each provider you enable is reached only with the keys you configure.
   </Card>
-</CardGroup>
+  <Card title="Identity and access" icon="shield-check">
+    NodePad fits into the auth, network, and compliance posture you already require.
+  </Card>
+  <Card title="Upgrades" icon="circle-arrow-up">
+    Pin a version and upgrade on your schedule.
+  </Card>
+</Columns>
 
 ## What NodePad does not do
 
-- **No phone-home.** Once deployed, NodePad makes no outbound calls to NodePad-managed infrastructure. No update checks, no license phone-home, no usage pings.
-- **No outbound telemetry by default.** PostHog product analytics is off unless you explicitly set a `NODEPAD_POSTHOG_KEY` pointing at an instance you control.
-- **No data training.** NodePad does not train models on your conversations, regardless of deployment posture.
+<Columns cols={3}>
+  <Card title="No phone-home" icon="check" type="check">
+    Once deployed, NodePad makes no outbound calls to NodePad-managed infrastructure. No update checks, no license phone-home, no usage pings.
+  </Card>
+  <Card title="No outbound telemetry by default" icon="check" type="check">
+    Product analytics is off unless you explicitly turn it on against an instance you control.
+  </Card>
+  <Card title="No data training" icon="check" type="check">
+    NodePad does not train models on your conversations, regardless of deployment posture.
+  </Card>
+</Columns>
 
-## Release cadence and upgrade model
+## Release model
 
-- NodePad Enterprise ships semver-tagged container images and Helm charts. Tags `X.Y.Z` and `<git-sha>` are immutable; pin to them in production.
-- Every release is smoke-tested on a fresh Kubernetes cluster in CI before the bundle is published.
-- Upgrade is `helm upgrade` (K8s) or `docker compose pull && up -d` (VM). Migrations run automatically.
-- Release notes live at `docs.node-pad.com/changelog`. Each release also has a [GitHub Release page](https://github.com/palazski/nodepad-api/releases) with the offline bundle attached.
+Enterprise deployments use immutable, versioned releases. You pin to a specific version in your environment and upgrade when you choose. Each release ships with notes that describe new behavior, breaking changes, and any operational considerations for that version.
 
-See [Upgrade & rollback](/enterprise/operations/upgrade) for the full playbook.
+## Get the install package
 
-## Get started
+Install instructions, the deployment package, and your support channel are scoped together with the team. We will help you pick the right posture, walk through the install, and stay close during the rollout.
 
-<Card title="Contact the Enterprise team" icon="envelope" href="https://node-pad.com/enterprise">
-  We'll scope your environment and walk you through the install checklist before you go live.
+<Card title="Talk to the team" icon="mail" type="info" href="https://node-pad.com/enterprise">
+  Tell us about your environment. We will send the install package and walk you through deployment.
 </Card>

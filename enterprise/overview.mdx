@@ -1,58 +1,45 @@
 ---
-title: "Enterprise overview"
+title: "Enterprise Overview"
 description: "NodePad Enterprise is the self-hosted deployment path for teams that need the product inside their own infrastructure."
 ---
 
-NodePad Enterprise is for teams that want the NodePad workflow inside their own environment. You deploy the application stack, bring the backing services it needs, and control how provider access is configured.
+NodePad Enterprise is for teams that want the NodePad workflow inside their own environment. The application runs entirely inside your perimeter, and provider access stays under your control.
 
-<Note>
+<Info>
   Enterprise is separate from the hosted beta. The beta runs on NodePad-managed infrastructure. Enterprise runs in yours.
-</Note>
+</Info>
 
-## What ships today
+## What you get
 
-<CardGroup cols={2}>
-  <Card title="Self-hosting" icon="server" href="/enterprise/self-hosting">
-    Deploy on Kubernetes with Helm or on a single VM with Docker Compose.
+<Columns cols={2}>
+  <Card title="Self-hosted deployment" icon="server">
+    Run NodePad inside your own VPC or on-premises environment.
   </Card>
-  <Card title="Offline / air-gapped install" icon="shield-halved" href="/enterprise/operations/air-gapped">
-    Install from an offline bundle when the target environment has no internet access.
+  <Card title="Air-gapped install path" icon="shield">
+    Run NodePad in environments with no internet access. The application makes no outbound calls of its own.
   </Card>
-  <Card title="Immutable release tags" icon="box" href="/enterprise/operations/install">
-    Releases ship as versioned artifacts so upgrades are deliberate and pin-able.
+  <Card title="Versioned, immutable releases" icon="lock">
+    Pin to specific versions so upgrades stay deliberate and reproducible.
   </Card>
-  <Card title="Bring your own provider keys" icon="key" href="/models/bring-your-own-keys">
-    Provider access is under your control rather than tied to a shared hosted setup.
+  <Card title="Bring your own provider keys" icon="key-round">
+    Provider access is configured by you, not tied to a shared hosted setup.
   </Card>
-</CardGroup>
-
-## What to plan for
-
-An enterprise deployment is not only "run these containers." You should plan for:
-
-- PostgreSQL
-- Redis
-- S3-compatible object storage
-- provider credentials and egress policy
-- your upgrade and rollback process
-- your identity, access, and compliance requirements
+  <Card title="No phone-home" icon="check">
+    Once deployed, NodePad makes no outbound calls of its own — only the LLM provider calls users initiate.
+  </Card>
+  <Card title="No data training" icon="lock-keyhole">
+    Your conversations are never used to train models, regardless of deployment posture.
+  </Card>
+</Columns>
 
 ## Who this is for
 
-Enterprise is a fit when you want the NodePad product shape but need deployment control. That usually includes:
+Enterprise is a fit when you want the NodePad product shape but need deployment control. That usually includes internal infrastructure ownership, controlled provider access, offline or restricted-network installation paths, and explicit change management around upgrades.
 
-- internal infrastructure ownership
-- controlled provider access
-- offline or restricted-network installation paths
-- explicit change management around upgrades
+## How to get it
 
-## Where to go next
+Enterprise deployments are scoped together with the team. After we agree on posture, capacity, and provider configuration, you receive a deployment package, install instructions, and a direct support channel.
 
-<CardGroup cols={2}>
-  <Card title="Self-hosting details" icon="server" href="/enterprise/self-hosting">
-    See the two main deployment shapes and what services you need to bring.
-  </Card>
-  <Card title="Installation guide" icon="download" href="/enterprise/operations/install">
-    Walk through connected, mirrored, air-gapped, and single-VM install paths.
-  </Card>
-</CardGroup>
+<Card title="Talk to the team" icon="mail" type="info" href="https://node-pad.com/enterprise">
+  Tell us what your environment looks like and what you need to deploy. We will scope the right posture from there.
+</Card>

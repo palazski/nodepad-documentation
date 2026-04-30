@@ -1,17 +1,17 @@
 ---
-title: "Text notes"
-description: "Use text notes for annotations, reminders, and visual wayfinding on the NodePad canvas."
+title: "Text Notes"
+description: "Annotations, reminders, and visual wayfinding on the NodePad canvas."
 ---
 
 Text notes are freeform notes that live on the canvas beside your conversation branches. They help you annotate the workspace, keep track of decisions, and leave yourself or teammates breadcrumbs about what to do next.
 
 ## What text notes are for
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Session notes" icon="notebook-pen">
     Capture what the workspace is for, what you are testing, or what still needs review.
   </Card>
-  <Card title="Checklists" icon="list-todo">
+  <Card title="Checklists" icon="list-checks">
     Keep a short list of open questions, next actions, or review criteria.
   </Card>
   <Card title="Wayfinding" icon="map">
@@ -20,33 +20,27 @@ Text notes are freeform notes that live on the canvas beside your conversation b
   <Card title="Human context" icon="users">
     Leave notes for collaborators that should stay visible on the canvas but out of model prompts.
   </Card>
-</CardGroup>
+</Columns>
 
 ## How to create one
 
 <Steps>
-  <Step title="Right-click empty canvas space">
-    Open the canvas context menu where you want the note to appear.
+  <Step title="Open the canvas context menu" icon="mouse-pointer-2">
+    Right-click empty canvas space.
   </Step>
-  <Step title="Choose New text note here">
+  <Step title="Choose New text note here" icon="sticky-note">
     NodePad drops a new note at that position.
   </Step>
-  <Step title="Edit the note">
-    Type whatever annotation or checklist you need and place it near the relevant branches.
+  <Step title="Type your annotation" icon="type">
+    Write whatever annotation or checklist you need and place it near the relevant branches.
   </Step>
 </Steps>
 
-## What text notes do not do
+<Warning>
+  Text notes are not model instructions. They are not automatically injected into the prompt context for nearby branches. If you want instructions to affect the model, put them in your message, in the workspace instructions, or in a branching strategy that keeps different prompt intents separate.
+</Warning>
 
-Text notes are not model instructions. They are not automatically injected into the prompt context for nearby branches.
-
-If you want instructions to affect the model, put them in:
-
-- your message
-- workspace instructions
-- a branching strategy that keeps different prompt intents separate
-
-## Good note patterns
+## Patterns that work
 
 <AccordionGroup>
   <Accordion title="Workspace header note">
@@ -60,6 +54,13 @@ If you want instructions to affect the model, put them in:
   </Accordion>
 </AccordionGroup>
 
-<Note>
-  Earlier drafts of these docs described text notes as prompt constraints. In the current product, they are canvas annotations for humans.
-</Note>
+## Continue
+
+<Columns cols={2}>
+  <Card title="The canvas" icon="frame" href="/concepts/canvas">
+    How notes sit beside branches and edges in a workspace.
+  </Card>
+  <Card title="References" icon="at-sign" href="/concepts/references">
+    When you do want context to move into a prompt, use `@`.
+  </Card>
+</Columns>

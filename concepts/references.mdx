@@ -1,49 +1,28 @@
 ---
-title: "References and cross-branch context"
-description: "Use @ references and merge sources to pull context across branches without flattening the whole workspace into one prompt."
+title: "References and Cross-Branch Context"
+description: "Use @ references and merge sources to pull context across branches without flattening the workspace into one prompt."
 ---
 
-NodePad gives you two main ways to reuse work from elsewhere on the canvas:
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
 
-- `@` references for targeted cross-links
-- merge sources for broader synthesis drafts
+Two ways to reuse work from elsewhere on the canvas: <EdgeChip type="reference">`@` references</EdgeChip> for targeted cross-links, and <EdgeChip type="merge">merge sources</EdgeChip> for broader synthesis drafts. Both move context across branches without copy-pasting conversation text by hand.
 
-Both help you move context across branches without copy-pasting conversation text by hand.
+<Columns cols={2}>
+  <Card title="@ references" icon="at-sign">
+    Type `@` in a draft to open the reference picker. Choose either a branch or a specific message. NodePad inserts the visible token into the draft and stores the actual linked node behind it. The text token alone is not the source of truth.
 
-## Use `@` when you want one precise source
-
-Type `@` in a draft to open the reference picker. You can choose either:
-
-- a branch
-- a specific message
-
-NodePad inserts the visible token into the draft and stores the actual linked node behind it. That matters because the text token alone is not the source of truth.
-
-<Tip>
-  Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
-</Tip>
-
-## Use merge sources when you want synthesis
-
-Merge flows are better when the next prompt needs several sources at once. Instead of pointing to one message, you are asking the model to reason across a set of messages from different branches.
-
-That is useful for:
-
-- comparing recommendations
-- combining research findings
-- rewriting a draft using evidence gathered elsewhere
-- deciding between alternate approaches
-
-## How to choose between them
-
-<CardGroup cols={2}>
-  <Card title="@ reference" icon="at-sign">
-    Best when one branch or message should inform the next turn in a narrow, explicit way.
+    Use `@` when one message elsewhere on the canvas already says the thing you want to reuse.
   </Card>
   <Card title="Merge sources" icon="git-merge">
-    Best when the next turn needs to synthesize, compare, or reconcile several messages.
+    Merge flows are better when the next prompt needs several sources at once. Instead of pointing to one message, you are asking the model to reason across a set of messages from different branches.
+
+    Useful for comparing recommendations, combining research findings, rewriting a draft using evidence gathered elsewhere, or deciding between alternate approaches.
   </Card>
-</CardGroup>
+</Columns>
+
+## How to choose
+
+Reach for `@` when you need one specific message and a narrow, explicit cross-link with a lightweight prompt footprint. Reach for merge sources when the next turn must reason across multiple messages from different branches and the prompt can carry a larger context.
 
 ## Practical examples
 
@@ -59,12 +38,17 @@ That is useful for:
   </Accordion>
 </AccordionGroup>
 
-## Related behaviors
+<Note>
+  Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt — keep an eye on scope. Text notes are not referenceable model context by default; they are canvas annotations for humans.
+</Note>
 
-<Info>
-  Merge sources can carry attachments and tool-call context with them. That is powerful, but it also increases the size of the next prompt. Keep an eye on scope.
-</Info>
+## Continue
 
-<Info>
-  Text notes are not referenceable model context by default. They are canvas annotations for humans.
-</Info>
+<Columns cols={2}>
+  <Card title="Merging" icon="git-merge" href="/concepts/merging">
+    How a merge composer assembles source messages.
+  </Card>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    Branching is what makes cross-branch references possible.
+  </Card>
+</Columns>

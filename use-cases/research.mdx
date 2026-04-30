@@ -3,39 +3,44 @@ title: "Research"
 description: "Keep separate investigations visible on one canvas and synthesize them only when you are ready."
 ---
 
-Research gets messy when every sub-question lives in the same transcript. NodePad works better when you split the work into clean branches, keep those branches visible, and then pull the useful pieces together deliberately.
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
 
-## A good NodePad research pattern
+<Card title="Research workflow" icon="microscope" type="tip">
+  Research gets messy when every sub-question lives in the same transcript. NodePad works better when you split the work into clean branches, keep those branches visible, and pull the useful pieces together deliberately — usually through a <EdgeChip type="merge">merge</EdgeChip> at the end.
+</Card>
+
+## A pattern that works
 
 <Steps>
-  <Step title="Start with a framing branch">
-    Use one branch to define the scope of the question and name the sub-questions you need to answer.
+  <Step title="Frame the question" icon="goal">
+    Start with a framing branch that defines the scope of the question and names the sub-questions you need to answer.
   </Step>
-  <Step title="Branch by topic">
+  <Step title="Branch by topic" icon="git-branch">
     Create one branch per sub-question so each line of inquiry has its own context and output history.
   </Step>
-  <Step title="Reference across branches selectively">
+  <Step title="Reference across branches selectively" icon="at-sign">
     When one branch uncovers a source that matters elsewhere, use an `@` reference instead of summarizing it by hand.
   </Step>
-  <Step title="Merge into a synthesis draft">
+  <Step title="Merge into a synthesis draft" icon="git-merge">
     Once the branches have enough signal, merge the important messages into a new draft and ask for a comparison or summary.
   </Step>
 </Steps>
 
 ## Why it works
 
-<CardGroup cols={3}>
-  <Card title="Less prompt pollution" icon="shield">
-    Each branch stays focused on one topic instead of inheriting every tangent.
-  </Card>
-  <Card title="Visible provenance" icon="waypoints">
-    You can see where a conclusion came from because the source branches stay on the canvas.
-  </Card>
-  <Card title="Better synthesis" icon="sparkles">
-    The final summary can draw from real source branches instead of from your memory of what happened in them.
-  </Card>
-</CardGroup>
+Each branch stays focused on one topic instead of inheriting every tangent. You can see where a conclusion came from because the source branches stay on the canvas. The final summary draws from real source branches instead of from your memory of what happened in them.
 
 <Tip>
   Add a text note naming the research question and the standard for evidence you want to use. It helps when the workspace grows past a few branches.
 </Tip>
+
+## Continue
+
+<Columns cols={2}>
+  <Card title="Merging" icon="git-merge" href="/concepts/merging">
+    Compose a synthesis draft from selected source messages.
+  </Card>
+  <Card title="References" icon="at-sign" href="/concepts/references">
+    Pull a single message back into another branch with `@`.
+  </Card>
+</Columns>

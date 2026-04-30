@@ -1,5 +1,5 @@
 ---
-title: "Bring your own keys"
+title: "Bring Your Own Keys"
 description: "Connect your own provider keys so NodePad can route model requests through your account."
 ---
 
@@ -7,7 +7,7 @@ NodePad can use provider keys that belong to you or your organization. That is u
 
 ## Why teams do this
 
-<CardGroup cols={2}>
+<Columns cols={2}>
   <Card title="Keep spend where it belongs" icon="wallet">
     Usage lands on your provider account instead of a shared platform pool.
   </Card>
@@ -17,39 +17,45 @@ NodePad can use provider keys that belong to you or your organization. That is u
   <Card title="Match your security model" icon="shield">
     Enterprise teams often want provider credentials managed inside their own environment.
   </Card>
-  <Card title="Unlock deployment-specific models" icon="key-round">
+  <Card title="Unlock deployment-specific models" icon="sparkles">
     Some model options may only appear once the relevant provider key is configured.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Where keys live
 
-- In the hosted product, a user can add keys through settings when that feature is enabled.
-- In self-hosted environments, operators often configure provider access at the deployment level.
+In the hosted product, a user can add keys through settings when that feature is enabled. In self-hosted environments, operators often configure provider access at the deployment level.
 
 <Steps>
-  <Step title="Open Settings">
+  <Step title="Open provider configuration" icon="settings">
     Open the app settings and go to the area for API keys or provider configuration.
   </Step>
-  <Step title="Choose the provider">
+  <Step title="Choose the provider" icon="list">
     Select the provider you want NodePad to use through your account.
   </Step>
-  <Step title="Add your key">
+  <Step title="Paste the key and save" icon="key-round">
     Paste the key, give it a label if you want one, and save it.
   </Step>
-  <Step title="Test and use it">
+  <Step title="Pick a model in your workspace" icon="sparkles">
     Return to your workspace and choose one of the models exposed through that provider configuration.
   </Step>
 </Steps>
 
 <Info>
-  The exact providers available depend on your NodePad environment. The UI lists only the providers that environment knows how to use.
+  The exact providers available depend on your NodePad environment. The UI lists only the providers that environment knows how to use. If your current environment already exposes the models you need, you may not need to add anything. BYOK matters most when you want control over billing, throughput, compliance posture, or model availability.
 </Info>
-
-## When you do not need BYOK
-
-If your current NodePad environment already exposes the models you need, you may not need to add anything. BYOK matters most when you want control over billing, throughput, compliance posture, or model availability.
 
 <Note>
   Removing a key can change what appears in the model picker. If a workspace depends on that provider, update the default model after the key change.
 </Note>
+
+## Continue
+
+<Columns cols={2}>
+  <Card title="Models in NodePad" icon="sparkles" href="/models/overview">
+    How model selection fits into the workflow.
+  </Card>
+  <Card title="Self-hosting" icon="server" href="/enterprise/self-hosting">
+    Provider keys at the deployment level.
+  </Card>
+</Columns>

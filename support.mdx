@@ -1,0 +1,44 @@
+---
+title: "Support and Troubleshooting"
+description: "Where to ask, what to include in a report, and a few common issues."
+---
+
+If something is broken or behaving unexpectedly, this page covers what to try first and how to reach the team.
+
+## Common issues
+
+<AccordionGroup>
+  <Accordion title="A model is missing from the picker">
+    The picker shows the models the running deployment has configured. On the hosted beta, the available list is curated by the team. On a self-hosted install, it's whatever your operators have enabled. If a model you expect is not there, ping the team (hosted beta) or ask your operator to enable it (self-hosted).
+  </Accordion>
+  <Accordion title="A streamed reply stalled or never finished">
+    Refresh the workspace. A network blip can leave a node mid-flight. The message will not be lost — open the node menu and re-run.
+  </Accordion>
+  <Accordion title="An attachment will not upload">
+    Check the file size and type. NodePad supports common image and document formats; very large files may be rejected by the storage layer. If you keep hitting the same error, capture the workspace ID and file name and send them in a report.
+  </Accordion>
+</AccordionGroup>
+
+## Where to ask
+
+<Columns cols={3}>
+  <Card title="Bugs and feature requests" icon="bug" href="mailto:hello@node-pad.com">
+    Email the team with what you saw and what you expected.
+  </Card>
+  <Card title="Hosted beta access" icon="mail" href="/beta-access">
+    Questions about waves and invites.
+  </Card>
+  <Card title="Enterprise / self-hosting" icon="building-2" href="/enterprise/overview">
+    Contact the team via the link in the enterprise overview.
+  </Card>
+</Columns>
+
+## What to include in a report
+
+<Card title="A good bug report has" icon="clipboard-list" type="info">
+  - The **workspace ID** (visible in the URL).
+  - The **browser** and OS.
+  - The **time** and roughly what you were doing.
+  - Any **error message** the UI showed, or a screenshot.
+  - For self-hosted reports, the **NodePad version** and a sanitised log excerpt.
+</Card>

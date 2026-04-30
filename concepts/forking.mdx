@@ -3,43 +3,45 @@ title: "Forking"
 description: "Branch from any message so you can explore a new path without overwriting the current one."
 ---
 
-Forking is how NodePad turns one conversation into two. Instead of asking every follow-up in the same branch, you can split at a specific message and test another direction beside it.
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
+
+Branch from any message so you can explore a new path without overwriting the current one. Each split appears on the canvas as a <EdgeChip type="fork">fork edge</EdgeChip>.
 
 ## When to fork
 
-<CardGroup cols={2}>
-  <Card title="Get a second opinion" icon="messages-square">
+<Columns cols={2}>
+  <Card title="Get a second opinion" icon="scale">
     Ask another model the same question before you commit to a decision.
   </Card>
-  <Card title="Chase a tangent" icon="route">
+  <Card title="Chase a tangent" icon="split">
     Explore a side question without polluting the branch you still care about.
   </Card>
-  <Card title="Compare prompts" icon="split">
+  <Card title="Compare prompts" icon="columns-2">
     Send two different follow-ups from the same point and see which framing works better.
   </Card>
-  <Card title="Preserve a checkpoint" icon="shield">
+  <Card title="Preserve a checkpoint" icon="bookmark">
     Split before a risky change so the original path stays intact.
   </Card>
-</CardGroup>
+</Columns>
 
 ## How branching works
 
 <Steps>
-  <Step title="Pick the message to branch from">
+  <Step title="Pick the source node" icon="mouse-pointer-2">
     Right-click the node that represents the context you want to preserve.
   </Step>
-  <Step title="Choose Branch from here">
-    NodePad creates a new draft connected to that source node.
+  <Step title="Branch from here" icon="git-branch">
+    Choose **Branch from here**. NodePad creates a new draft connected to that source node.
   </Step>
-  <Step title="Send a new follow-up">
-    The new draft starts from the same history up to that point, then diverges based on what you send next.
+  <Step title="Send a new follow-up" icon="send">
+    The new draft starts from the same history up to that point, then diverges from what you send next.
   </Step>
-  <Step title="Compare both branches on the canvas">
-    Because both branches stay visible, you can compare results without switching tabs or losing provenance.
+  <Step title="Compare results" icon="columns-2">
+    Both branches stay visible on the canvas, so you can compare results without losing provenance.
   </Step>
 </Steps>
 
-## Branching patterns that work well
+## Patterns that work well
 
 <AccordionGroup>
   <Accordion title="Same question, different model">
@@ -48,14 +50,25 @@ Forking is how NodePad turns one conversation into two. Instead of asking every 
   <Accordion title="Same branch, tighter scope">
     Branch from a broad response and ask one narrower question in the new branch. The main branch stays high level while the new one goes deep.
   </Accordion>
-  <Accordion title="Re-send versus branch">
-    Re-send is useful when you want to try the same message again. Branching is better when you want an alternate path you plan to keep around.
+  <Accordion title="Re-run versus branch">
+    Re-run is useful when you want to try the same message again. Branching is better when you want an alternate path you plan to keep around.
   </Accordion>
   <Accordion title="Branch before merge work">
     If you know a branch is going to become source material for another message later, branching early keeps those sources cleaner and easier to reference.
   </Accordion>
 </AccordionGroup>
 
-<Info>
+<Note>
   Branches are explicit graph structure. They are not just copied text in a new chat window.
-</Info>
+</Note>
+
+## Continue
+
+<Columns cols={2}>
+  <Card title="Merging" icon="git-merge" href="/concepts/merging">
+    Combine messages from different branches into one new draft.
+  </Card>
+  <Card title="References" icon="at-sign" href="/concepts/references">
+    Cross-link across branches with `@`.
+  </Card>
+</Columns>

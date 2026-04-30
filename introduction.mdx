@@ -1,6 +1,6 @@
 ---
-title: "What NodePad is"
-description: "NodePad is a canvas-based AI workspace for branching conversations, references, merge flows, and model comparison."
+title: "What NodePad Is"
+description: "An AI workspace built around a canvas instead of a single transcript."
 ---
 
 NodePad is an AI workspace built around a canvas instead of a single transcript. You still send prompts and get replies, but you can also branch from any message, keep separate lines of thought visible at once, and carry context across the canvas when you need it.
@@ -9,54 +9,49 @@ NodePad is an AI workspace built around a canvas instead of a single transcript.
 
 Linear chat is fine until the work stops being linear. Research splits into sub-questions. Debugging needs a second opinion. Writing needs a fact-check side path that should not leak back into the draft. In a normal chat app, all of that gets tangled together.
 
-NodePad gives that work a shape:
+NodePad gives that work a shape. A workspace is a canvas with its own title, default model, instructions, and set of branches. Any message can become the starting point for a new branch. You can reference a specific message from elsewhere on the canvas with `@`, or you can merge several source messages into one new draft when the next turn needs to synthesize across them.
 
-<CardGroup cols={2}>
-  <Card title="Workspaces" icon="layout-dashboard">
-    Each workspace is a canvas with its own title, default model, instructions, layout, and set of conversations.
-  </Card>
-  <Card title="Branches" icon="git-fork">
-    Any message can become the starting point for a new branch, so you can explore a second path without losing the first one.
-  </Card>
-  <Card title="References" icon="at-sign">
-    Type `@` to reference another branch or specific message when the next prompt needs context from elsewhere on the canvas.
-  </Card>
-  <Card title="Merge flows" icon="git-merge">
-    Combine source messages from different branches into a new draft when you want the next turn to synthesize multiple threads.
-  </Card>
-</CardGroup>
+## In practice
 
-## How people actually use it
-
-<AccordionGroup>
-  <Accordion title="Research">
+<Columns cols={3}>
+  <Card title="Research" icon="microscope">
     Keep separate threads for separate questions. Compare findings side by side. Pull only the messages you want into the next synthesis turn.
-  </Accordion>
-  <Accordion title="Engineering">
+  </Card>
+  <Card title="Engineering" icon="wrench">
     Branch from a diagnosis message, ask another model for a second read, and merge the useful pieces before you change code or infrastructure.
-  </Accordion>
-  <Accordion title="Writing">
+  </Card>
+  <Card title="Writing" icon="pen-line">
     Draft in one branch, fact-check in another, then reference or merge the result back into the main draft without dragging the whole research thread with it.
-  </Accordion>
-</AccordionGroup>
+  </Card>
+</Columns>
 
 ## What lives on the canvas
 
-<Steps>
-  <Step title="Conversation nodes">
-    Messages and replies are stored as nodes in a branch. They are the main units of AI interaction.
-  </Step>
-  <Step title="Text notes">
-    Text notes are freeform annotations on the canvas. They are for you, not for the model.
-  </Step>
-  <Step title="Edges">
-    Edges show continuation, branching, merge relationships, and cross-branch references.
-  </Step>
-  <Step title="Attachments">
-    You can attach supported files and images to prompts. When you branch or merge, those attachments can travel with the message context too.
-  </Step>
-</Steps>
+<Columns cols={2}>
+  <Card title="Conversation nodes" icon="circle-dot">
+    Your messages and the assistant's replies — the units of AI interaction.
+  </Card>
+  <Card title="Edges" icon="share-2">
+    Continuation, fork, merge, and reference edges show how messages relate.
+  </Card>
+  <Card title="Text notes" icon="sticky-note">
+    Freeform annotations for you, not for the model.
+  </Card>
+  <Card title="Attachments" icon="paperclip">
+    Files travel with the message that used them and carry forward into branches and merges.
+  </Card>
+</Columns>
 
-<Note>
-  NodePad is currently in beta. The fastest way to see the product flow is the [quickstart](/quickstart), then the concept pages for [forking](/concepts/forking), [references](/concepts/references), and [merging](/concepts/merging).
-</Note>
+## Continue
+
+<Columns cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    See the product flow in seven steps.
+  </Card>
+  <Card title="The canvas" icon="frame" href="/concepts/canvas">
+    How the workspace surface holds branches, notes, and edges together.
+  </Card>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    Why and how to branch from a specific message.
+  </Card>
+</Columns>

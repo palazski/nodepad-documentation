@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "NodePad",
-  "theme": "willow",
+  "theme": "mint",
   "colors": {
     "primary": "#2563eb",
-    "light": "#f8fafc",
-    "dark": "#0f172a"
+    "light": "#60a5fa",
+    "dark": "#3b82f6"
   },
   "logo": {
     "light": "/logo-wordmark-light.svg",
@@ -15,88 +15,105 @@
     "light": "/logo-icon-light.svg",
     "dark": "/logo-icon-dark.svg"
   },
-  "font": {
-    "headings": {
-      "family": "Outfit"
-    },
-    "body": {
-      "family": "Outfit"
-    }
+  "appearance": {
+    "default": "system",
+    "strict": false
   },
-  "background": {
-    "decoration": "grid",
-    "color": {
-      "light": "#f8fafc",
-      "dark": "#0f172a"
-    }
+  "icons": {
+    "library": "lucide"
   },
   "navbar": {
+    "links": [
+      {
+        "label": "Product",
+        "href": "https://node-pad.com"
+      },
+      {
+        "label": "App",
+        "href": "https://app.node-pad.com"
+      }
+    ],
     "primary": {
       "type": "button",
       "label": "Join beta",
       "href": "https://node-pad.com/beta"
     }
   },
-  "styling": {
-    "eyebrows": "breadcrumbs",
-    "codeblocks": "dark"
-  },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Start here",
-        "pages": [
-          "introduction",
-          "quickstart",
-          "beta-access"
+        "tab": "Product",
+        "groups": [
+          {
+            "group": "Start here",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "beta-access",
+              "support",
+              "glossary"
+            ]
+          },
+          {
+            "group": "Core workflow",
+            "pages": [
+              "concepts/canvas",
+              "concepts/nodes",
+              "concepts/forking",
+              "concepts/merging",
+              "concepts/references",
+              "concepts/text-notes"
+            ]
+          },
+          {
+            "group": "Models and settings",
+            "pages": [
+              "models/overview",
+              "models/per-branch-selection",
+              "models/bring-your-own-keys"
+            ]
+          },
+          {
+            "group": "Use cases",
+            "pages": [
+              "use-cases/research",
+              "use-cases/engineering",
+              "use-cases/writing"
+            ]
+          },
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog"
+            ]
+          }
         ]
       },
       {
-        "group": "Core workflow",
-        "pages": [
-          "concepts/canvas",
-          "concepts/nodes",
-          "concepts/forking",
-          "concepts/merging",
-          "concepts/references",
-          "concepts/sticky-notes"
-        ]
-      },
-      {
-        "group": "Models and settings",
-        "pages": [
-          "models/overview",
-          "models/per-message-selection",
-          "models/bring-your-own-keys"
-        ]
-      },
-      {
-        "group": "Use cases",
-        "pages": [
-          "use-cases/research",
-          "use-cases/engineering",
-          "use-cases/writing"
-        ]
-      },
-      {
-        "group": "Enterprise",
-        "pages": [
-          "enterprise/overview",
-          "enterprise/self-hosting",
-          "enterprise/operations/install",
-          "enterprise/operations/upgrade",
-          "enterprise/operations/air-gapped"
-        ]
-      },
-      {
-        "group": "Changelog",
-        "pages": [
-          "changelog"
+        "tab": "Self-hosting",
+        "groups": [
+          {
+            "group": "Enterprise",
+            "pages": [
+              "enterprise/overview",
+              "enterprise/self-hosting"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "enterprise/operations/install",
+              "enterprise/operations/upgrade",
+              "enterprise/operations/air-gapped"
+            ]
+          }
         ]
       }
     ]
   },
   "footer": {
-    "socials": {}
+    "socials": {
+      "github": "https://github.com/palazski"
+    }
   }
 }

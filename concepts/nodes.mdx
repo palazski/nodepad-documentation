@@ -1,53 +1,45 @@
 ---
 title: "Nodes"
-description: "Nodes are the individual messages and replies that make up a branch in NodePad."
+description: "Individual messages and replies that make up a branch."
 ---
+
+import { EdgeChip } from '/snippets/EdgeChip.jsx';
 
 A node is one message on the canvas. User messages, assistant replies, and in-progress drafts all behave like nodes in the graph. Most NodePad actions start by selecting a node or branching from one.
 
-## What a node can contain
+## What a node carries
 
-<AccordionGroup>
-  <Accordion title="Message content">
-    NodePad renders message text with Markdown, so lists, code blocks, and links stay readable inside the graph.
-  </Accordion>
-  <Accordion title="Attachments">
-    A node can carry uploaded files, images, and tool-call artifacts. Those attachments stay part of the node's context footprint.
-  </Accordion>
-  <Accordion title="Model metadata">
-    Assistant nodes show which model produced the reply. Workspace defaults control the starting point, but individual sends can override them.
-  </Accordion>
-  <Accordion title="References">
-    A node can reference other messages with `@` mentions. The visible token is only the UI layer; NodePad stores the actual cross-message links separately.
-  </Accordion>
-</AccordionGroup>
+<Columns cols={3}>
+  <Card title="Message content" icon="type">
+    Rendered as Markdown — lists, code blocks, links — so the message stays readable inside the graph.
+  </Card>
+  <Card title="Attachments" icon="paperclip">
+    Uploaded files, images, and tool-call artifacts that stay part of the node's context footprint.
+  </Card>
+  <Card title="Model metadata" icon="sparkles">
+    Assistant nodes show which model produced the reply. References can also live on a node — the visible `@` token is only the UI layer; the cross-message link is stored separately.
+  </Card>
+</Columns>
 
 ## How nodes become branches
 
-Nodes connect in sequence inside a branch. A simple branch looks like:
+Nodes connect in sequence. Each link forward is a <EdgeChip type="continuation">continuation edge</EdgeChip>. When you branch from a node, NodePad creates a new path from that point — a <EdgeChip type="fork">fork edge</EdgeChip> — without changing the original branch.
 
-1. your message
-2. the assistant reply
-3. your next message
-4. the next reply
+## What you can do from a node
 
-When you branch from a node, NodePad creates a new path from that point without changing the original branch.
-
-## Actions you can take from a node
-
-<CardGroup cols={3}>
-  <Card title="Branch from here" icon="git-fork" href="/concepts/forking">
-    Start a new branch from the exact context at that point.
+<Columns cols={3}>
+  <Card title="Branch" icon="git-branch">
+    Start a new path from the exact context at that point.
   </Card>
-  <Card title="Edit or re-run" icon="pencil">
-    Depending on the node type and position, you can edit, re-send, or re-run from that point.
+  <Card title="Edit or re-run" icon="refresh-cw">
+    Available depending on the node type and position.
   </Card>
-  <Card title="Reference or merge" icon="at-sign" href="/concepts/references">
+  <Card title="Reference or merge" icon="at-sign">
     Pull this node into another message through an `@` reference or a merge flow.
   </Card>
-</CardGroup>
+</Columns>
 
-## Important behaviors to know
+## Behaviors worth knowing
 
 <AccordionGroup>
   <Accordion title="Branches preserve history">
@@ -67,3 +59,14 @@ When you branch from a node, NodePad creates a new path from that point without 
 <Tip>
   If you are unsure whether a follow-up belongs in the current branch, branch first. It is cheaper to keep two clean paths than to untangle one noisy one later.
 </Tip>
+
+## Continue
+
+<Columns cols={2}>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    When and how to branch.
+  </Card>
+  <Card title="References" icon="at-sign" href="/concepts/references">
+    How `@` works across branches.
+  </Card>
+</Columns>

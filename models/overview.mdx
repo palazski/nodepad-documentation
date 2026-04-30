@@ -1,34 +1,27 @@
 ---
 title: "Models in NodePad"
-description: "Choose workspace defaults, switch models per message, and compare outputs across branches."
+description: "Workspace defaults, per-branch model selection, and cross-branch comparison."
 ---
 
-NodePad treats models as part of the workflow, not a one-time setup choice. A workspace can have a default model, but any send can use a different one if that move makes more sense for the task.
+NodePad treats models as part of the workflow, not a one-time setup choice. A workspace has a default model, and individual branches can use a different model when the task calls for it.
 
-## The three model decisions you make
+## Three model decisions
 
-<CardGroup cols={3}>
-  <Card title="Workspace default" icon="layout-dashboard">
-    Pick the model you want new work in this workspace to start from.
+<Columns cols={3}>
+  <Card title="Workspace default" icon="star">
+    The model new work in this workspace starts from.
   </Card>
-  <Card title="Per-message override" icon="mouse-pointer-click">
-    Change the model for a single send when a branch needs a different strength.
+  <Card title="Per-branch model" icon="git-branch">
+    Switch the workspace default before starting a new branch so that branch runs on a different model.
   </Card>
   <Card title="Cross-branch comparison" icon="columns-2">
-    Run parallel branches with different models when you want to compare answers side by side.
+    Run parallel branches with different models so you can compare answers side by side.
   </Card>
-</CardGroup>
+</Columns>
 
 ## Why this matters
 
-Different models are good at different things. NodePad lets you act on that without breaking the shape of the work.
-
-You can:
-
-- branch a prompt and ask two models the same question
-- keep one branch on a fast model and another on a slower, deeper one
-- preserve a workspace default while still making local overrides
-- bring your own keys when you want the provider relationship to stay with your account
+Different models are good at different things. NodePad lets you act on that without breaking the shape of the work. You can branch a prompt and ask two models the same question. You can keep one branch on a fast model and another on a slower, deeper one. You can preserve a workspace default while routing specific branches to other models. You can bring your own keys when you want the provider relationship to stay with your account.
 
 <Tip>
   A clean branching strategy is what makes model comparison useful. If both branches start from the same point, you can compare the answers instead of comparing two unrelated prompt histories.
@@ -36,8 +29,18 @@ You can:
 
 ## What the picker shows
 
-The exact model list depends on how your NodePad environment is configured. Hosted beta, enterprise deployments, and bring-your-own-key setups can expose different providers and model options.
+The exact model list depends on how your NodePad environment is configured. The hosted beta, enterprise deployments, and bring-your-own-key setups can expose different providers and model options. If you are self-hosting, the available models depend on the providers and keys your deployment exposes.
 
-<Info>
-  If you are self-hosting, the available models depend on the providers and keys your deployment exposes. If you are using the hosted product, the picker shows the models available in that environment.
-</Info>
+## Continue
+
+<Columns cols={3}>
+  <Card title="Per-branch model selection" icon="sparkles" href="/models/per-branch-selection">
+    Switch models between branches inside the same workspace.
+  </Card>
+  <Card title="Bring your own keys" icon="key-round" href="/models/bring-your-own-keys">
+    Route model requests through your own provider account.
+  </Card>
+  <Card title="Forking" icon="git-branch" href="/concepts/forking">
+    Branching is what makes model comparison clean.
+  </Card>
+</Columns>
