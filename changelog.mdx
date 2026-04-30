@@ -1,15 +1,56 @@
 ---
 title: "Changelog"
-description: "Product updates and notable changes to NodePad."
+description: "What's new in NodePad."
 rss: true
 ---
 
-New features, behavior changes, and notable fixes for NodePad. Subscribe via the RSS button at the top of this page to follow along without checking back.
+What's new in NodePad. Subscribe via the RSS button at the top of this page to follow along without checking back.
 
-<Update label="v0.1.0" description="Pre-release">
-  NodePad has not yet shipped its first tagged release. The first tag will include the canvas, branching, references, merge flows, text notes, model selection, and the self-hosting Helm chart.
+<Update label="0.1.0" tags={["Beta"]} description="The first public NodePad">
+  ## The first NodePad
 
-  Until `v0.1.0` ships, the canonical engineering log lives on [GitHub Releases](https://github.com/palazski/nodepad-api/releases). After the first tag, releases will be summarised on this page.
+  Our initial public version. NodePad starts as a canvas-first AI workspace, focused on the moves a single chat thread cannot do well.
+
+  ### What is in
+  <Columns cols={2}>
+    <Card title="Branching" icon="git-branch">
+      Fork from any message to explore an alternate path without overwriting the current one.
+    </Card>
+    <Card title="Merging" icon="git-merge">
+      Combine messages from different branches into one new draft so the next step can synthesize multiple sources.
+    </Card>
+    <Card title="@ references" icon="at-sign">
+      Cross-link a specific message into a new draft with a reference picker that stores the actual link, not just the visible token.
+    </Card>
+    <Card title="Text notes" icon="sticky-note">
+      Freeform annotations on the canvas for human context — research questions, decision logs, checklists.
+    </Card>
+    <Card title="Per-message model selection" icon="sparkles">
+      Keep a workspace default and still override the model for any specific send.
+    </Card>
+    <Card title="Bring your own keys" icon="key-round">
+      Connect your own provider keys so usage and limits stay on your account.
+    </Card>
+  </Columns>
+
+  ### What is coming next
+
+  We are working on a few things you can expect to land in upcoming releases.
+
+  <Columns cols={2}>
+    <Card title="Shared workspaces" icon="users">
+      Real-time collaboration on the same canvas with teammates.
+    </Card>
+    <Card title="More providers" icon="plug">
+      Wider model coverage and easier provider onboarding.
+    </Card>
+    <Card title="Templates" icon="layout-template">
+      Reusable workspace shapes for research, engineering, and writing patterns.
+    </Card>
+    <Card title="Search across workspaces" icon="search">
+      Find a message or branch anywhere in your account, not only inside the workspace you are in.
+    </Card>
+  </Columns>
 </Update>
 
 ## Continue

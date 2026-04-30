@@ -3,49 +3,32 @@ title: "Enterprise overview"
 description: "NodePad Enterprise is the self-hosted deployment path for teams that need the product inside their own infrastructure."
 ---
 
-NodePad Enterprise is for teams that want the NodePad workflow inside their own environment. You deploy the application stack, bring the backing services it needs, and control how provider access is configured.
+NodePad Enterprise is for teams that want the NodePad workflow inside their own environment. The application runs entirely inside your perimeter, and provider access stays under your control.
 
 <Info>
   Enterprise is separate from the hosted beta. The beta runs on NodePad-managed infrastructure. Enterprise runs in yours.
 </Info>
 
-## What ships today
+## What you get
 
 <Columns cols={2}>
-  <Card title="Self-hosting" icon="server">
-    Deploy on Kubernetes with Helm or on a single VM with Docker Compose.
+  <Card title="Self-hosted deployment" icon="server">
+    Run NodePad inside your own VPC or on-premises environment.
   </Card>
-  <Card title="Offline / air-gapped install" icon="shield">
-    Install from an offline bundle when the target environment has no internet access.
+  <Card title="Air-gapped install path" icon="shield">
+    Install in environments with no internet access from a single offline bundle.
   </Card>
-  <Card title="Immutable release tags" icon="lock">
-    Releases ship as versioned artifacts so upgrades are deliberate and pin-able.
+  <Card title="Versioned, immutable releases" icon="lock">
+    Pin to specific versions so upgrades stay deliberate and reproducible.
   </Card>
   <Card title="Bring your own provider keys" icon="key-round">
-    Provider access is under your control rather than tied to a shared hosted setup.
+    Provider access is configured by you, not tied to a shared hosted setup.
   </Card>
-</Columns>
-
-## What to plan for
-
-<Columns cols={2}>
-  <Card title="Database" icon="database">
-    PostgreSQL 15+.
+  <Card title="No phone-home" icon="check">
+    Once deployed, NodePad makes no outbound calls of its own — only the LLM provider calls users initiate.
   </Card>
-  <Card title="Cache and queue" icon="zap">
-    Redis 6+.
-  </Card>
-  <Card title="Object storage" icon="hard-drive">
-    S3-compatible object storage.
-  </Card>
-  <Card title="Provider credentials" icon="key-round">
-    API keys plus your egress policy.
-  </Card>
-  <Card title="Upgrade flow" icon="circle-arrow-up">
-    Your upgrade and rollback process.
-  </Card>
-  <Card title="Identity and compliance" icon="shield-check">
-    Identity, access, and compliance requirements.
+  <Card title="No data training" icon="lock-keyhole">
+    Your conversations are never used to train models, regardless of deployment posture.
   </Card>
 </Columns>
 
@@ -53,16 +36,10 @@ NodePad Enterprise is for teams that want the NodePad workflow inside their own 
 
 Enterprise is a fit when you want the NodePad product shape but need deployment control. That usually includes internal infrastructure ownership, controlled provider access, offline or restricted-network installation paths, and explicit change management around upgrades.
 
-## Continue
+## How to get it
 
-<Columns cols={3}>
-  <Card title="Self-hosting" icon="server" href="/enterprise/self-hosting">
-    The two main deployment shapes and what services you bring.
-  </Card>
-  <Card title="Installing NodePad" icon="download" href="/enterprise/operations/install">
-    Connected, mirrored, air-gapped, and single-VM install paths.
-  </Card>
-  <Card title="Upgrade & rollback" icon="circle-arrow-up" href="/enterprise/operations/upgrade">
-    How to upgrade safely and roll back when needed.
-  </Card>
-</Columns>
+Enterprise deployments are scoped together with the team. After we agree on posture, capacity, and provider configuration, you receive a deployment package, install instructions, and a direct support channel.
+
+<Card title="Talk to the team" icon="mail" type="info" href="https://node-pad.com/enterprise">
+  Tell us what your environment looks like and what you need to deploy. We will scope the right posture from there.
+</Card>
