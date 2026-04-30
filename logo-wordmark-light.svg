@@ -1,4 +1,4 @@
-<svg width="760" height="196" viewBox="0 0 760 196" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="260" viewBox="0 0 900 260" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style type="text/css"><![CDATA[
       @font-face {
@@ -10,7 +10,7 @@
       .nodepad-wordmark { font-family: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif; font-weight: 500; }
     ]]></style>
   </defs>
-  <g transform="translate(0,10)" stroke="#111111" fill="none">
+  <g transform="translate(0,30)" stroke="#111111" fill="none">
     <path d="M50.626 145.374V50.626" stroke-width="7"/>
     <path d="M50.626 50.626C98.0473 50.626 98.0473 145.374 145.374 145.374" stroke-width="7"/>
     <path d="M145.374 145.374V50.626" stroke-width="7" stroke-dasharray="10 6"/>
@@ -23,5 +23,5 @@
     <path d="M12 172V184H24" stroke-width="4.5"/>
     <path d="M184 172V184H172" stroke-width="4.5"/>
   </g>
-  <text class="nodepad-wordmark" x="220" y="126" fill="#111111" font-size="90" letter-spacing="0">NodePad</text>
+  <text class="nodepad-wordmark" x="240" y="130" dominant-baseline="central" fill="#111111" font-size="150" letter-spacing="-2">NodePad</text>
 </svg>
