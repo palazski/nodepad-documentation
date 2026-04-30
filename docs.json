@@ -1,11 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "NodePad",
-  "theme": "willow",
+  "theme": "mint",
   "colors": {
-    "primary": "#2563eb",
-    "light": "#fefefe",
-    "dark": "#1f2023"
+    "primary": "#2563eb"
   },
   "logo": {
     "light": "/logo-wordmark-light.svg",
@@ -21,22 +19,6 @@
   },
   "icons": {
     "library": "lucide"
-  },
-  "fonts": {
-    "heading": {
-      "family": "Outfit",
-      "weight": 600
-    },
-    "body": {
-      "family": "Geist",
-      "weight": 400
-    }
-  },
-  "background": {
-    "color": {
-      "light": "#fefefe",
-      "dark": "#1f2023"
-    }
   },
   "navbar": {
     "links": [
@@ -54,10 +36,6 @@
       "label": "Join beta",
       "href": "https://node-pad.com/beta"
     }
-  },
-  "styling": {
-    "eyebrows": "breadcrumbs",
-    "codeblocks": "system"
   },
   "navigation": {
     "tabs": [
