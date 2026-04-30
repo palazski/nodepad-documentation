@@ -3,7 +3,9 @@
   "name": "NodePad",
   "theme": "mint",
   "colors": {
-    "primary": "#2563eb"
+    "primary": "#2563eb",
+    "light": "#60a5fa",
+    "dark": "#3b82f6"
   },
   "logo": {
     "light": "/logo-wordmark-light.svg",
